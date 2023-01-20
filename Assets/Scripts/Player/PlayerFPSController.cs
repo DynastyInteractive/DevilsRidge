@@ -4,7 +4,8 @@ public class PlayerFPSController : MonoBehaviour
 {
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private Camera _playerCamera;
-    [SerializeField] private float _cameraSensitivity = 2.0f;
+    [Range(1f, 100f)]
+    [SerializeField] private float _cameraSensitivity = 60f;
     [SerializeField] private float _walkSpeed = 2.0f;
     [SerializeField] private float _runSpeed = 3.5f;
     [SerializeField] private float _jumpHeight = 1.0f;
@@ -96,9 +97,10 @@ public class PlayerFPSController : MonoBehaviour
 
     private void Look()
     {
-        m_RotationX += -Input.Player.Mouse.ReadValue<Vector2>().y * _cameraSensitivity;
+        float lookSpeed = _cameraSensitivity / 200f;
+        m_RotationX += -Input.Player.Mouse.ReadValue<Vector2>().y * lookSpeed;
         m_RotationX = Mathf.Clamp(m_RotationX, -85f, 60f);
         _playerCamera.transform.localRotation = Quaternion.Euler(m_RotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.Player.Mouse.ReadValue<Vector2>().x * _cameraSensitivity, 0);
+        transform.rotation *= Quaternion.Euler(0, Input.Player.Mouse.ReadValue<Vector2>().x * lookSpeed, 0);
     }
 }
