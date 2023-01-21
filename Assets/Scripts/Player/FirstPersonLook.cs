@@ -46,9 +46,9 @@ public class FirstPersonLook : MonoBehaviour
     private void Rotate()
     {
         float lookSpeed = _cameraSensitivity / 200f;
-        m_RotationX += -Input.Player.Mouse.ReadValue<Vector2>().y * lookSpeed;
+        m_RotationX += -Input.Player.Look.ReadValue<Vector2>().y * lookSpeed;
         m_RotationX = Mathf.Clamp(m_RotationX, -_maxLookUpAngle, _maxLookDownAngle);
         _camera.transform.localRotation = Quaternion.Euler(m_RotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.Player.Mouse.ReadValue<Vector2>().x * lookSpeed, 0);
+        transform.rotation *= Quaternion.Euler(0, Input.Player.Look.ReadValue<Vector2>().x * lookSpeed, 0);
     }
 }
