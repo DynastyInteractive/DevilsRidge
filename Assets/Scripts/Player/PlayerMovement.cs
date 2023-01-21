@@ -41,8 +41,6 @@ public class PlayerMovement : MonoBehaviour
     private void CheckGrounded()
     {
         m_IsGrounded = m_CoyoteTime < _maxCoyoteTime;
-
-        
     }
 
     private void Move()
