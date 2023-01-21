@@ -1,37 +1,24 @@
 using UnityEngine;
 
-public class PlayerFPSController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private CharacterController _characterController;
-    [SerializeField] private Camera _playerCamera;
-    [Range(1f, 100f)]
-    [SerializeField] private float _cameraSensitivity = 60f;
     [SerializeField] private float _walkSpeed = 2.0f;
     [SerializeField] private float _runSpeed = 3.5f;
     [SerializeField] private float _jumpHeight = 1.0f;
     [SerializeField] private float _gravityValue = -9.81f;
     [SerializeField] private float _maxCoyoteTime = 0.1f;
 
-    public float CameraSensitivity
-    {
-        get => _cameraSensitivity;
-        set => _cameraSensitivity = value;
-    }
-
     private PlayerInput Input;
 
     private Vector3 m_PlayerVelocity;
     private bool m_IsGrounded;
     private float m_CoyoteTime;
-    private float m_RotationX = 0;
 
     private void Start()
     {
         Input = new PlayerInput();
         Input.Enable();
-
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
@@ -41,7 +28,6 @@ public class PlayerFPSController : MonoBehaviour
         Move();
         JumpCheck();
         Gravity();
-        Look();
     }
 
     private void CoyoteTime()
@@ -93,14 +79,5 @@ public class PlayerFPSController : MonoBehaviour
     {
         m_PlayerVelocity.y += (_gravityValue) * Time.deltaTime;
         _characterController.Move(m_PlayerVelocity * Time.deltaTime);
-    }
-
-    private void Look()
-    {
-        float lookSpeed = _cameraSensitivity / 200f;
-        m_RotationX += -Input.Player.Mouse.ReadValue<Vector2>().y * lookSpeed;
-        m_RotationX = Mathf.Clamp(m_RotationX, -85f, 60f);
-        _playerCamera.transform.localRotation = Quaternion.Euler(m_RotationX, 0, 0);
-        transform.rotation *= Quaternion.Euler(0, Input.Player.Mouse.ReadValue<Vector2>().x * lookSpeed, 0);
     }
 }
