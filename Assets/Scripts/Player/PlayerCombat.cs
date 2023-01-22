@@ -5,23 +5,23 @@ using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour
 {
+
+    [SerializeField] Slider _testVisualSlider;
+    [SerializeField] private float _heavyAttackMinTime = 0.5f;
+    [SerializeField] private float _heavyAttackMaxTime = 2f;
+    [SerializeField] private bool _canAttack;
+    [SerializeField] private float _damage = 1f;
+
     private PlayerInput Input;
 
-    private float attackHoldTimer;
-    [SerializeField] private float heavyAttackMinTime = 0.5f;
-    [SerializeField] private float heavyAttackMaxTime = 2f;
-    [SerializeField] private bool canAttack;
+    private float m_AttackHoldTimer;
 
-    [SerializeField] private float damage = 1f;
 
-    public Slider slider;
-
-    // Start is called before the first frame update
     void Start()
     {
-        canAttack = true;
-        slider.minValue = heavyAttackMinTime;
-        slider.value = 0;
+        _canAttack = true;
+        _testVisualSlider.minValue = _heavyAttackMinTime;
+        _testVisualSlider.value = 0;
         Input = new PlayerInput();
         Input.Enable();
     }
@@ -30,55 +30,54 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
         Attack();
-        slider.value = attackHoldTimer / heavyAttackMaxTime;
+        _testVisualSlider.value = m_AttackHoldTimer / _heavyAttackMaxTime;
 
-        if(attackHoldTimer >= heavyAttackMinTime)
+        if(m_AttackHoldTimer >= _heavyAttackMinTime)
         {
-            slider.gameObject.SetActive(true);
+            _testVisualSlider.gameObject.SetActive(true);
         }
         else
         {
-            slider.gameObject.SetActive(false);
+            _testVisualSlider.gameObject.SetActive(false);
         }
     }
 
     private void Attack()
     {
-        if (canAttack)
+        if (!_canAttack) return;
+
+        if (Input.Player.Attack.IsPressed())
         {
-            if (Input.Player.Attack.IsPressed())
+            m_AttackHoldTimer += Time.deltaTime;
+        }
+
+        if (Input.Player.Attack.WasReleasedThisFrame() || m_AttackHoldTimer >= _heavyAttackMaxTime + 0.5f)
+        {
+            if (m_AttackHoldTimer < _heavyAttackMinTime)
             {
-                attackHoldTimer += Time.deltaTime;
+                Debug.Log("Light Attack");
+            }
+            else if (m_AttackHoldTimer >= _heavyAttackMaxTime)
+            {
+                Debug.Log("Max Heavy Attack");
+                _damage += 19f;
+            }
+            else
+            {
+                Debug.Log("Weak Heavy Attack");
+                _damage += m_AttackHoldTimer * 7.5f;
             }
 
-            if (Input.Player.Attack.WasReleasedThisFrame() || attackHoldTimer >= heavyAttackMaxTime + 0.5f)
-            {
-                if (attackHoldTimer < heavyAttackMinTime)
-                {
-                    Debug.Log("Light Attack");
-                }
-                else if (attackHoldTimer >= heavyAttackMaxTime)
-                {
-                    Debug.Log("Max Heavy Attack");
-                    damage += 19f;
-                }
-                else
-                {
-                    Debug.Log("Weak Heavy Attack");
-                    damage += attackHoldTimer * 7.5f;
-                }
+            Debug.Log("The damage hit was " + Mathf.FloorToInt(_damage));
 
-                Debug.Log("The damage hit was " + Mathf.FloorToInt(damage));
-
-                canAttack = false;
-                attackHoldTimer = 0;
-                damage = 1f;
-            }
+            _canAttack = false;
+            m_AttackHoldTimer = 0;
+            _damage = 1f;
         }
 
         if (Input.Player.Attack.WasReleasedThisFrame())
         {
-            canAttack = true;
+            _canAttack = true;
         }
     }
 }
