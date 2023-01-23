@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour
 {
-
-    [SerializeField] Slider _testVisualSlider;
     [SerializeField] private float _heavyAttackMinTime = 0.5f;
     [SerializeField] private float _heavyAttackMaxTime = 2f;
     [SerializeField] private bool _canAttack;
@@ -20,8 +18,6 @@ public class PlayerCombat : MonoBehaviour
     void Start()
     {
         _canAttack = true;
-        _testVisualSlider.minValue = _heavyAttackMinTime;
-        _testVisualSlider.value = 0;
         Input = new PlayerInput();
         Input.Enable();
     }
@@ -30,16 +26,6 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
         Attack();
-        _testVisualSlider.value = m_AttackHoldTimer / _heavyAttackMaxTime;
-
-        if(m_AttackHoldTimer >= _heavyAttackMinTime)
-        {
-            _testVisualSlider.gameObject.SetActive(true);
-        }
-        else
-        {
-            _testVisualSlider.gameObject.SetActive(false);
-        }
     }
 
     private void Attack()
