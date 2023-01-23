@@ -256,7 +256,7 @@ MonoBehaviour:
   _runSpeed: 5
   _jumpHeight: 3
   _gravityValue: -10
-  _maxCoyoteTime: 0.5
+  _maxCoyoteTime: 0.1
 --- !u!114 &2921346114130100682
 MonoBehaviour:
   m_ObjectHideFlags: 0
