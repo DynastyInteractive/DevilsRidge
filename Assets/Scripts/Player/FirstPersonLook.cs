@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.Netcode;
 using UnityEngine;
 
-public class FirstPersonLook : MonoBehaviour
+public class FirstPersonLook : NetworkBehaviour
 {
     [SerializeField] private Transform _parent;
     [SerializeField] private Camera _camera;
@@ -25,6 +26,11 @@ public class FirstPersonLook : MonoBehaviour
 
     private void Start()
     {
+        if (!IsOwner)
+        {
+            _camera.enabled = false;
+        }
+
         Input = new PlayerInput();
         Input.Enable();
 
@@ -34,6 +40,7 @@ public class FirstPersonLook : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!IsOwner) return;
         Move();
         Rotate();
     }

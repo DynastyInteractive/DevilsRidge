@@ -9,6 +9,7 @@ public class NetworkManagerUI : MonoBehaviour
     [SerializeField] Button _serverButton;
     [SerializeField] Button _hostButton;
     [SerializeField] Button _clientButton;
+    [SerializeField] Camera _mainCamera;
 
     void Awake()
     {
@@ -19,10 +20,12 @@ public class NetworkManagerUI : MonoBehaviour
         _hostButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartHost();
+            _mainCamera.enabled = false;
         });
         _clientButton.onClick.AddListener(() =>
         {
             NetworkManager.Singleton.StartClient();
+            _mainCamera.enabled = false;
         });
     }
 }
