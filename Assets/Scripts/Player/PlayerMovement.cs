@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : NetworkBehaviour
 {
     [SerializeField] private CharacterController _characterController;
     [SerializeField] private float _walkSpeed = 2.0f;
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (!IsOwner) return;
+
         CoyoteTime();
         CheckGrounded();
         Move();
