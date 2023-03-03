@@ -26,6 +26,8 @@ public class PlayerMovement : NetworkBehaviour
     {
         if (!IsOwner) return;
 
+        if (_characterController == null) return;
+
         CoyoteTime();
         CheckGrounded();
         Move();
