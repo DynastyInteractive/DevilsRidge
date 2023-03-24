@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] private float _heavyAttackMinTime = 0.5f;
-    [SerializeField] private float _heavyAttackMaxTime = 2f;
-    [SerializeField] private bool _canAttack;
-    [SerializeField] private float _damage = 1f;
+    [SerializeField] float _heavyAttackMinTime = 0.5f;
+    [SerializeField] float _heavyAttackMaxTime = 2f;
+    [SerializeField] bool _canAttack;
+    [SerializeField] float _damage = 1f;
 
-    private PlayerInput Input;
+    PlayerInput Input;
 
-    private float m_AttackHoldTimer;
+    float m_AttackHoldTimer;
 
 
     void Start()
@@ -28,7 +28,7 @@ public class PlayerCombat : MonoBehaviour
         Attack();
     }
 
-    private void Attack()
+    void Attack()
     {
         if (!_canAttack) return;
 
