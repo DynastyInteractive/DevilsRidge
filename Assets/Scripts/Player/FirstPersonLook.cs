@@ -6,17 +6,17 @@ using UnityEngine;
 
 public class FirstPersonLook : NetworkBehaviour
 {
-    [SerializeField] private Transform _parent;
-    [SerializeField] private Camera _camera;
+    [SerializeField] Transform _parent;
+    [SerializeField] Camera _camera;
     [Range(1f, 100f)]
-    [SerializeField] private float _cameraSensitivity = 60f;
-    [SerializeField] private Vector3 _cameraPositionOffset = new Vector3(0f, 0.5f, 0.05f);
-    [SerializeField] private float _maxLookUpAngle = 90f;
-    [SerializeField] private float _maxLookDownAngle = 75f;
+    [SerializeField] float _cameraSensitivity = 60f;
+    [SerializeField] Vector3 _cameraPositionOffset = new Vector3(0f, 0.5f, 0.05f);
+    [SerializeField] float _maxLookUpAngle = 90f;
+    [SerializeField] float _maxLookDownAngle = 75f;
 
-    private PlayerInput Input;
+    PlayerInput Input;
 
-    private float m_RotationX = 0;
+    float _rotationX = 0;
 
     public float CameraSensitivity
     {
@@ -24,7 +24,7 @@ public class FirstPersonLook : NetworkBehaviour
         set => _cameraSensitivity = value;
     }
 
-    private void Start()
+    void Start()
     {
         if (!IsOwner)
         {
@@ -38,24 +38,24 @@ public class FirstPersonLook : NetworkBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void LateUpdate()
+    void LateUpdate()
     {
         if (!IsOwner) return;
         Move();
         Rotate();
     }
 
-    private void Move()
+    void Move()
     {
         _camera.transform.position = _parent.position + _cameraPositionOffset;
     }
 
-    private void Rotate()
+    void Rotate()
     {
         float lookSpeed = _cameraSensitivity / 200f;
-        m_RotationX += -Input.Player.Look.ReadValue<Vector2>().y * lookSpeed;
-        m_RotationX = Mathf.Clamp(m_RotationX, -_maxLookUpAngle, _maxLookDownAngle);
-        _camera.transform.localRotation = Quaternion.Euler(m_RotationX, 0, 0);
+        _rotationX += -Input.Player.Look.ReadValue<Vector2>().y * lookSpeed;
+        _rotationX = Mathf.Clamp(_rotationX, -_maxLookUpAngle, _maxLookDownAngle);
+        _camera.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
         transform.rotation *= Quaternion.Euler(0, Input.Player.Look.ReadValue<Vector2>().x * lookSpeed, 0);
     }
 }
