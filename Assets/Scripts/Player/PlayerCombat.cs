@@ -65,5 +65,6 @@ public class PlayerCombat : MonoBehaviour
         {
             _canAttack = true;
         }
+
     }
 }
