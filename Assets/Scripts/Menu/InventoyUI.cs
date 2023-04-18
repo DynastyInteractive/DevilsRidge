@@ -8,7 +8,7 @@ public class InventoyUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Inventory.Instance;
+        Inventory.instance();
     }
 
     // Update is called once per frame
