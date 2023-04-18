@@ -3,26 +3,26 @@ using UnityEngine;
 
 public class PlayerMovement : NetworkBehaviour
 {
-    [SerializeField] private CharacterController _characterController;
-    [SerializeField] private float _walkSpeed = 2.0f;
-    [SerializeField] private float _runSpeed = 3.5f;
-    [SerializeField] private float _jumpHeight = 1.0f;
-    [SerializeField] private float _gravityValue = -9.81f;
-    [SerializeField] private float _maxCoyoteTime = 0.1f;
+    [SerializeField] CharacterController _characterController;
+    [SerializeField] float _walkSpeed = 2.0f;
+    [SerializeField] float _runSpeed = 3.5f;
+    [SerializeField] float _jumpHeight = 1.0f;
+    [SerializeField] float _gravityValue = -9.81f;
+    [SerializeField] float _maxCoyoteTime = 0.1f;
 
-    private PlayerInput Input;
+    PlayerInput Input;
 
-    private Vector3 m_PlayerVelocity;
-    private bool m_IsGrounded;
-    private float m_CoyoteTime;
+    Vector3 _playerVelocity;
+    bool _isGrounded;
+    float _coyoteTime;
 
-    private void Start()
+    void Start()
     {
         Input = new PlayerInput();
         Input.Enable();
     }
 
-    private void Update()
+    void Update()
     {
         if (!IsOwner) return;
 
@@ -33,23 +33,23 @@ public class PlayerMovement : NetworkBehaviour
         Gravity();
     }
 
-    private void CoyoteTime()
+    void CoyoteTime()
     {
         if (_characterController.isGrounded)
-            m_CoyoteTime = 0;
+            _coyoteTime = 0;
         else
-            m_CoyoteTime += Time.deltaTime;
+            _coyoteTime += Time.deltaTime;
     }
 
-    private void CheckGrounded()
+    void CheckGrounded()
     {
-        m_IsGrounded = m_CoyoteTime < _maxCoyoteTime;
+        _isGrounded = _coyoteTime < _maxCoyoteTime;
     }
 
-    private void Move()
+    void Move()
     {
-        if (m_IsGrounded && m_PlayerVelocity.y < 0)
-            m_PlayerVelocity.y = 0f;
+        if (_isGrounded && _playerVelocity.y < 0)
+            _playerVelocity.y = 0f;
 
         Vector3 forward = transform.TransformDirection(Vector3.forward);
         Vector3 right = transform.TransformDirection(Vector3.right);
@@ -63,22 +63,22 @@ public class PlayerMovement : NetworkBehaviour
         _characterController.Move(Time.deltaTime * moveDirection);
     }
 
-    private void JumpCheck()
+    void JumpCheck()
     {
-        if (m_IsGrounded && Input.Player.Jump.WasPressedThisFrame())
+        if (_isGrounded && Input.Player.Jump.WasPressedThisFrame())
         {
-            m_PlayerVelocity.y += Mathf.Sqrt(-_jumpHeight * _gravityValue);
+            _playerVelocity.y += Mathf.Sqrt(-_jumpHeight * _gravityValue);
         }
 
-        if (Input.Player.Jump.WasReleasedThisFrame() && m_PlayerVelocity.y > 0f)
+        if (Input.Player.Jump.WasReleasedThisFrame() && _playerVelocity.y > 0f)
         {
-            m_PlayerVelocity.y *= 0.5f;
+            _playerVelocity.y *= 0.5f;
         }
     }
 
-    private void Gravity()
+    void Gravity()
     {
-        m_PlayerVelocity.y += (_gravityValue) * Time.deltaTime;
-        _characterController.Move(m_PlayerVelocity * Time.deltaTime);
+        _playerVelocity.y += (_gravityValue) * Time.deltaTime;
+        _characterController.Move(_playerVelocity * Time.deltaTime);
     }
 }
