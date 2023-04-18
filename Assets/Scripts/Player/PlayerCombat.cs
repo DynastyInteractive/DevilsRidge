@@ -42,28 +42,33 @@ public class PlayerCombat : MonoBehaviour
             if (m_AttackHoldTimer < _heavyAttackMinTime)
             {
                 Debug.Log("Light Attack");
+                _canAttack = false;
+                StartCoroutine(AttackCooldown(0.5f));
             }
             else if (m_AttackHoldTimer >= _heavyAttackMaxTime)
             {
                 Debug.Log("Max Heavy Attack");
                 _damage += 19f;
+                StartCoroutine(AttackCooldown(3f));
             }
             else
             {
                 Debug.Log("Weak Heavy Attack");
                 _damage += m_AttackHoldTimer * 7.5f;
+                StartCoroutine(AttackCooldown(1.5f));
             }
 
             Debug.Log("The damage hit was " + Mathf.FloorToInt(_damage));
 
-            _canAttack = false;
             m_AttackHoldTimer = 0;
             _damage = 1f;
         }
+    }
 
-        if (Input.Player.Attack.WasReleasedThisFrame())
-        {
-            _canAttack = true;
-        }
+    private IEnumerator AttackCooldown(float _timeToAttackAgain)
+    {
+        _canAttack = false;
+        yield return new WaitForSeconds(_timeToAttackAgain);
+        _canAttack = true;
     }
 }
