@@ -5,16 +5,15 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Loot : ScriptableObject
 {
-    public GameObject lootPrefab;
-    public Material rarity;
-    public string lootName;
-    public int dropChance;
+    [SerializeField] GameObject lootPrefab;
+    [SerializeField] Material rarity;
+    [SerializeField] string lootName;
+    [SerializeField] float dropChance;
 
-    public Loot(GameObject lootPrefab, Material rarity, string lootName, int dropChance)
-    {
-        this.lootPrefab = lootPrefab;
-        this.rarity = rarity;
-        this.lootName = lootName;
-        this.dropChance = dropChance;
-    }
+    public GameObject LootPrefab => lootPrefab;
+    public Material Rarity => rarity;
+    public string LootName => lootName;
+    public float DropChance => dropChance;
+    
+
 }

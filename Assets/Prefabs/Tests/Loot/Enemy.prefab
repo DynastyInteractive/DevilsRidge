@@ -112,13 +112,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac886ddb8ab0424b97cd3ffccd87439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  droppedItemPrefab: {fileID: 8625683770075911786, guid: cacbde64b210c744c9ac3f9d10b099f9,
+  _droppedItemPrefab: {fileID: 8625683770075911786, guid: cacbde64b210c744c9ac3f9d10b099f9,
     type: 3}
-  lootList:
-  - {fileID: 11400000, guid: e44973ae93e175544b8f234700f557c5, type: 2}
-  - {fileID: 11400000, guid: ba034861ecc7b3147a60036fd82c0221, type: 2}
+  _lootList:
   - {fileID: 11400000, guid: 379f81e8977f27c43ab6c46224744bd3, type: 2}
+  - {fileID: 11400000, guid: ba034861ecc7b3147a60036fd82c0221, type: 2}
+  - {fileID: 11400000, guid: e44973ae93e175544b8f234700f557c5, type: 2}
   - {fileID: 11400000, guid: 837bfaa6fe44dfb43a844a58ffda74bb, type: 2}
+  - {fileID: 11400000, guid: 0395c1aaf670ef84d9c009ec2794257f, type: 2}
+  _uniqueDropChance: 1
+  _uniqueLootList:
+  - {fileID: 11400000, guid: 984b1bbcd0e5e164aa35e7c410a14433, type: 2}
 --- !u!114 &7482729691550679744
 MonoBehaviour:
   m_ObjectHideFlags: 0

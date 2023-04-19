@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e1949bd02af726c44a98007ed3734c63, type: 3}
-  m_Name: Cube
+  m_Name: superLoot
   m_EditorClassIdentifier: 
-  lootPrefab: {fileID: 5697318374292547256, guid: bf4b0d501ee7471429415e5480bb094c,
+  lootPrefab: {fileID: 8758274413277508351, guid: 737a22a9085dabf4f843de24dcc4b4a4,
     type: 3}
-  rarity: {fileID: 2100000, guid: cf4fc98705644214a8dc6b420381110e, type: 2}
-  lootName: Cube
-  dropChance: 50
+  rarity: {fileID: 2100000, guid: 5a12dacc1501f5e478a1c5dbaf7ac9e2, type: 2}
+  lootName: Super Loot
+  dropChance: 0
