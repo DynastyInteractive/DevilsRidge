@@ -290,7 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _heavyAttackMinTime: 0.5
   _heavyAttackMaxTime: 2
-  _canAttack: 1
+  _canAttack: 0
   _damage: 1
 --- !u!143 &1131575061513532516
 CharacterController:

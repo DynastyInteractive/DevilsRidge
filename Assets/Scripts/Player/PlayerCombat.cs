@@ -5,15 +5,22 @@ using UnityEngine.UI;
 
 public class PlayerCombat : MonoBehaviour
 {
+    #region Attack Variables
     [SerializeField] float _heavyAttackMinTime = 0.5f;
     [SerializeField] float _heavyAttackMaxTime = 2f;
     [SerializeField] bool _canAttack;
     [SerializeField] float _damage = 1f;
 
     PlayerInput Input;
-
     float m_AttackHoldTimer;
+    #endregion
 
+    #region Combo Variables
+    [SerializeField] string[,] m_attackCombos = { {"light", "light", "light"}, {"heavy", "heavy", "empty"} };
+    [SerializeField] string[] m_currentCombo = {"", "", ""};
+
+    int m_currentComboNum = 0;
+    #endregion
 
     void Start()
     {
@@ -42,18 +49,21 @@ public class PlayerCombat : MonoBehaviour
             if (m_AttackHoldTimer < _heavyAttackMinTime)
             {
                 Debug.Log("Light Attack");
+                ComboManager("light");
                 _canAttack = false;
                 StartCoroutine(AttackCooldown(0.5f));
             }
             else if (m_AttackHoldTimer >= _heavyAttackMaxTime)
             {
                 Debug.Log("Max Heavy Attack");
+                ComboManager("heavy");
                 _damage += 19f;
                 StartCoroutine(AttackCooldown(3f));
             }
             else
             {
                 Debug.Log("Weak Heavy Attack");
+                ComboManager("heavy");
                 _damage += m_AttackHoldTimer * 7.5f;
                 StartCoroutine(AttackCooldown(1.5f));
             }
@@ -62,6 +72,53 @@ public class PlayerCombat : MonoBehaviour
 
             m_AttackHoldTimer = 0;
             _damage = 1f;
+        }
+    }
+
+    private void ComboManager(string attackType)
+    {
+        m_currentCombo[m_currentComboNum] = attackType;
+        m_currentComboNum++;
+
+        if(m_currentComboNum == 3)
+        {
+            m_currentComboNum = 0;
+            ComboChecker();
+        }
+    }
+
+    void ComboChecker()
+    {
+        int attackCombo_num1 = 0;
+        int attackCombo_num2 = 0;
+
+        for (int i = 0; i < m_currentCombo.Length;)
+        {
+            if (m_currentCombo[i] == m_attackCombos[attackCombo_num1, attackCombo_num2])
+            {
+                i++;
+                attackCombo_num2++;
+            }
+            else
+            {
+                if (attackCombo_num1 == (m_attackCombos.Length / 3)) return;
+
+                i = 0;
+                attackCombo_num1++;
+                attackCombo_num2 = 0;
+            }
+
+            if (attackCombo_num2 == 3 || m_attackCombos[attackCombo_num1, attackCombo_num2++] == "empty")
+            {
+                Debug.Log("COMBO!");
+                _damage *= 3;
+                i = m_currentCombo.Length;
+            }
+        }
+
+        for(int j = 0; j < m_currentCombo.Length; j++)
+        {
+            m_currentCombo[j] = "";
         }
     }
 
