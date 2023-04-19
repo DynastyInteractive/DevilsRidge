@@ -216,6 +216,7 @@ GameObject:
   - component: {fileID: 1131575061513532516}
   - component: {fileID: -695095617307806645}
   - component: {fileID: 1544251631879566333}
+  - component: {fileID: 2393589094112277665}
   m_Layer: 0
   m_Name: Test Player
   m_TagString: Untagged
@@ -288,9 +289,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c746858e177584d93b9e8c45e4f8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heavyAttackMinTime: 0.5
-  heavyAttackMaxTime: 3
-  damage: 1
+  _heavyAttackMinTime: 0.5
+  _heavyAttackMaxTime: 2
+  _canAttack: 0
+  _damage: 1
 --- !u!143 &1131575061513532516
 CharacterController:
   m_ObjectHideFlags: 0
@@ -351,3 +353,20 @@ MonoBehaviour:
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 0
+--- !u!114 &2393589094112277665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131575061513532517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8821900a36371f1488ebedb2846c1ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCamera: {fileID: 1131575060113298342}
+  _interactionLayers:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  _maxDistance: 2.5
