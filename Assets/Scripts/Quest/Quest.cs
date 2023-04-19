@@ -14,22 +14,29 @@ public class Quest
 
     [SerializeField] QuestGoal _goal;
 
-    public bool IsActive
+    public int GoldReward
     {
-        get => _goldReward;
-        set => _goldReward; = value;
+        get { return _goldReward; }
+        set { _goldReward = value;} 
+    }
+
+    public int ExperienceReward
+    {
+        get { return _experienceReward; }
+        set { _experienceReward = value; }
+
     }
 
     public bool IsActive
     {
-        get => _experienceReward;
-        set => _experienceReward; = value;
+        get { return _isActive; }
+        set { _isActive = value; }
     }
 
-    public bool IsActive
+    public QuestGoal Goal
     {
-        get => _isActive;
-        set => _isActive = value;
+        get { return _goal; }
+        set { _goal = value; }
     }
 
     public void Complete()

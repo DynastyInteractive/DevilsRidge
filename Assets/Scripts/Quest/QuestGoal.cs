@@ -7,8 +7,8 @@ public class QuestGoal
 {
     public GoalType goalType;
 
-    public int requiredAmount;
-    public int currentAmount;
+    int requiredAmount;
+    [SerializeField] int currentAmount;
 
     public enum GoalType
     {

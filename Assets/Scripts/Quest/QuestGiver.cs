@@ -1,21 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class QuestGiver : MonoBehaviour
+public class QuestGiver : Interactable 
 {
-    [SerializeField] Player _player;
     [SerializeField] Button _questButton;
     [SerializeField] GameObject _questWindow;
     [SerializeField] Button _acceptButton;
 
     [SerializeField] Quest _quest;
 
+    Player _player;
+    
+
     //public Text titleText;
     //public Text descriptionText;
     //public Text experinceText;
     //public Text goldText;
+
+    
 
     void Awake()
     {
@@ -26,6 +31,7 @@ public class QuestGiver : MonoBehaviour
     public void OpenQuestWindow()
     {
         _questWindow.SetActive(true);
+        _player.GetComponent<FirstPersonLook>().enabled = false;
         //titleText.text = quest.title;
         //descriptionText.text = quest.description;
         //experinceText.text = quest.experienceReward.ToString();
@@ -37,6 +43,13 @@ public class QuestGiver : MonoBehaviour
         _questWindow.SetActive(false);
         _quest.IsActive = true;
         _player.quest = _quest;
+        _player.GetComponent<FirstPersonLook>().enabled = true;
+        Debug.Log("Accepted");
     }
 
+    public override void Interact(GameObject player)
+    {
+        _player = player.GetComponent<Player>();
+        OpenQuestWindow();
+    }
 }

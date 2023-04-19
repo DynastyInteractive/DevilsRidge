@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour {
 
     public Button fightButton;
-    public int health = 5;
-    public int experience = 40;
+    [SerializeField] int health = 5;
+    int experience = 40;
     public int gold = 1000;
 
     public Quest quest;
@@ -17,19 +17,19 @@ public class Player : MonoBehaviour {
         fightButton.onClick.AddListener(GoBattle);
     }
 
-    public void GoBattle ()
+    void GoBattle ()
     {
         health -= 1;
         experience += 2;
         gold += 5;
 
-        if (quest._isActive)
+        if (quest.IsActive)
         {
-            quest.goal.EnemyKilled();
-            if (quest.goal.IsReached())
+            quest.Goal.EnemyKilled();
+            if (quest.Goal.IsReached())
             {
-                experience += quest._experienceReward;
-                gold += quest._goldReward;
+                experience += quest.ExperienceReward;
+                gold += quest.GoldReward;
                 quest.Complete();
             }
         }
