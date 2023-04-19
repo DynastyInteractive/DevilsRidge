@@ -49,21 +49,21 @@ public class PlayerCombat : MonoBehaviour
             if (m_AttackHoldTimer < _heavyAttackMinTime)
             {
                 Debug.Log("Light Attack");
-                ComboManager("light");
+                ComboChecker("light");
                 _canAttack = false;
                 StartCoroutine(AttackCooldown(0.5f));
             }
             else if (m_AttackHoldTimer >= _heavyAttackMaxTime)
             {
                 Debug.Log("Max Heavy Attack");
-                ComboManager("heavy");
+                ComboChecker("heavy");
                 _damage += 19f;
                 StartCoroutine(AttackCooldown(3f));
             }
             else
             {
                 Debug.Log("Weak Heavy Attack");
-                ComboManager("heavy");
+                ComboChecker("heavy");
                 _damage += m_AttackHoldTimer * 7.5f;
                 StartCoroutine(AttackCooldown(1.5f));
             }
@@ -75,28 +75,21 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    private void ComboManager(string attackType)
-    {
-        m_currentCombo[m_currentComboNum] = attackType;
-        m_currentComboNum++;
-
-        if(m_currentComboNum == 3)
-        {
-            m_currentComboNum = 0;
-            ComboChecker();
-        }
-    }
-
-    void ComboChecker()
+    void ComboChecker(string attackType)
     {
         int attackCombo_num1 = 0;
         int attackCombo_num2 = 0;
 
-        for (int i = 0; i < m_currentCombo.Length;)
+        m_currentCombo[m_currentComboNum] = attackType;
+        m_currentComboNum++;
+
+
+
+        /*for (int i = 0; i < m_currentCombo.Length; i++)
         {
-            if (m_currentCombo[i] == m_attackCombos[attackCombo_num1, attackCombo_num2])
+            Debug.Log(i);
+            if (m_currentCombo[i] == m_attackCombos[attackCombo_num1, attackCombo_num2] || m_attackCombos[attackCombo_num1, attackCombo_num2] == "empty")
             {
-                i++;
                 attackCombo_num2++;
             }
             else
@@ -119,7 +112,7 @@ public class PlayerCombat : MonoBehaviour
         for(int j = 0; j < m_currentCombo.Length; j++)
         {
             m_currentCombo[j] = "";
-        }
+        }*/
     }
 
     private IEnumerator AttackCooldown(float _timeToAttackAgain)
