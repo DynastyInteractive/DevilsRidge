@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,10 +18,20 @@ public class PlayerCombat : MonoBehaviour
     #endregion
 
     #region Combo Variables
-    [SerializeField] string[,] m_attackCombos = { {"light", "light", "light"}, {"heavy", "heavy", "empty"} };
-    [SerializeField] string[] m_currentCombo = {"", "", ""};
+    /*[SerializeField] string[,] m_attackCombos = { {"light", "light", "light"}, {"heavy", "heavy", "empty"} };
+    [SerializeField] string[, 3] m_availableCombos = { { } };
+    [SerializeField] string[] m_currentCombo = {"", "", ""};*/
+
+    [SerializeField] List<List<string>> m_attackCombos = new List<List<string>>
+    {
+        new List<string> {"light", "light", "light"},
+        new List<string> {"heavy", "heavy", "empty"}
+    };
+    [SerializeField] List<List<string>> m_availableCombos = new List<List<string>> { };
+    [SerializeField] List<string> m_currentCombo = new List<string> { };
 
     int m_currentComboNum = 0;
+    bool comboAvailable = false;
     #endregion
 
     void Start()
@@ -80,10 +92,63 @@ public class PlayerCombat : MonoBehaviour
         int attackCombo_num1 = 0;
         int attackCombo_num2 = 0;
 
-        m_currentCombo[m_currentComboNum] = attackType;
+        m_currentCombo.Add(attackType); //adds the attack to the current combo list
+
+        for (int i = 0; i < m_attackCombos.Count + 1; i++)
+        {
+            Debug.Log(m_attackCombos[i][m_currentComboNum]);
+
+
+            if (m_attackCombos[i][m_currentComboNum] == attackType)
+            {
+                comboAvailable = true;
+                m_availableCombos.Add(new List<string> { m_attackCombos[i][0], m_attackCombos[i][1], m_attackCombos[i][2] });
+            }
+                        
+            if (comboAvailable)
+            {
+                i = 0;
+                break;
+            }
+        }
+        for (int i = 0; i < m_availableCombos.Count; i++)
+        {
+            if (i > m_availableCombos.Count) break;
+
+            if (m_availableCombos[i][m_currentComboNum] != attackType)
+            {
+                comboAvailable = false;
+                m_availableCombos.RemoveAt(i);
+            }
+
+            for (int x = 0; x < m_availableCombos.Count; x++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Debug.Log(m_availableCombos[x][j]);
+                }
+            }
+
+            if (!comboAvailable)
+            {
+                m_currentCombo.RemoveAt(m_currentComboNum);
+                m_currentCombo[m_currentComboNum - 1] = attackType;
+                m_currentComboNum--;
+                break;
+            }
+        }
+        
         m_currentComboNum++;
+        
+        if (m_currentComboNum == 3 || m_availableCombos[0][m_currentComboNum+1] == "empty")
+        {
+            Debug.Log("COMBO!");
+            m_currentCombo.Clear();
+            _damage *= 3;
+        }
 
-
+        
+        m_availableCombos.Clear();
 
         /*for (int i = 0; i < m_currentCombo.Length; i++)
         {

@@ -292,6 +292,7 @@ MonoBehaviour:
   _heavyAttackMaxTime: 2
   _canAttack: 0
   _damage: 1
+  m_currentCombo: []
 --- !u!143 &1131575061513532516
 CharacterController:
   m_ObjectHideFlags: 0
