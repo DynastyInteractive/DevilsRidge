@@ -210,12 +210,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131575061513532518}
+  - component: {fileID: 1221894929250443295}
   - component: {fileID: 1131575061513532519}
   - component: {fileID: 2921346114130100682}
   - component: {fileID: 4334166072730864534}
   - component: {fileID: 1131575061513532516}
   - component: {fileID: -695095617307806645}
-  - component: {fileID: 1544251631879566333}
   m_Layer: 0
   m_Name: Test Player
   m_TagString: Untagged
@@ -240,6 +240,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1221894929250443295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131575061513532517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b58185899e34c458d539c948cb7908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnCoordinates: {x: 4.87, y: 2.343, z: 12.658}
 --- !u!114 &1131575061513532519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,9 +301,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c746858e177584d93b9e8c45e4f8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heavyAttackMinTime: 0.5
-  heavyAttackMaxTime: 3
-  damage: 1
+  _heavyAttackMinTime: 0.5
+  _heavyAttackMaxTime: 2
+  _canAttack: 0
+  _damage: 1
 --- !u!143 &1131575061513532516
 CharacterController:
   m_ObjectHideFlags: 0
@@ -325,29 +339,3 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &1544251631879566333
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131575061513532517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 1
-  SyncRotAngleX: 0
-  SyncRotAngleY: 1
-  SyncRotAngleZ: 0
-  SyncScaleX: 0
-  SyncScaleY: 0
-  SyncScaleZ: 0
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  InLocalSpace: 0
-  Interpolate: 0
