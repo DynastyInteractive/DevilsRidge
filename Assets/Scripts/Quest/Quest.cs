@@ -8,11 +8,24 @@ public class Quest
     [SerializeField] bool _isActive;
 
     [SerializeField] string _title;
+    [Multiline]
     [SerializeField] string _description;
     [SerializeField] int _experienceReward;
     [SerializeField] int _goldReward;
 
     [SerializeField] QuestGoal _goal;
+
+    public string Title
+    {
+        get { return _title; }
+        set { _title = value; }
+    }
+
+    public string Description
+    {
+        get { return _description; }
+        set { _description = value; }
+    }
 
     public int GoldReward
     {

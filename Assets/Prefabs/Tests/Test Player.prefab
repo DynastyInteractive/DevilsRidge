@@ -210,6 +210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131575061513532518}
+  - component: {fileID: 180190300161261313}
   - component: {fileID: 1131575061513532519}
   - component: {fileID: 2921346114130100682}
   - component: {fileID: 4334166072730864534}
@@ -217,6 +218,7 @@ GameObject:
   - component: {fileID: -695095617307806645}
   - component: {fileID: 1544251631879566333}
   - component: {fileID: 2393589094112277665}
+  - component: {fileID: 6085982152435006323}
   m_Layer: 0
   m_Name: Test Player
   m_TagString: Untagged
@@ -241,6 +243,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &180190300161261313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131575061513532517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68f87fbb8bc420c49b05ab4d1a214ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLookScript: {fileID: 2921346114130100682}
+  _playerMovementScript: {fileID: 1131575061513532519}
 --- !u!114 &1131575061513532519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,3 +386,27 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147483647
   _maxDistance: 2.5
+--- !u!114 &6085982152435006323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131575061513532517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0356ade277ffc04fb1984887f422f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fightButton: {fileID: 0}
+  health: 5
+  gold: 1000
+  quest:
+    _isActive: 0
+    _title: 
+    _description: 
+    _experienceReward: 0
+    _goldReward: 0
+    _goal:
+      goalType: 0
+      currentAmount: 0

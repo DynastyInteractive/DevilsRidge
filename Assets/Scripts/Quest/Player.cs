@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
 
     void Awake()
     {
-        fightButton.onClick.AddListener(GoBattle);
+        //fightButton.onClick.AddListener(GoBattle);
     }
 
     void GoBattle ()

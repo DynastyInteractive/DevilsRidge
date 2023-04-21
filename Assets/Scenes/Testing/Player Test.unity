@@ -355,6 +355,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interact Prompt
       objectReference: {fileID: 0}
+    - target: {fileID: 7288448040185368666, guid: a7aaa02dbba9b1442a455f75701e09f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7aaa02dbba9b1442a455f75701e09f0, type: 3}
 --- !u!114 &367282182 stripped
@@ -529,6 +534,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactPrompt: {fileID: 367282182}
+  _questWindow: {fileID: 1874404220}
 --- !u!114 &806468335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,6 +703,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 806468338}
     m_Modifications:
+    - target: {fileID: 2658150319903399220, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.29411766
+      objectReference: {fileID: 0}
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
       propertyPath: m_Pivot.x
@@ -715,7 +726,7 @@ PrefabInstance:
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
@@ -725,7 +736,7 @@ PrefabInstance:
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
@@ -735,12 +746,12 @@ PrefabInstance:
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 345.8188
       objectReference: {fileID: 0}
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 424.1328
       objectReference: {fileID: 0}
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
@@ -780,7 +791,7 @@ PrefabInstance:
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -322
+      value: 229
       objectReference: {fileID: 0}
     - target: {fileID: 5952858305964295040, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
         type: 3}
@@ -852,10 +863,10 @@ MonoBehaviour:
   _acceptButton: {fileID: 401800959}
   _quest:
     _isActive: 0
-    _title: 
-    _description: 
-    _experienceReward: 0
-    _goldReward: 0
+    _title: Test
+    _description: "Kill the Demons\n\u2022 3 Needed"
+    _experienceReward: 69
+    _goldReward: 420
     _goal:
       goalType: 0
       currentAmount: 0
@@ -950,6 +961,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1495091356}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1874404220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2235577876786404451, guid: 4eff10b0d74d0044ebc6e4f4ab6db471,
+    type: 3}
+  m_PrefabInstance: {fileID: 1495091356}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874404218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd91639d6d53e3f4eba2a501628fa976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2094336952
 GameObject:
   m_ObjectHideFlags: 0

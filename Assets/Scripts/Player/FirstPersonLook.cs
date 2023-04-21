@@ -24,6 +24,11 @@ public class FirstPersonLook : NetworkBehaviour
         set => _cameraSensitivity = value;
     }
 
+    void Awake()
+    {
+         
+    }
+
     void Start()
     {
         if (!IsOwner)
