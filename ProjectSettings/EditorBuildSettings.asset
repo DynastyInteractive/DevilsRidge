@@ -6,10 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Testing/Multiplayer Test.unity
+    path: Assets/Scenes/Testing/Player Test.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Testing/Player Test.unity
+    path: Assets/Scenes/Testing/Multiplayer Test.unity
     guid: a18d7707297175c438333712c76e70e4
   - enabled: 1
     path: Assets/Scenes/Main/Village.unity
