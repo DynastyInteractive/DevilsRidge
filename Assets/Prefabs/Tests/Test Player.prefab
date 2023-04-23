@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 1544251631879566333}
   m_Layer: 0
   m_Name: Test Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,9 +288,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72c746858e177584d93b9e8c45e4f8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heavyAttackMinTime: 0.5
-  heavyAttackMaxTime: 3
-  damage: 1
+  _heavyAttackMinTime: 0.5
+  _heavyAttackMaxTime: 2
+  _canAttack: 0
+  _damage: 1
 --- !u!143 &1131575061513532516
 CharacterController:
   m_ObjectHideFlags: 0
