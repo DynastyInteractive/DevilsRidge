@@ -6,14 +6,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Button))]
 public class DialogueChoiceButton : MonoBehaviour
 {
+    [SerializeField] Button _button;
     [SerializeField] TMP_Text _buttonText;
-
-    Button _button;
-
-    void Awake()
-    {
-        _button = GetComponent<Button>();    
-    }
 
     public void Init(string choice, UnityAction onClick)
     {
