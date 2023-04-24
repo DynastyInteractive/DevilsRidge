@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7482729691550679747}
   - component: {fileID: 7482729691550679744}
   - component: {fileID: 6733925904401580660}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,3 +182,6 @@ MonoBehaviour:
   _rotationSpeed: 0
   _lookRotation: {x: 0, y: 0, z: 0, w: 0}
   _direction: {x: 0, y: 0, z: 0}
+  _player: []
+  _playerTransforms: []
+  _playerID: -1
