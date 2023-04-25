@@ -999,7 +999,7 @@ MonoBehaviour:
   _uICamera: {fileID: 905656713}
   _createRelayButton: {fileID: 1431791067}
   _joinRelayButton: {fileID: 588591972}
-  _joinCodeField: {fileID: 0}
+  _joinCodeField: {fileID: 1569559147}
 --- !u!4 &1034458981
 Transform:
   m_ObjectHideFlags: 0
