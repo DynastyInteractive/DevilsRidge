@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class InventoyUI : MonoBehaviour
 {
-    Inventory inventory;
+    Inventorysyterm inventory;
     // Start is called before the first frame update
     void Start()
     {
-        Inventory.instance();
+       inventory = Inventorysyterm.instance;
     }
 
     // Update is called once per frame
