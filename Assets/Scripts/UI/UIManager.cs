@@ -7,6 +7,9 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] InteractPrompt _interactPrompt;
     [SerializeField] QuestWindow _questWindow;
+    [SerializeField] DialogueBox _dialogueBox;
+
+    public DialogueBox DialogueBox => _dialogueBox;
 
     public static UIManager Instance;
 
@@ -21,6 +24,7 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _interactPrompt.gameObject.SetActive(false);
+        _dialogueBox.gameObject.SetActive(false);
     }
 
     public void ShowInteractPrompt(Interactable interactable)
@@ -47,5 +51,17 @@ public class UIManager : MonoBehaviour
         _questWindow.gameObject.SetActive(false);
         OnUIWindowShown?.Invoke(false);
     }
-
+    
+    public void ShowDialogueBox(DialogueNodeData startNode)
+    {
+        _dialogueBox.SetDialogue(startNode);
+        _dialogueBox.gameObject.SetActive(true);
+        OnUIWindowShown?.Invoke(true);
+    }
+    
+    public void HideDialogueBox()
+    {
+        _dialogueBox.gameObject.SetActive(false);
+        OnUIWindowShown?.Invoke(false);
+    }
 }
