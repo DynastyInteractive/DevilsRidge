@@ -13,25 +13,25 @@ namespace BehaviourTree
         //overriding the Node Evaluate method
         public override NodeState Evaluate()
         {
-            foreach (Node node in _children)
+            foreach (Node node in children)
             {
                 switch (node.Evaluate())
                 {
                     case NodeState.Failure:
                         continue;
                     case NodeState.Success:
-                        _state = NodeState.Success;
-                        return _state;
+                        state = NodeState.Success;
+                        return state;
                     case NodeState.Running:
-                        _state = NodeState.Success;
-                        return _state;
+                        state = NodeState.Success;
+                        return state;
                     default:
                         continue;
                 }
             }
 
-            _state = NodeState.Failure;
-            return _state;
+            state = NodeState.Failure;
+            return state;
         }
     }
 }

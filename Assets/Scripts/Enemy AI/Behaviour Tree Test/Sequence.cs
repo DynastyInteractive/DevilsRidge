@@ -11,29 +11,29 @@ namespace BehaviourTree
         //overriding the Node Evaluate method
         public override NodeState Evaluate()
         {
-            bool anyChildIsRunning = false;
+            bool isAnyChildRunning = false;
 
             //run through each child node to see their state. if any fail, then we stop the sequence. Then continue to check if remaining are running or a success
-            foreach(Node node in _children)
+            foreach(Node node in children)
             {
                 switch (node.Evaluate())
                 {
                     case NodeState.Failure:
-                        _state = NodeState.Failure;
-                        return _state;
+                        state = NodeState.Failure;
+                        return state;
                     case NodeState.Success:
                         continue;
                     case NodeState.Running:
-                        anyChildIsRunning = true;
+                        isAnyChildRunning = true;
                         continue;
                     default:
-                        _state = NodeState.Success;
-                        return _state;
+                        state = NodeState.Success;
+                        return state;
                 }
             }
 
-            _state = anyChildIsRunning ? NodeState.Running : NodeState.Success;
-            return _state;
+            state = isAnyChildRunning ? NodeState.Running : NodeState.Success;
+            return state;
         }
     }
 }

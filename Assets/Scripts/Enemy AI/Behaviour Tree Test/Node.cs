@@ -12,17 +12,17 @@ namespace BehaviourTree
     }
 
     //single element in the behaviour tree which can access its parent and children
-    public class Node
+    public abstract class Node
     {
-        protected NodeState _state;
+        protected NodeState state;
 
         //the parent of this node and all of its children
-        public Node _parent;
-        protected List<Node> _children = new List<Node>();
+        public Node parent;
+        protected List<Node> children = new List<Node>();
 
         public Node()
         {
-            _parent = null;
+            parent = null;
         }
 
         //adds all the children of this node to the list, and the children's parent to this node
@@ -30,9 +30,14 @@ namespace BehaviourTree
         {
             foreach(Node child in children)
             {
-                child._parent = this;
-                _children.Add(child);
+                _Attach(child);
             }
+        }
+
+        private void _Attach(Node node)
+        {
+            node.parent = this;
+            children.Add(node);
         }
 
         //virtual so all derived scripts can adapt the method
@@ -53,7 +58,7 @@ namespace BehaviourTree
             object val = null;
             if(_dataContext.TryGetValue(key, out val)) return val;
 
-            Node node = _parent;
+            Node node = parent;
             if(node != null) val = node.GetData(key);
             return val;
         }
@@ -68,7 +73,7 @@ namespace BehaviourTree
                 return true;
             }
 
-            Node node = _parent;
+            Node node = parent;
             if(node != null) cleared = node.ClearData(key);
             return cleared;
         }
