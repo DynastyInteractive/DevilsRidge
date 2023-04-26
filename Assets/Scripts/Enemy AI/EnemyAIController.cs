@@ -68,12 +68,15 @@ public class EnemyAIController : MonoBehaviour
             _playerPositions.Add(new Vector3(_position.x, _position.y, _position.z));
         }
 
+
+
+
         //gets result of whether player can be targeted, and sets the state according to this
         if(_currentState == State.Attacking)
         {
             AttackPlayer();
         }
-        else if (CanTarget())
+        else if (CanTarget() && _currentState != State.Targeting)
         {
             _currentState = State.Targeting;
             MoveToPlayer();
@@ -86,7 +89,7 @@ public class EnemyAIController : MonoBehaviour
             if (_canGetNewPos)
             {
                 _canGetNewPos = false;
-                StartCoroutine(NewPosition(false));
+                StartCoroutine(NewPosition(false, false));
             }
         }
     }
@@ -120,26 +123,29 @@ public class EnemyAIController : MonoBehaviour
 
     //Sets the new position when wandering
     //quickChange determines whether or not the enemy has to wait before getting a new position
-    public IEnumerator NewPosition(bool _quickChange)
+    public IEnumerator NewPosition(bool _quickChange, bool returnToStart)
     {
         if (!_quickChange)
         {
             yield return new WaitForSeconds(Random.Range(2.5f, 4f));
         }
 
-        Vector3 _randomDirection = Random.insideUnitSphere * _wanderRadius;
-
-        //checks to see if the new position is within the max wandering distance from the starting position
-        if (Vector3.Distance(_randomDirection, _startingPos) > _maxWanderRadius)
+        if (!returnToStart)
         {
-            //sets quickChange to true so that the enemy doesnt wait longer than normal to get a new position
-            StartCoroutine(NewPosition(true));
-        }
+            Vector3 _randomDirection = Random.insideUnitSphere * _wanderRadius;
 
-        _randomDirection += transform.position;
-        NavMeshHit _hit;
-        NavMesh.SamplePosition(_randomDirection, out _hit, _wanderRadius, 1);
-        _walkPoint = _hit.position;
+            //checks to see if the new position is within the max wandering distance from the starting position
+            if (Vector3.Distance(_randomDirection, _startingPos) > _maxWanderRadius)
+            {
+                //sets quickChange to true so that the enemy doesnt wait longer than normal to get a new position
+                StartCoroutine(NewPosition(true, false));
+            }
+
+            _randomDirection += transform.position;
+            NavMeshHit _hit;
+            NavMesh.SamplePosition(_randomDirection, out _hit, _wanderRadius, 1);
+            _walkPoint = _hit.position;
+        }
 
         Move();
         _canGetNewPos = true;
