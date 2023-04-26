@@ -1079,9 +1079,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 344583328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f117afd1d0a375459fb59be7bd4dcb0, type: 3}
+  m_Script: {fileID: 11500000, guid: 073be1650cff76942819cee91f6b3f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemsParent: {fileID: 920354208}
 --- !u!1 &367494702
 GameObject:
   m_ObjectHideFlags: 0
@@ -2271,24 +2272,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 669129485}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &669129487 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5684518291978247714, guid: d194e287e14c25440bb3234a9425f0da,
-    type: 3}
-  m_PrefabInstance: {fileID: 669129485}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &669129488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669129487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 073be1650cff76942819cee91f6b3f96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &699228393
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,6 +3112,7 @@ GameObject:
   - component: {fileID: 920354208}
   - component: {fileID: 920354210}
   - component: {fileID: 920354209}
+  - component: {fileID: 920354211}
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
@@ -3242,6 +3226,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920354207}
   m_CullTransparentMesh: 1
+--- !u!114 &920354211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920354207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9757436fd1ce0b84d812b05e55165cd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2016756612}
 --- !u!1 &933182239
 GameObject:
   m_ObjectHideFlags: 0
@@ -5186,7 +5183,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3763f0eb4c901474bae5034ce0190daf, type: 2}
+  - {fileID: 2100000, guid: ec9b9faae316405469e0e64fff9935a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
