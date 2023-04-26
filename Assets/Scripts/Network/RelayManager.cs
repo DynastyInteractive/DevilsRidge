@@ -11,6 +11,8 @@ public class RelayManager : MonoBehaviour
 {
     public static RelayManager Instance { get; private set; }
 
+    public string JoinCode { get; private set; }
+
     void Awake()
     {
         Instance = this;
@@ -35,6 +37,7 @@ public class RelayManager : MonoBehaviour
 
             string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
             Debug.Log(joinCode);
+            JoinCode = joinCode;
 
             RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
@@ -53,6 +56,7 @@ public class RelayManager : MonoBehaviour
         {
             Debug.Log($"Joining Relay with: {joinCode}");
             JoinAllocation joinAllocation = await RelayService.Instance.JoinAllocationAsync(joinCode);
+            JoinCode = joinCode;
 
             RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
