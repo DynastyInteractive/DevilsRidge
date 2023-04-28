@@ -9,7 +9,7 @@ public class EnemyAIController : MonoBehaviour
 
     [Tooltip("Starting position of the enemy")] [SerializeField] Vector3 _startingPos;
 
-    [Tooltip("The different states")][SerializeField] enum State
+    /*[Tooltip("The different states")][SerializeField] enum State
     {
         Idle,
         Wandering,
@@ -17,7 +17,7 @@ public class EnemyAIController : MonoBehaviour
         Attacking
     }
 
-    [Tooltip("The current State of the enemy")] [SerializeField] State _currentState;
+    [Tooltip("The current State of the enemy")] [SerializeField] State _currentState;*/
 
     [Space(10)]
     [Header("Wandering")]
@@ -37,6 +37,11 @@ public class EnemyAIController : MonoBehaviour
     [Tooltip("Gets the position of the player")] [SerializeField] List<GameObject> _player;
     [Tooltip("List of Player GameObjects")] [SerializeField] List<Vector3> _playerPositions;
     [Tooltip("ID of the player being checked/targetted")] [SerializeField] int _playerIndex = -1;
+    [Tooltip("Distance that the enemy can target the player")] [SerializeField] Vector3 _targetRange;
+
+    [Space(10)]
+    [Header("Attacking the player")]
+    [Tooltip("Distance that the enemy can attack the player")] [SerializeField] Vector3 _attackingRange;
 
     // Start is called before the first frame update
     void Awake()
@@ -45,7 +50,7 @@ public class EnemyAIController : MonoBehaviour
         _startingPos = transform.position;
         _walkPoint = new Vector3(transform.position.x, transform.position.y - 0.4f, transform.position.z);
         _canGetNewPos = true;
-        _currentState = State.Idle;
+        //_currentState = State.Idle;
     }
 
     // Update is called once per frame
@@ -72,7 +77,9 @@ public class EnemyAIController : MonoBehaviour
 
 
         //gets result of whether player can be targeted, and sets the state according to this
-        if(_currentState == State.Attacking)
+
+
+        /*if(_currentState == State.Attacking)
         {
             AttackPlayer();
         }
@@ -91,7 +98,7 @@ public class EnemyAIController : MonoBehaviour
                 _canGetNewPos = false;
                 StartCoroutine(NewPosition(false, false));
             }
-        }
+        }*/
     }
 
     void Move()
@@ -188,7 +195,6 @@ public class EnemyAIController : MonoBehaviour
         if (Vector3.Distance(transform.position, _walkPoint) < 3)
         {
             _nav.isStopped = true;
-            _currentState = State.Attacking;
         }
         else
         {
