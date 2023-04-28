@@ -19,6 +19,7 @@ public class Inventory : MonoBehaviour
     public void Add (Item item)
     {
         items.Add(item);
+        OnItemAdded?.Invoke();
         Debug.LogWarning("More than one instance of Inventory found!");
     }
 
