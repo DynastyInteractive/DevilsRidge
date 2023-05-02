@@ -1,16 +1,19 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using UnityEngine;
 
 [Serializable]
 public class CharacterStat
 {
+    [SerializeField] float _baseValue;
+
     public virtual float BaseValue
     {
-        get => BaseValue;
+        get => _baseValue;
         set
         {
-            BaseValue = value;
+            _baseValue = value;
             _isDirty = true;
         }
     }
