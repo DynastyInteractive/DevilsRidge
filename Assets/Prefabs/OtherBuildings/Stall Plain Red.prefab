@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3477639565074920316}
   - component: {fileID: 571065822729829593}
   - component: {fileID: 2308132325453301779}
-  - component: {fileID: 4173807415153212958}
+  - component: {fileID: 5483349026660471818}
   m_Layer: 0
   m_Name: Stall Plain Red
   m_TagString: Untagged
@@ -84,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4173807415153212958
-MeshCollider:
+--- !u!65 &5483349026660471818
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -94,7 +94,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5495902117074765545, guid: ccd6ec639c4940b4fbc5fe6d71b6b024, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.032060545, y: 0.019999996, z: 0.052859332}
+  m_Center: {x: -0.006030274, y: 4.656612e-10, z: -0.0085101975}
