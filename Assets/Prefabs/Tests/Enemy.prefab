@@ -15,7 +15,9 @@ GameObject:
   - component: {fileID: 7489612527151130108}
   - component: {fileID: 7482729691550679747}
   - component: {fileID: 7482729691550679744}
-  - component: {fileID: 6733925904401580660}
+  - component: {fileID: 7040896130564419849}
+  - component: {fileID: 2141986346382191864}
+  - component: {fileID: 2151497562892735753}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -159,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b0bed2785a7b64aac5165813ee0f4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6733925904401580660
+--- !u!114 &7040896130564419849
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,12 +170,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 7482729691550679758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0065eb2da883dbe4d8af383a9b8b504f, type: 3}
+  m_Script: {fileID: 11500000, guid: 856738826584e0448bb0473542cdf807, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 0}
+  _currentState: 0
+  _player: []
+  _playerPositions: []
+  _playerIndex: -1
+  _targetRange: {x: 0, y: 0, z: 0}
+  _attackingRange: {x: 0, y: 0, z: 0}
+--- !u!114 &2141986346382191864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482729691550679758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dbc655a6b060624ca6410f1dcb7b64b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _nav: {fileID: 0}
   _startingPos: {x: 0, y: 0, z: 0}
-  _currentState: 0
   _wanderRadius: 10
   _maxWanderRadius: 20
   _walkPoint: {x: 0, y: 0, z: 0}
@@ -181,6 +201,17 @@ MonoBehaviour:
   _rotationSpeed: 0
   _lookRotation: {x: 0, y: 0, z: 0, w: 0}
   _direction: {x: 0, y: 0, z: 0}
-  _player: []
-  _playerPositions: []
-  _playerIndex: -1
+--- !u!114 &2151497562892735753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482729691550679758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bbf5802b1e54a45afbb3956ac28d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: 0}
+  currentHealth: 0

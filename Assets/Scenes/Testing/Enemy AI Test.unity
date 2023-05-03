@@ -365,6 +365,12 @@ PrefabInstance:
       propertyPath: networkManager
       value: 
       objectReference: {fileID: 478367095}
+    - target: {fileID: 7040896130564419849, guid: 96d67d2fbdfd9ef42afde02702469aa4,
+        type: 3}
+      propertyPath: _enemy
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d3a5e712ddde6e48bfeeddf44edf32e,
+        type: 2}
     - target: {fileID: 7482729691550679746, guid: 96d67d2fbdfd9ef42afde02702469aa4,
         type: 3}
       propertyPath: m_RootOrder
@@ -654,6 +660,12 @@ PrefabInstance:
     - target: {fileID: 6733925904401580660, guid: 96d67d2fbdfd9ef42afde02702469aa4,
         type: 3}
       propertyPath: stats
+      value: 
+      objectReference: {fileID: 11400000, guid: 477a29f5d302be34d88296a76f005d0e,
+        type: 2}
+    - target: {fileID: 7040896130564419849, guid: 96d67d2fbdfd9ef42afde02702469aa4,
+        type: 3}
+      propertyPath: _enemy
       value: 
       objectReference: {fileID: 11400000, guid: 477a29f5d302be34d88296a76f005d0e,
         type: 2}
