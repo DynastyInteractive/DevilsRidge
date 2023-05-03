@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractableObject : Interactable
 {
-    public override void Interact()
+    public override void Interact(GameObject player)
     {
         Debug.Log("Interacted");
     }

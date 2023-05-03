@@ -6,6 +6,7 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] InteractPrompt _interactPrompt;
+    [SerializeField] QuestWindow _questWindow;
     [SerializeField] DialogueBox _dialogueBox;
 
     public DialogueBox DialogueBox => _dialogueBox;
@@ -35,8 +36,22 @@ public class UIManager : MonoBehaviour
     public void HideInteractPrompt()
     {
         _interactPrompt.gameObject.SetActive(false);
+
     }
 
+    public void ShowQuestWindow(Quest quest, Player player)
+    {
+        _questWindow.gameObject.SetActive(true);
+        _questWindow.ShowQuestWindow(quest, player);
+        OnUIWindowShown?.Invoke(true);
+    }
+
+    public void HideQuestWindow()
+    {
+        _questWindow.gameObject.SetActive(false);
+        OnUIWindowShown?.Invoke(false);
+    }
+    
     public void ShowDialogueBox(DialogueNodeData startNode)
     {
         _dialogueBox.SetDialogue(startNode);

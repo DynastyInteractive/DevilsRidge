@@ -7,5 +7,5 @@ public abstract class Interactable : MonoBehaviour
 
     public string Action => _action;
 
-    public abstract void Interact();
+    public abstract void Interact(GameObject player);
 }

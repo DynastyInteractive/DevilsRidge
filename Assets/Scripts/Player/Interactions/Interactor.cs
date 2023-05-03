@@ -21,7 +21,7 @@ public class Interactor : MonoBehaviour
     {
         if (FindInteractable(out Interactable interactable) && Input.Player.Interact.WasPressedThisFrame())
         {
-            interactable.Interact();
+            interactable.Interact(gameObject);
         }
     }
 
