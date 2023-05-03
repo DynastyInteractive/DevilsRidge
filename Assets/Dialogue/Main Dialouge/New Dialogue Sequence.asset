@@ -1,0 +1,226 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: New Dialogue Sequence
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: 70ee8957-9631-42c0-ab81-6cf3b57b9918
+    _portName: Next
+    _targetNodeGUID: a4c4e0e2-3e50-4243-9202-473c98a4c415
+  - _baseNodeGUID: a4c4e0e2-3e50-4243-9202-473c98a4c415
+    _portName: ...
+    _targetNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+  - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _portName: "A RAID\u2019S HAPPENING"
+    _targetNodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+  - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _portName: '(pretend you was awake) '
+    _targetNodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+  - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _portName: No, I sleep
+    _targetNodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+  - _baseNodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+    _portName: 'A RAID IS HAPPENING '
+    _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+  - _baseNodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+    _portName: 'pretend you was '
+    _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+  - _baseNodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+    _portName: '|No I want to sleep '
+    _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+  - _baseNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+    _portName: Choice 1
+    _targetNodeGUID: 7ac435f8-fd3d-4731-823c-8f6510fdc40e
+  - _baseNodeGUID: 7ac435f8-fd3d-4731-823c-8f6510fdc40e
+    _portName: 
+    _targetNodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+  - _baseNodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+    _portName: Choice 1
+    _targetNodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+  - _baseNodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+    _portName: Choice 1
+    _targetNodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+  - _baseNodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+    _portName: Choice 1
+    _targetNodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+  - _baseNodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+    _portName: Choice 1
+    _targetNodeGUID: d5abfaf7-bcb8-4a4f-92cc-572791e042ae
+  - _baseNodeGUID: d5abfaf7-bcb8-4a4f-92cc-572791e042ae
+    _portName: Choice 1
+    _targetNodeGUID: 6eb4fb2d-2582-41db-b3c1-69010001dbc2
+  - _baseNodeGUID: 6eb4fb2d-2582-41db-b3c1-69010001dbc2
+    _portName: Choice 1
+    _targetNodeGUID: 17038d35-eb4e-40eb-bfde-b703d77b937d
+  - _baseNodeGUID: 17038d35-eb4e-40eb-bfde-b703d77b937d
+    _portName: Choice 1
+    _targetNodeGUID: 9c860ec4-6810-4f1b-993f-34abba13b746
+  - _baseNodeGUID: 9c860ec4-6810-4f1b-993f-34abba13b746
+    _portName: Choice 1
+    _targetNodeGUID: 8dfe10fd-b203-4f7c-bfd3-22a03a261e02
+  - _baseNodeGUID: 8dfe10fd-b203-4f7c-bfd3-22a03a261e02
+    _portName: Okay
+    _targetNodeGUID: cdc16a24-35f7-488b-935b-dd56554b6a0e
+  - _baseNodeGUID: cdc16a24-35f7-488b-935b-dd56554b6a0e
+    _portName: Choice 1
+    _targetNodeGUID: 57d60901-be48-4925-b60b-9669e46d9745
+  DialogueNodeData:
+  - _nodeGUID: a4c4e0e2-3e50-4243-9202-473c98a4c415
+    _speakerName: Damious
+    _dialogueText: WAKE UP!
+    _choices:
+    - _baseNodeGUID: a4c4e0e2-3e50-4243-9202-473c98a4c415
+      _portName: ...
+      _targetNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _position: {x: 297, y: 200}
+  - _nodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _speakerName: Damious
+    _dialogueText: 'Training starts soon '
+    _choices:
+    - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+      _portName: "A RAID\u2019S HAPPENING"
+      _targetNodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+    - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+      _portName: '(pretend you was awake) '
+      _targetNodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+    - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+      _portName: No, I sleep
+      _targetNodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+    _position: {x: 563, y: 200}
+  - _nodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+    _speakerName: Damious
+    _dialogueText: 'Training is the key to survival '
+    _choices:
+    - _baseNodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+      _portName: '|No I want to sleep '
+      _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+    _position: {x: 838, y: 380}
+  - _nodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+    _speakerName: Damious
+    _dialogueText: OIII
+    _choices:
+    - _baseNodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+      _portName: 'pretend you was '
+      _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+    _position: {x: 838, y: 225}
+  - _nodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+    _speakerName: Damious
+    _dialogueText: HAHA DID I STARTLE THOU?
+    _choices:
+    - _baseNodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+      _portName: 'A RAID IS HAPPENING '
+      _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+    _position: {x: 838, y: -15}
+  - _nodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+    _speakerName: Damious
+    _dialogueText: I have set up all of the equipment, come now and show me a true
+      worrior
+    _choices:
+    - _baseNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+      _portName: Choice 1
+      _targetNodeGUID: 7ac435f8-fd3d-4731-823c-8f6510fdc40e
+    _position: {x: 1248, y: 225}
+  - _nodeGUID: 7ac435f8-fd3d-4731-823c-8f6510fdc40e
+    _speakerName: Damious
+    _dialogueText: 'Press ''left click'' to swing your weapon '
+    _choices:
+    - _baseNodeGUID: 7ac435f8-fd3d-4731-823c-8f6510fdc40e
+      _portName: 
+      _targetNodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+    _position: {x: 1577, y: 225}
+  - _nodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+    _speakerName: Dialogue Node
+    _dialogueText: 'Press and hold ''right click'' to use your heavy swing '
+    _choices:
+    - _baseNodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+      _portName: Choice 1
+      _targetNodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+    _position: {x: 1890, y: 225}
+  - _nodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+    _speakerName: Dialogue Node
+    _dialogueText: "Press \u2018Ctrl\u2019 to crouch"
+    _choices:
+    - _baseNodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+      _portName: Choice 1
+      _targetNodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+    _position: {x: 2192, y: 225}
+  - _nodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+    _speakerName: Dialogue Node
+    _dialogueText: 'Exelent, you''re shaping up to becoming an skilled swordsman '
+    _choices:
+    - _baseNodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+      _portName: Choice 1
+      _targetNodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+    _position: {x: 2476, y: 225}
+  - _nodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+    _speakerName: Dialogue Node
+    _dialogueText: A RAID, WE'RE BEING ATTACKED!!
+    _choices:
+    - _baseNodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+      _portName: Choice 1
+      _targetNodeGUID: d5abfaf7-bcb8-4a4f-92cc-572791e042ae
+    _position: {x: 2833, y: 225}
+  - _nodeGUID: d5abfaf7-bcb8-4a4f-92cc-572791e042ae
+    _speakerName: Dialogue Node
+    _dialogueText: Quickly arm yourself, to the main gates!
+    _choices:
+    - _baseNodeGUID: d5abfaf7-bcb8-4a4f-92cc-572791e042ae
+      _portName: Choice 1
+      _targetNodeGUID: 6eb4fb2d-2582-41db-b3c1-69010001dbc2
+    _position: {x: 3129, y: 225}
+  - _nodeGUID: 6eb4fb2d-2582-41db-b3c1-69010001dbc2
+    _speakerName: Dialogue Node
+    _dialogueText: I think that's all of them! Look they came from over there!
+    _choices:
+    - _baseNodeGUID: 6eb4fb2d-2582-41db-b3c1-69010001dbc2
+      _portName: Choice 1
+      _targetNodeGUID: 17038d35-eb4e-40eb-bfde-b703d77b937d
+    _position: {x: 3420, y: 225}
+  - _nodeGUID: 17038d35-eb4e-40eb-bfde-b703d77b937d
+    _speakerName: Dialogue Node
+    _dialogueText: Quickly let's take the fight to them!
+    _choices:
+    - _baseNodeGUID: 17038d35-eb4e-40eb-bfde-b703d77b937d
+      _portName: Choice 1
+      _targetNodeGUID: 9c860ec4-6810-4f1b-993f-34abba13b746
+    _position: {x: 3732, y: 225}
+  - _nodeGUID: 9c860ec4-6810-4f1b-993f-34abba13b746
+    _speakerName: Dialogue Node
+    _dialogueText: There all gone, they must of heard us and retreated into the ruins
+      over there. let us take charge!
+    _choices:
+    - _baseNodeGUID: 9c860ec4-6810-4f1b-993f-34abba13b746
+      _portName: Choice 1
+      _targetNodeGUID: 8dfe10fd-b203-4f7c-bfd3-22a03a261e02
+    _position: {x: 4013, y: 225}
+  - _nodeGUID: 8dfe10fd-b203-4f7c-bfd3-22a03a261e02
+    _speakerName: Dialogue Node
+    _dialogueText: 'I''ll take the high ground, you go underground, we meet at the
+      enterance '
+    _choices:
+    - _baseNodeGUID: 8dfe10fd-b203-4f7c-bfd3-22a03a261e02
+      _portName: Okay
+      _targetNodeGUID: cdc16a24-35f7-488b-935b-dd56554b6a0e
+    _position: {x: 4340, y: 225}
+  - _nodeGUID: 57d60901-be48-4925-b60b-9669e46d9745
+    _speakerName: Dialogue Node
+    _dialogueText: LOOK OUT!!
+    _choices: []
+    _position: {x: 5005, y: 225}
+  - _nodeGUID: cdc16a24-35f7-488b-935b-dd56554b6a0e
+    _speakerName: Dialogue Node
+    _dialogueText: What's that you found? A sword?
+    _choices:
+    - _baseNodeGUID: cdc16a24-35f7-488b-935b-dd56554b6a0e
+      _portName: Choice 1
+      _targetNodeGUID: 57d60901-be48-4925-b60b-9669e46d9745
+    _position: {x: 4668, y: 225}

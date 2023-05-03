@@ -6,7 +6,7 @@ public class NPCTalk : Interactable
 {
     [SerializeField] DialogueSequencer _dialogueSequencer;
 
-    public override void Interact()
+    public override void Interact(GameObject player)
     {
         _dialogueSequencer.StartDialogue();
     }
