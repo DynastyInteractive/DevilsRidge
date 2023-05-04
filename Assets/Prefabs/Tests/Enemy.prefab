@@ -194,8 +194,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nav: {fileID: 0}
   _startingPos: {x: 0, y: 0, z: 0}
-  _wanderRadius: 10
-  _maxWanderRadius: 20
+  _wanderRadius: 5
+  _maxWanderRadius: 10
   _walkPoint: {x: 0, y: 0, z: 0}
   _canGetNewPos: 0
   _rotationSpeed: 0
@@ -213,5 +213,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bbf5802b1e54a45afbb3956ac28d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
   currentHealth: 0

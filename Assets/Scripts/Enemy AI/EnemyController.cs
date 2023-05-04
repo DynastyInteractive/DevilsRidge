@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
 
     [Tooltip("The current State of the enemy")] [SerializeField] SOEnemy.State _currentState;
 
+    bool _currentlyMoving;
+
     [Space(10)]
     [Header("Player Targetting")]
     [Tooltip("Gets the position of the player")] [SerializeField] List<GameObject> _player;
@@ -28,6 +30,12 @@ public class EnemyController : MonoBehaviour
     public SOEnemy.State State
     {
         get { return _currentState; }
+    }
+
+    public bool CurrentlyMoving
+    {
+        get { return _currentlyMoving; }
+        set { _currentlyMoving = value; }
     }
 
     public List<Vector3> PlayerPositions
@@ -81,7 +89,7 @@ public class EnemyController : MonoBehaviour
             }
             else return SOEnemy.State.Targeting;
         }
-        else if (Random.Range(0, 10) < 3 || _currentState == SOEnemy.State.Wandering)
+        else if (Random.Range(0, 5) == 0 || CurrentlyMoving)
         {
             return SOEnemy.State.Wandering;
         }

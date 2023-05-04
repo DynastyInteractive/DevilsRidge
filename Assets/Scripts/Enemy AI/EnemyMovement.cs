@@ -38,35 +38,41 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(_enemyController.State == SOEnemy.State.Idle)
+        {
+            _walkPoint = transform.position;
+            Move();
+        }
+
         if(_enemyController.State == SOEnemy.State.Wandering)
         {
             if (_canGetNewPos)
             {
                 _canGetNewPos = false;
-                StartCoroutine(NewPosition(false, false, false));
+                StartCoroutine(NewPosition(false, false));
             }
-
-            Move();
         }
         else if(_enemyController.State == SOEnemy.State.Targeting)
         {
-            StopCoroutine(NewPosition(false, true, false));
+            StartCoroutine(NewPosition(false, false));
         }
 
-        if(Vector3.Distance(transform.position, _walkPoint) < 0.5f)
+        if(Vector3.Distance(transform.position, _startingPos) > _maxWanderRadius || (Vector3.Distance(transform.position, _walkPoint) < 0.5f))
         {
-            _canGetNewPos=true;
+            _walkPoint = transform.position;
+            _enemyController.CurrentlyMoving = false;
+            _canGetNewPos = true;
         }
     }
 
     //Sets the new position when wandering
     //quickChange determines whether or not the enemy has to wait before getting a new position
-    public IEnumerator NewPosition(bool _quickChange, bool targetPlayer, bool returnToStart)
+    public IEnumerator NewPosition(bool _quickChange, bool returnToStart)
     {
-        if (targetPlayer)
+        /*if (targetPlayer)
         {
             _walkPoint = _enemyController.PlayerPositions[_enemyController.PlayerIndex];
-        }
+        }*/
 
         if (!_quickChange)
         {
@@ -75,49 +81,37 @@ public class EnemyMovement : MonoBehaviour
 
         if (!returnToStart)
         {
-            _canGetNewPos = false;
-            Vector3 _randomDirection = Random.insideUnitSphere * _wanderRadius;
+            _walkPoint = new Vector3(Random.Range(_startingPos.x - 10, _startingPos.x + 10), transform.position.y, Random.Range(_startingPos.z - 10, _startingPos.z + 10));
 
-            //checks to see if the new position is within the max wandering distance from the starting position
-            if (Vector3.Distance(_randomDirection, _startingPos) > _maxWanderRadius)
-            {
-                //sets quickChange to true so that the enemy doesnt wait longer than normal to get a new position
-                StartCoroutine(NewPosition(true, false, false));
-            }
+            /*Vector3 _randomDirection = _startingPos + (Random.insideUnitSphere * _wanderRadius);
 
-            _randomDirection += transform.position;
-            NavMeshHit _hit;
-            NavMesh.SamplePosition(_randomDirection, out _hit, _wanderRadius, 1);
-            _walkPoint = _hit.position;
+            //_randomDirection += transform.position;
+            //NavMesh.SamplePosition(_randomDirection, out NavMeshHit _hit, _wanderRadius, 1);
+            _walkPoint = _randomDirection;
+
+            _walkPoint.y = transform.position.y;*/
         }
+
+        _enemyController.CurrentlyMoving = true;
+        Move();
     }
 
     void Move()
     {
-        float _distance = Vector3.Distance(transform.position, _walkPoint);
-
-        if (_distance > 0.5f)
+        if (_direction != Vector3.zero)
         {
-            if (_direction != Vector3.zero)
-            {
-                //gets the vector pointing from the enemy's position to the target
-                _direction = (_walkPoint - transform.position).normalized;
+            //gets the vector pointing from the enemy's position to the target
+            _direction = (_walkPoint - transform.position).normalized;
 
-                //gets the rotation the enemy needs to be in to look at the target
-                _lookRotation = Quaternion.LookRotation(_direction);
+            //gets the rotation the enemy needs to be in to look at the target
+            _lookRotation = Quaternion.LookRotation(_direction);
 
-                //rotates the enemy over time according to speed until it is in the corrent orientation
-                transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * _rotationSpeed);
-            }
-
-            //Sets the target point
-            _nav.SetDestination(_walkPoint);
-            Debug.Log("Wandering");
+            //rotates the enemy over time according to speed until it is in the corrent orientation
+            transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * _rotationSpeed);
         }
-        else
-        {
-            _canGetNewPos = true;
-        }
+
+        //Sets the target point
+        _nav.SetDestination(_walkPoint);
     }
 
 }
