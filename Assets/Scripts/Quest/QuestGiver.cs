@@ -6,23 +6,30 @@ using UnityEngine.UI;
 
 public class QuestGiver : Interactable 
 {
+    [SerializeField] DialogueSequencer _dialogueSequencer;
     [SerializeField] Quest _quest;
 
-    Player _player;
+    QuestReceiver _receiver;
+    
+    private void Awake()
+    {
+        _dialogueSequencer.OnDialogueEnded += OpenQuestWindow;
+    }
 
     public void OpenQuestWindow()
     {
-        UIManager.Instance.ShowQuestWindow(_quest, _player);
+        UIManager.Instance.ShowQuestWindow(_quest, AcceptQuest);
     }
 
     public void AcceptQuest()
     {
         UIManager.Instance.HideQuestWindow();
+        _receiver.SetQuest(_quest);
     }
 
     public override void Interact(GameObject player)
     {
-        _player = player.GetComponent<Player>();
-        OpenQuestWindow();
+        _receiver = player.GetComponent<QuestReceiver>();
+        _dialogueSequencer.StartDialogue();
     }
 }

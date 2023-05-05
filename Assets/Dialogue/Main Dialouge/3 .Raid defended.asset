@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: '3 '
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: 6eb4fb2d-2582-41db-b3c1-69010001dbc2
+    _portName: Choice 1
+    _targetNodeGUID: 17038d35-eb4e-40eb-bfde-b703d77b937d
+  - _baseNodeGUID: 70ee8957-9631-42c0-ab81-6cf3b57b9918
+    _portName: Next
+    _targetNodeGUID: 6eb4fb2d-2582-41db-b3c1-69010001dbc2
+  DialogueNodeData:
+  - _nodeGUID: 6eb4fb2d-2582-41db-b3c1-69010001dbc2
+    _speakerName: Dialogue Node
+    _dialogueText: I think that's all of them! Look they came from over there!
+    _choices:
+    - _baseNodeGUID: 6eb4fb2d-2582-41db-b3c1-69010001dbc2
+      _portName: Choice 1
+      _targetNodeGUID: 17038d35-eb4e-40eb-bfde-b703d77b937d
+    _position: {x: 3420, y: 225}
+  - _nodeGUID: 17038d35-eb4e-40eb-bfde-b703d77b937d
+    _speakerName: Dialogue Node
+    _dialogueText: Quickly let's take the fight to them!
+    _choices: []
+    _position: {x: 3732, y: 225}

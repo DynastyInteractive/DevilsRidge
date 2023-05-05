@@ -17,7 +17,10 @@ public class DialogueSequencer : MonoBehaviour
         Input.Dialogue.Enable();
 
         Reset();
+    }
 
+    void Start()
+    {
         UIManager.Instance.DialogueBox.OnChoiceButtonClicked += GoToChoiceIndex;
     }
 

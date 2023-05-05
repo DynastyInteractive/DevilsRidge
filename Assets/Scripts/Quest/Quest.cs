@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Quest
+[CreateAssetMenu(fileName ="New Quest",menuName ="Quests/Quest")]
+public class Quest : ScriptableObject
 {
-    [SerializeField] bool _isActive;
+  
 
     [SerializeField] string _title;
     [Multiline]
@@ -15,46 +16,50 @@ public class Quest
 
     [SerializeField] QuestGoal _goal;
 
+    public event Action OnQuestComplete;
+    public event Action OnQuestStarted;
+
     public string Title
     {
         get { return _title; }
-        set { _title = value; }
+        
     }
 
     public string Description
     {
         get { return _description; }
-        set { _description = value; }
+       
     }
 
     public int GoldReward
     {
         get { return _goldReward; }
-        set { _goldReward = value;} 
+        
     }
 
     public int ExperienceReward
     {
         get { return _experienceReward; }
-        set { _experienceReward = value; }
+       
 
     }
 
-    public bool IsActive
-    {
-        get { return _isActive; }
-        set { _isActive = value; }
-    }
+  
 
     public QuestGoal Goal
     {
         get { return _goal; }
-        set { _goal = value; }
+       
     }
 
-    public void Complete()
+    public void CompleteQuest()
     {
-        _isActive = false;
+        OnQuestComplete?.Invoke();
         Debug.Log(_title + " was completed");
+    }
+
+    public void StartQuest()
+    {
+        OnQuestStarted?.Invoke();
     }
 }

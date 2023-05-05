@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 6 End Dialouge
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: fa823775-b5ce-40bc-ba46-64358116d139
+    _portName: Choice 1
+    _targetNodeGUID: 9bae466d-1fc3-44a2-aca9-d41c9c4ea13f
+  - _baseNodeGUID: 9bae466d-1fc3-44a2-aca9-d41c9c4ea13f
+    _portName: Choice 1
+    _targetNodeGUID: 17bfb4b8-e0ee-468c-b3b3-dc0d31954387
+  - _baseNodeGUID: 7e1ce4c7-52b4-4340-b75d-29c6064fa0e3
+    _portName: Next
+    _targetNodeGUID: 7e1ce4c7-52b4-4340-b75d-29c6064fa0e3
+  - _baseNodeGUID: 7e1ce4c7-52b4-4340-b75d-29c6064fa0e3
+    _portName: 'Of Course '
+    _targetNodeGUID: fa823775-b5ce-40bc-ba46-64358116d139
+  DialogueNodeData:
+  - _nodeGUID: 9bae466d-1fc3-44a2-aca9-d41c9c4ea13f
+    _speakerName: Dialogue Node
+    _dialogueText: We cleared out that ruins ages ago and we found nothing of the
+      likes as that, keep hold of it for now as we can use it's power to kill the
+      demons.
+    _choices:
+    - _baseNodeGUID: 9bae466d-1fc3-44a2-aca9-d41c9c4ea13f
+      _portName: Choice 1
+      _targetNodeGUID: 17bfb4b8-e0ee-468c-b3b3-dc0d31954387
+    _position: {x: 1209, y: 179}
+  - _nodeGUID: 17bfb4b8-e0ee-468c-b3b3-dc0d31954387
+    _speakerName: Dialogue Node
+    _dialogueText: Start heading towards the port, I heard Andrew needs a few erands
+      that you can help with.
+    _choices: []
+    _position: {x: 1602, y: 179}
+  - _nodeGUID: fa823775-b5ce-40bc-ba46-64358116d139
+    _speakerName: Dialogue Node
+    _dialogueText: Hmm, this glowing red is something i've never seen before? And
+      you said you found it in the ruins?
+    _choices:
+    - _baseNodeGUID: fa823775-b5ce-40bc-ba46-64358116d139
+      _portName: Choice 1
+      _targetNodeGUID: 9bae466d-1fc3-44a2-aca9-d41c9c4ea13f
+    _position: {x: 804, y: 179}
+  - _nodeGUID: 7e1ce4c7-52b4-4340-b75d-29c6064fa0e3
+    _speakerName: Dialogue Node
+    _dialogueText: 'HORAAHHHHH!! VICTORY  IS OURS!! I must say that sword of yours
+      is quite unique, mind if I take a look? '
+    _choices:
+    - _baseNodeGUID: 7e1ce4c7-52b4-4340-b75d-29c6064fa0e3
+      _portName: Next
+      _targetNodeGUID: 7e1ce4c7-52b4-4340-b75d-29c6064fa0e3
+    - _baseNodeGUID: 7e1ce4c7-52b4-4340-b75d-29c6064fa0e3
+      _portName: 'Of Course '
+      _targetNodeGUID: fa823775-b5ce-40bc-ba46-64358116d139
+    _position: {x: 477, y: 179}

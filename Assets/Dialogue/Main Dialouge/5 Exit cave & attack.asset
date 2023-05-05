@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 5 Exit cave & attack
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: cdc16a24-35f7-488b-935b-dd56554b6a0e
+    _portName: Choice 1
+    _targetNodeGUID: 57d60901-be48-4925-b60b-9669e46d9745
+  - _baseNodeGUID: 70ee8957-9631-42c0-ab81-6cf3b57b9918
+    _portName: Next
+    _targetNodeGUID: cdc16a24-35f7-488b-935b-dd56554b6a0e
+  DialogueNodeData:
+  - _nodeGUID: cdc16a24-35f7-488b-935b-dd56554b6a0e
+    _speakerName: Dialogue Node
+    _dialogueText: What's that you found? A sword?
+    _choices:
+    - _baseNodeGUID: cdc16a24-35f7-488b-935b-dd56554b6a0e
+      _portName: Choice 1
+      _targetNodeGUID: 57d60901-be48-4925-b60b-9669e46d9745
+    _position: {x: 4668, y: 225}
+  - _nodeGUID: 57d60901-be48-4925-b60b-9669e46d9745
+    _speakerName: Dialogue Node
+    _dialogueText: LOOK OUT!!
+    _choices: []
+    _position: {x: 5005, y: 225}

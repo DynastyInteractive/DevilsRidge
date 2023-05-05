@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 2 Controls tutorial
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: 7ac435f8-fd3d-4731-823c-8f6510fdc40e
+    _portName: Choice 1
+    _targetNodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+  - _baseNodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+    _portName: Choice 1
+    _targetNodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+  - _baseNodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+    _portName: Choice 1
+    _targetNodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+  - _baseNodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+    _portName: Choice 1
+    _targetNodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+  - _baseNodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+    _portName: Choice 1
+    _targetNodeGUID: d5abfaf7-bcb8-4a4f-92cc-572791e042ae
+  - _baseNodeGUID: 70ee8957-9631-42c0-ab81-6cf3b57b9918
+    _portName: Next
+    _targetNodeGUID: 7ac435f8-fd3d-4731-823c-8f6510fdc40e
+  DialogueNodeData:
+  - _nodeGUID: 7ac435f8-fd3d-4731-823c-8f6510fdc40e
+    _speakerName: Damious
+    _dialogueText: 'Press ''left click'' to swing your weapon '
+    _choices:
+    - _baseNodeGUID: 7ac435f8-fd3d-4731-823c-8f6510fdc40e
+      _portName: Choice 1
+      _targetNodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+    _position: {x: 1577, y: 225}
+  - _nodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+    _speakerName: Dialogue Node
+    _dialogueText: 'Press and hold ''right click'' to use your heavy swing '
+    _choices:
+    - _baseNodeGUID: b2111fc3-a55a-4ce4-b0be-e5711b0774ee
+      _portName: Choice 1
+      _targetNodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+    _position: {x: 1890, y: 225}
+  - _nodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+    _speakerName: Dialogue Node
+    _dialogueText: "Press \u2018Ctrl\u2019 to crouch"
+    _choices:
+    - _baseNodeGUID: 8119e8de-482b-4f27-a287-61edcc6bdd63
+      _portName: Choice 1
+      _targetNodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+    _position: {x: 2192, y: 225}
+  - _nodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+    _speakerName: Dialogue Node
+    _dialogueText: 'Exelent, you''re shaping up to becoming an skilled swordsman '
+    _choices:
+    - _baseNodeGUID: 9cb7d6a4-b221-4659-a6cc-bf615527bcb9
+      _portName: Choice 1
+      _targetNodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+    _position: {x: 2476, y: 225}
+  - _nodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+    _speakerName: Dialogue Node
+    _dialogueText: A RAID, WE'RE BEING ATTACKED!!
+    _choices:
+    - _baseNodeGUID: c45e8f9e-e4b3-476e-92b5-595c1947d6e7
+      _portName: Choice 1
+      _targetNodeGUID: d5abfaf7-bcb8-4a4f-92cc-572791e042ae
+    _position: {x: 2833, y: 225}
+  - _nodeGUID: d5abfaf7-bcb8-4a4f-92cc-572791e042ae
+    _speakerName: Dialogue Node
+    _dialogueText: Quickly arm yourself, to the main gates!
+    _choices: []
+    _position: {x: 3129, y: 225}

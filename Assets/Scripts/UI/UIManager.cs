@@ -39,10 +39,10 @@ public class UIManager : MonoBehaviour
 
     }
 
-    public void ShowQuestWindow(Quest quest, Player player)
+    public void ShowQuestWindow(Quest quest, Action onAcceptCallback)
     {
         _questWindow.gameObject.SetActive(true);
-        _questWindow.ShowQuestWindow(quest, player);
+        _questWindow.ShowQuestWindow(quest, onAcceptCallback);
         OnUIWindowShown?.Invoke(true);
     }
 

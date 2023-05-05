@@ -1,0 +1,92 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 1 Waking up diolouge
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: 70ee8957-9631-42c0-ab81-6cf3b57b9918
+    _portName: Next
+    _targetNodeGUID: a4c4e0e2-3e50-4243-9202-473c98a4c415
+  - _baseNodeGUID: a4c4e0e2-3e50-4243-9202-473c98a4c415
+    _portName: ...
+    _targetNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+  - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _portName: "A RAID\u2019S HAPPENING"
+    _targetNodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+  - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _portName: '(pretend you was awake) '
+    _targetNodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+  - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _portName: No, I sleep
+    _targetNodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+  - _baseNodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+    _portName: '|No I want to sleep '
+    _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+  - _baseNodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+    _portName: 'pretend you was '
+    _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+  - _baseNodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+    _portName: 'A RAID IS HAPPENING '
+    _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+  DialogueNodeData:
+  - _nodeGUID: a4c4e0e2-3e50-4243-9202-473c98a4c415
+    _speakerName: Damious
+    _dialogueText: WAKE UP!
+    _choices:
+    - _baseNodeGUID: a4c4e0e2-3e50-4243-9202-473c98a4c415
+      _portName: ...
+      _targetNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _position: {x: 297, y: 200}
+  - _nodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+    _speakerName: Damious
+    _dialogueText: 'Training starts soon '
+    _choices:
+    - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+      _portName: "A RAID\u2019S HAPPENING"
+      _targetNodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+    - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+      _portName: '(pretend you was awake) '
+      _targetNodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+    - _baseNodeGUID: cf086351-88c6-4895-9c87-a2bc7a478596
+      _portName: No, I sleep
+      _targetNodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+    _position: {x: 563, y: 200}
+  - _nodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+    _speakerName: Damious
+    _dialogueText: 'Training is the key to survival '
+    _choices:
+    - _baseNodeGUID: 5aa8270c-063c-4874-bf45-c7035c489a0d
+      _portName: '|No I want to sleep '
+      _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+    _position: {x: 838, y: 380}
+  - _nodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+    _speakerName: Damious
+    _dialogueText: OIII
+    _choices:
+    - _baseNodeGUID: c201f472-0406-49e0-ac92-6a0d97344906
+      _portName: 'pretend you was '
+      _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+    _position: {x: 838, y: 225}
+  - _nodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+    _speakerName: Damious
+    _dialogueText: HAHA DID I STARTLE THOU?
+    _choices:
+    - _baseNodeGUID: 9c6bbe77-61f6-4e9e-9d71-504b25489251
+      _portName: 'A RAID IS HAPPENING '
+      _targetNodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+    _position: {x: 838, y: -15}
+  - _nodeGUID: 8aa0a239-5dad-4e06-9180-ae800972dbde
+    _speakerName: Damious
+    _dialogueText: I have set up all of the equipment, come now and show me a true
+      worrior
+    _choices: []
+    _position: {x: 1248, y: 225}
