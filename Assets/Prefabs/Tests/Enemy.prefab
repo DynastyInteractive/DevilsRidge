@@ -173,8 +173,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 856738826584e0448bb0473542cdf807, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 0}
+  _enemy: {fileID: 11400000, guid: 477a29f5d302be34d88296a76f005d0e, type: 2}
   _currentState: 0
+  _currentlyMoving: 0
   _player: []
   _playerPositions: []
   _playerIndex: -1
@@ -201,6 +202,8 @@ MonoBehaviour:
   _rotationSpeed: 0
   _lookRotation: {x: 0, y: 0, z: 0, w: 0}
   _direction: {x: 0, y: 0, z: 0}
+  _camps: []
+  _nearestCamp: {fileID: 0}
 --- !u!114 &2151497562892735753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,3 +217,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
+  maxHealth: 0

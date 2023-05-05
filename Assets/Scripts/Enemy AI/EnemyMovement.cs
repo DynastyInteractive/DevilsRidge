@@ -23,6 +23,12 @@ public class EnemyMovement : MonoBehaviour
     [Tooltip("Rotational angle to look to the target")] [SerializeField] Quaternion _lookRotation;
     [Tooltip("Vector between current position and target")] [SerializeField] Vector3 _direction;
 
+    #region Camps
+    [SerializeField] List<GameObject> _camps;
+    [SerializeField] GameObject _nearestCamp;
+    EnemySpawner _spawner;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,55 +39,82 @@ public class EnemyMovement : MonoBehaviour
         _startingPos = transform.position;
         _walkPoint = new Vector3(transform.position.x, transform.position.y - 0.4f, transform.position.z);
         _canGetNewPos = true;
+
+        _nearestCamp = FindNearestCamp();
+        _spawner = _nearestCamp.GetComponent<EnemySpawner>();
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if(_enemyController.State == SOEnemy.State.Idle)
         {
-            _walkPoint = transform.position;
-            Move();
+            //_walkPoint = transform.position;
         }
-
-        if(_enemyController.State == SOEnemy.State.Wandering)
+        else if(_enemyController.State == SOEnemy.State.Wandering)
         {
             if (_canGetNewPos)
             {
                 _canGetNewPos = false;
-                StartCoroutine(NewPosition(false, false));
+                //StartCoroutine(NewPosition(false, false));
+                NewPosition(false);
+            }
+
+            //Debug.Log(Vector3.Distance(transform.position, _walkPoint));
+            if ((Vector3.Distance(transform.position, _walkPoint) < 0.5f) && _enemyController.State == SOEnemy.State.Wandering)
+            {
+                Debug.Log("New Position");
+                _enemyController.CurrentlyMoving = false;
+                _canGetNewPos = true;
             }
         }
         else if(_enemyController.State == SOEnemy.State.Targeting)
         {
-            StartCoroutine(NewPosition(false, false));
+            //Debug.Log("Targeting");
+            //Debug.Log(_enemyController.PlayerPositions[_enemyController.PlayerIndex]);
+            _walkPoint = _enemyController.PlayerPositions[_enemyController.PlayerIndex];
+            Move(true);
         }
+    }
 
-        if(Vector3.Distance(transform.position, _startingPos) > _maxWanderRadius || (Vector3.Distance(transform.position, _walkPoint) < 0.5f))
+    public GameObject FindNearestCamp()
+    {
+        GameObject[] camps;
+        camps = GameObject.FindGameObjectsWithTag("EnemyCamp");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+
+        foreach (GameObject camp in camps)
         {
-            _walkPoint = transform.position;
-            _enemyController.CurrentlyMoving = false;
-            _canGetNewPos = true;
+            Vector3 difference = camp.transform.position - position;
+            float sqrDistance = difference.sqrMagnitude;
+
+            if (sqrDistance < distance)
+            {
+                closest = camp;
+                distance = sqrDistance;
+            }
         }
+        return closest;
     }
 
     //Sets the new position when wandering
     //quickChange determines whether or not the enemy has to wait before getting a new position
-    public IEnumerator NewPosition(bool _quickChange, bool returnToStart)
+    public void NewPosition(bool returnToStart)
     {
+        _enemyController.CurrentlyMoving = true;
+
         /*if (targetPlayer)
         {
             _walkPoint = _enemyController.PlayerPositions[_enemyController.PlayerIndex];
         }*/
 
-        if (!_quickChange)
-        {
-            yield return new WaitForSeconds(Random.Range(2.5f, 4f));
-        }
 
         if (!returnToStart)
         {
-            _walkPoint = new Vector3(Random.Range(_startingPos.x - 10, _startingPos.x + 10), transform.position.y, Random.Range(_startingPos.z - 10, _startingPos.z + 10));
+            //Debug.Log("New Pos");
+            _walkPoint = new Vector3(Random.Range(_startingPos.x - _spawner.CampRadius, _startingPos.x + _spawner.CampRadius), transform.position.y, Random.Range(_startingPos.z - _spawner.CampRadius, _startingPos.z + _spawner.CampRadius));
 
             /*Vector3 _randomDirection = _startingPos + (Random.insideUnitSphere * _wanderRadius);
 
@@ -89,15 +122,16 @@ public class EnemyMovement : MonoBehaviour
             //NavMesh.SamplePosition(_randomDirection, out NavMeshHit _hit, _wanderRadius, 1);
             _walkPoint = _randomDirection;
 
-            _walkPoint.y = transform.position.y;*/
+            */_walkPoint.y = transform.position.y;
         }
 
-        _enemyController.CurrentlyMoving = true;
-        Move();
+        StartCoroutine(Move(false));
     }
 
-    void Move()
+    IEnumerator Move(bool _quickChange)
     {
+        if (!_quickChange)  yield return new WaitForSeconds(Random.Range(2.5f, 4f));
+        
         if (_direction != Vector3.zero)
         {
             //gets the vector pointing from the enemy's position to the target
@@ -113,5 +147,4 @@ public class EnemyMovement : MonoBehaviour
         //Sets the target point
         _nav.SetDestination(_walkPoint);
     }
-
 }

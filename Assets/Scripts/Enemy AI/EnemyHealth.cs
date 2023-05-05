@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     EnemyController _enemyController;
 
     [SerializeField] int currentHealth;
+    [SerializeField] int maxHealth;
 
 
     // Start is called before the first frame update
@@ -14,6 +15,7 @@ public class EnemyHealth : MonoBehaviour
     {
         _enemyController = GetComponent<EnemyController>();
         currentHealth = _enemyController.Enemy.healthPoints;
+        maxHealth = _enemyController.Enemy.healthPoints;
     }
 
     /*private void Update()
@@ -33,6 +35,16 @@ public class EnemyHealth : MonoBehaviour
         else
         {
             currentHealth -= damage;
+        }
+    }
+
+    public void Heal(int healthReturn)
+    {
+        if (currentHealth < 0) return;
+
+        if(currentHealth + healthReturn > maxHealth)
+        {
+            currentHealth = maxHealth;
         }
     }
 }

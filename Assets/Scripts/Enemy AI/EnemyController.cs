@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
 
     [Tooltip("The current State of the enemy")] [SerializeField] SOEnemy.State _currentState;
 
-    bool _currentlyMoving;
+    [SerializeField] bool _currentlyMoving;
 
     [Space(10)]
     [Header("Player Targetting")]
@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    void Awake()
+    void Start()
     {
         _currentState = SOEnemy.State.Idle;
     }
@@ -57,6 +57,9 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //gets the result of checking what state the enemy is in, and sets it to the current state variable
+        _currentState = DetermineState();
+
         //empties the positions of the players to replace them
         _playerPositions.Clear();
 
@@ -74,8 +77,7 @@ public class EnemyController : MonoBehaviour
             _playerPositions.Add(new Vector3(_position.x, _position.y, _position.z));
         }
 
-        //gets the result of checking what state the enemy is in, and sets it to the current state variable
-        _currentState = DetermineState();
+        Debug.Log(_playerPositions[_playerIndex]);
     }
 
     //returns the current state, depending on its current situation
