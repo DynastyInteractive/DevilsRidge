@@ -10,6 +10,9 @@ public class SOEnemy : ScriptableObject
     public float movementSpeed;
     public float damage;
 
+    public float targetRange;
+    public float attackRange;
+
     public enum State
     {
         Idle,

@@ -13,14 +13,8 @@ public class EnemyController : MonoBehaviour
 
     [Space(10)]
     [Header("Player Targetting")]
-    [Tooltip("Gets the position of the player")] [SerializeField] List<GameObject> _player;
     [Tooltip("List of Player GameObjects")] [SerializeField] List<Vector3> _playerPositions;
     [Tooltip("ID of the player being checked/targetted")] [SerializeField] int _playerIndex = -1;
-    [Tooltip("Distance that the enemy can target the player")] [SerializeField] Vector3 _targetRange;
-
-    [Space(10)]
-    [Header("Attacking the player")]
-    [Tooltip("Distance that the enemy can attack the player")] [SerializeField] Vector3 _attackingRange;
 
     public SOEnemy Enemy
     {
@@ -67,17 +61,11 @@ public class EnemyController : MonoBehaviour
         var _players = FindObjectsOfType<PlayerMovement>();
         foreach (PlayerMovement player in _players)
         {
-            if (!_player.Contains(player.gameObject))
-            {
-                Debug.Log("New Player!");
-                _player.Add(player.gameObject);
-            }
-
             Vector3 _position = player.transform.position;
             _playerPositions.Add(new Vector3(_position.x, _position.y, _position.z));
         }
 
-        Debug.Log(_playerPositions[_playerIndex]);
+        if (_playerIndex != -1) Debug.Log(_playerPositions[_playerIndex]);
     }
 
     //returns the current state, depending on its current situation
@@ -85,7 +73,7 @@ public class EnemyController : MonoBehaviour
     {
         if (CanTarget())
         {
-            if (Vector3.Distance(transform.position, _playerPositions[_playerIndex]) < 3)
+            if (Vector3.Distance(transform.position, _playerPositions[_playerIndex]) < _enemy.attackRange)
             {
                 return SOEnemy.State.Attacking;
             }
@@ -101,27 +89,29 @@ public class EnemyController : MonoBehaviour
 
     public bool CanTarget()
     {
-        float distance = -1;
+        float closestPlayerDistance = Mathf.Infinity;
+        int closestPlayerIndex = -1;
 
-        //runs through all the players and gets the closest one
-        foreach (Vector3 playerPos in _playerPositions)
+        // Iterate through all the players and find the closest one
+        for (int i = 0; i < _playerPositions.Count; i++)
         {
-            if (Vector3.Distance(transform.position, playerPos) < distance || distance == -1)
+            float distance = Vector3.Distance(transform.position, _playerPositions[i]);
+
+            if (distance < closestPlayerDistance)
             {
-                distance = Vector3.Distance(transform.position, playerPos);
-                _playerIndex = _playerPositions.IndexOf(playerPos);
+                closestPlayerDistance = distance;
+                closestPlayerIndex = i;
             }
         }
 
-        //check to see if the player can be seen and is within targetting range
-        if (_playerIndex != -1 && distance < 20)
+        // Check to see if the closest player can be seen and is within targeting range
+        if (closestPlayerIndex != -1 && closestPlayerDistance < _enemy.targetRange)
         {
-            //Debug.Log(gameObject.name + ": Can target player, " + distance + " from player");
+            _playerIndex = closestPlayerIndex;
             return true;
         }
         else
         {
-            //Debug.Log(gameObject.name + ": Can't target player" + distance + " from player");
             return false;
         }
     }

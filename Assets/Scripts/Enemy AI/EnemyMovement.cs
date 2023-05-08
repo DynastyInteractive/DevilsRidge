@@ -45,8 +45,10 @@ public class EnemyMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
+        _nav.isStopped= false;
+
         if(_enemyController.State == SOEnemy.State.Idle)
         {
             //_walkPoint = transform.position;
@@ -70,10 +72,12 @@ public class EnemyMovement : MonoBehaviour
         }
         else if(_enemyController.State == SOEnemy.State.Targeting)
         {
-            //Debug.Log("Targeting");
-            //Debug.Log(_enemyController.PlayerPositions[_enemyController.PlayerIndex]);
             _walkPoint = _enemyController.PlayerPositions[_enemyController.PlayerIndex];
-            Move(true);
+            StartCoroutine(Move(true));
+        }
+        else
+        {
+            _nav.isStopped = true;
         }
     }
 
@@ -114,15 +118,15 @@ public class EnemyMovement : MonoBehaviour
         if (!returnToStart)
         {
             //Debug.Log("New Pos");
-            _walkPoint = new Vector3(Random.Range(_startingPos.x - _spawner.CampRadius, _startingPos.x + _spawner.CampRadius), transform.position.y, Random.Range(_startingPos.z - _spawner.CampRadius, _startingPos.z + _spawner.CampRadius));
+            //_walkPoint = new Vector3(Random.Range(_startingPos.x - _spawner.CampRadius, _startingPos.x + _spawner.CampRadius), transform.position.y, Random.Range(_startingPos.z - _spawner.CampRadius, _startingPos.z + _spawner.CampRadius));
 
-            /*Vector3 _randomDirection = _startingPos + (Random.insideUnitSphere * _wanderRadius);
+            Vector3 _randomDirection = _startingPos + (Random.insideUnitSphere * _spawner.CampRadius);
 
-            //_randomDirection += transform.position;
-            //NavMesh.SamplePosition(_randomDirection, out NavMeshHit _hit, _wanderRadius, 1);
+            _randomDirection += transform.position;
+            NavMesh.SamplePosition(_randomDirection, out NavMeshHit _hit, _wanderRadius, 1);
             _walkPoint = _randomDirection;
 
-            */_walkPoint.y = transform.position.y;
+            _walkPoint.y = transform.position.y;
         }
 
         StartCoroutine(Move(false));
