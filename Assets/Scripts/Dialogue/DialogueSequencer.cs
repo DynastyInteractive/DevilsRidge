@@ -5,7 +5,6 @@ using UnityEngine;
 public class DialogueSequencer : MonoBehaviour
 {
     [SerializeField] DialogueSequence _dialogueSequence;
-    [SerializeField] DialogueBox _dialogueBox;
 
     DialogueNodeData _currentNode;
     PlayerInput Input;
@@ -17,25 +16,39 @@ public class DialogueSequencer : MonoBehaviour
         Input = new();
         Input.Dialogue.Enable();
 
-        _currentNode = _dialogueSequence.DialogueNodeData[0];
-
-        _dialogueBox.gameObject.SetActive(false);
-        _dialogueBox.OnChoiceButtonClicked += GoToChoice;
+        Reset();
     }
+
+    void Start()
+    {
+        UIManager.Instance.DialogueBox.OnChoiceButtonClicked += GoToChoiceIndex;
+    }
+
 
     void Update()
     {
         if (Input.Dialogue.Next.WasPressedThisFrame() && _currentNode.Choices.Count == 0)
         {
-            _dialogueBox.gameObject.SetActive(false);
+            UIManager.Instance.HideDialogueBox();
+            Reset();
             OnDialogueEnded?.Invoke();
         }
     }
 
-    void GoToChoice(int index)
+    void Reset()
     {
+        _currentNode = _dialogueSequence.DialogueNodeData[0];
+    }
+
+    void GoToChoiceIndex(DialogueNodeData node, int index)
+    {
+        if (node != _currentNode) return;
+
+        Debug.Log(gameObject.name);
+        Debug.Log(index);
         var nextNode = GetNodeFromGUID(_currentNode.Choices[index].TargetNodeGUID);
-        _dialogueBox.SetDialogue(nextNode);
+        Debug.Log(nextNode.DialogueText);
+        UIManager.Instance.DialogueBox.SetDialogue(nextNode);
         _currentNode = nextNode;
     }
 
@@ -46,7 +59,6 @@ public class DialogueSequencer : MonoBehaviour
 
     public void StartDialogue()
     {
-        _dialogueBox.gameObject.SetActive(true);
-        _dialogueBox.SetDialogue(_currentNode);
+        UIManager.Instance.ShowDialogueBox(_currentNode);
     }
 }

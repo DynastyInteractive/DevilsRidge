@@ -12,7 +12,7 @@ public class DialogueBox : MonoBehaviour
     [SerializeField] Transform _choicesArea;
     [SerializeField] GameObject _choiceButtonPrefab;
 
-    public event Action<int> OnChoiceButtonClicked;
+    public event Action<DialogueNodeData, int> OnChoiceButtonClicked;
 
     public void SetDialogue(DialogueNodeData nodeData)
     {
@@ -24,16 +24,18 @@ public class DialogueBox : MonoBehaviour
         {
             var choiceButtonObj = Instantiate(_choiceButtonPrefab, _choicesArea);
             var choiceButton = choiceButtonObj.GetComponent<DialogueChoiceButton>();
-            choiceButton.Init(nodeData.Choices[i].ChoiceText, OnButtonClicked(i));
+            choiceButton.Init(nodeData.Choices[i].ChoiceText, OnButtonClicked(nodeData, i));
         }
-        if (nodeData.Choices.Count == 0 )
+        if (nodeData.Choices.Count == 0)
             ShowButtonPrompt();
     }
 
     void ShowButtonPrompt()
     {
         var interactAction = new PlayerInput().Dialogue.Next;
-        _buttonPrompt.text = $"Press [{interactAction.GetBindingDisplayString()}]";
+        string key = interactAction.GetBindingDisplayString();
+        string[] keys = key.Split(" | ");
+        _buttonPrompt.text = $"Press [{keys[0]}]";
         _buttonPrompt.gameObject.SetActive(true);
     }
 
@@ -48,8 +50,8 @@ public class DialogueBox : MonoBehaviour
         _buttonPrompt.gameObject.SetActive(false);
     }
 
-    UnityAction OnButtonClicked(int i)
+    UnityAction OnButtonClicked(DialogueNodeData node, int i)
     {
-        return () => OnChoiceButtonClicked?.Invoke(i);
+        return () => OnChoiceButtonClicked?.Invoke(node, i);
     }
 }
