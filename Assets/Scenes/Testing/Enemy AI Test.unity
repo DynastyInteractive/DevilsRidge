@@ -562,6 +562,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4120171776575726586, guid: bcc3dd0214aacad44ab01dc616464c57,
         type: 3}
+      propertyPath: campRadius
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4120171776575726586, guid: bcc3dd0214aacad44ab01dc616464c57,
+        type: 3}
       propertyPath: enemies.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -599,7 +604,7 @@ PrefabInstance:
     - target: {fileID: 4120171776575726589, guid: bcc3dd0214aacad44ab01dc616464c57,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 14.7
       objectReference: {fileID: 0}
     - target: {fileID: 4120171776575726589, guid: bcc3dd0214aacad44ab01dc616464c57,
         type: 3}
@@ -609,7 +614,7 @@ PrefabInstance:
     - target: {fileID: 4120171776575726589, guid: bcc3dd0214aacad44ab01dc616464c57,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: 15.61
       objectReference: {fileID: 0}
     - target: {fileID: 4120171776575726589, guid: bcc3dd0214aacad44ab01dc616464c57,
         type: 3}
@@ -765,7 +770,7 @@ PrefabInstance:
     - target: {fileID: 4120171776575726586, guid: bcc3dd0214aacad44ab01dc616464c57,
         type: 3}
       propertyPath: campRadius
-      value: 50
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4120171776575726586, guid: bcc3dd0214aacad44ab01dc616464c57,
         type: 3}
@@ -796,7 +801,7 @@ PrefabInstance:
     - target: {fileID: 4120171776575726587, guid: bcc3dd0214aacad44ab01dc616464c57,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4120171776575726589, guid: bcc3dd0214aacad44ab01dc616464c57,
         type: 3}

@@ -16,5 +16,5 @@ MonoBehaviour:
   healthPoints: 10
   movementSpeed: 5
   damage: 2
-  targetRange: 0
-  attackRange: 0
+  targetRange: 10
+  attackRange: 3

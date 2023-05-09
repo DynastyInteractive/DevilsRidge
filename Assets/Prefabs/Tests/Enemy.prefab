@@ -16,8 +16,9 @@ GameObject:
   - component: {fileID: 7482729691550679747}
   - component: {fileID: 7482729691550679744}
   - component: {fileID: 7040896130564419849}
-  - component: {fileID: 2141986346382191864}
   - component: {fileID: 2151497562892735753}
+  - component: {fileID: 2141986346382191864}
+  - component: {fileID: 9013844937355838404}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -68,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 3d46db86508eb844eab32657d1cc4f7d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -176,11 +177,22 @@ MonoBehaviour:
   _enemy: {fileID: 11400000, guid: 477a29f5d302be34d88296a76f005d0e, type: 2}
   _currentState: 0
   _currentlyMoving: 0
-  _player: []
   _playerPositions: []
   _playerIndex: -1
-  _targetRange: {x: 0, y: 0, z: 0}
-  _attackingRange: {x: 0, y: 0, z: 0}
+--- !u!114 &2151497562892735753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482729691550679758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bbf5802b1e54a45afbb3956ac28d0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  maxHealth: 0
 --- !u!114 &2141986346382191864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,7 +216,7 @@ MonoBehaviour:
   _direction: {x: 0, y: 0, z: 0}
   _camps: []
   _nearestCamp: {fileID: 0}
---- !u!114 &2151497562892735753
+--- !u!114 &9013844937355838404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,8 +225,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7482729691550679758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84bbf5802b1e54a45afbb3956ac28d0e, type: 3}
+  m_Script: {fileID: 11500000, guid: a893182cce245c3439b00e7626c9f780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0

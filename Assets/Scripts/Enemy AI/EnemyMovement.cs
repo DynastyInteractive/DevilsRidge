@@ -109,21 +109,18 @@ public class EnemyMovement : MonoBehaviour
     {
         _enemyController.CurrentlyMoving = true;
 
-        /*if (targetPlayer)
-        {
-            _walkPoint = _enemyController.PlayerPositions[_enemyController.PlayerIndex];
-        }*/
-
-
         if (!returnToStart)
         {
+
+            /*float randX = Random.Range(_spawner.transform.position.x - _spawner.CampRadius, _spawner.transform.position.x + _spawner.CampRadius);
+            float randY = Random.Range(_spawner.transform.position.z - _spawner.CampRadius, _spawner.transform.position.z + _spawner.CampRadius);
             //Debug.Log("New Pos");
-            //_walkPoint = new Vector3(Random.Range(_startingPos.x - _spawner.CampRadius, _startingPos.x + _spawner.CampRadius), transform.position.y, Random.Range(_startingPos.z - _spawner.CampRadius, _startingPos.z + _spawner.CampRadius));
+            _walkPoint = new Vector3(randX, transform.position.y, randY);*/
 
-            Vector3 _randomDirection = _startingPos + (Random.insideUnitSphere * _spawner.CampRadius);
+            Vector3 _randomDirection = _nearestCamp.transform.position + (Random.insideUnitSphere * _spawner.CampRadius);
 
-            _randomDirection += transform.position;
-            NavMesh.SamplePosition(_randomDirection, out NavMeshHit _hit, _wanderRadius, 1);
+            //_randomDirection += transform.position;
+            NavMesh.SamplePosition(_randomDirection, out NavMeshHit _hit, _spawner.CampRadius, 1);
             _walkPoint = _randomDirection;
 
             _walkPoint.y = transform.position.y;
@@ -150,5 +147,14 @@ public class EnemyMovement : MonoBehaviour
 
         //Sets the target point
         _nav.SetDestination(_walkPoint);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(transform.position, _walkPoint);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, _enemyController.Enemy.targetRange);
     }
 }

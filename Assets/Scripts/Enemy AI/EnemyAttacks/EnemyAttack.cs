@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] EnemyController _enemyController;
+    EnemyController _enemyController;
 
     // Start is called before the first frame update
     void Start()
@@ -21,5 +21,14 @@ public class EnemyAttack : MonoBehaviour
     void Attack(float damage)
     {
         //attack the player
+        Debug.Log("Attacking");
+
+        foreach(Vector3 playerPos in _enemyController.PlayerPositions)
+        {
+            if(Vector3.Distance(transform.position, playerPos) < _enemyController.Enemy.attackRange)
+            {
+                //deal damage
+            }
+        }
     }
 }
