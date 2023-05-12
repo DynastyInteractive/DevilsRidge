@@ -210,12 +210,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131575061513532518}
+  - component: {fileID: 1221894929250443295}
+  - component: {fileID: 886585457036292745}
   - component: {fileID: 1131575061513532519}
   - component: {fileID: 2921346114130100682}
   - component: {fileID: 4334166072730864534}
   - component: {fileID: 1131575061513532516}
   - component: {fileID: -695095617307806645}
   - component: {fileID: 1544251631879566333}
+  - component: {fileID: 2393589094112277665}
   m_Layer: 0
   m_Name: Test Player
   m_TagString: Player
@@ -240,6 +243,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1221894929250443295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131575061513532517}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8b58185899e34c458d539c948cb7908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnCoordinates: {x: 4.87, y: 2.343, z: 12.658}
+--- !u!114 &886585457036292745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131575061513532517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c1893134dc6b8d4693990296a57c6c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerLookScript: {fileID: 2921346114130100682}
+  _playerMovementScript: {fileID: 1131575061513532519}
 --- !u!114 &1131575061513532519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,3 +382,20 @@ MonoBehaviour:
   ScaleThreshold: 0.01
   InLocalSpace: 0
   Interpolate: 0
+--- !u!114 &2393589094112277665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131575061513532517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8821900a36371f1488ebedb2846c1ace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCamera: {fileID: 1131575060113298342}
+  _interactionLayers:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  _maxDistance: 2.5

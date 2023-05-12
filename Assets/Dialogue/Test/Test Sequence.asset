@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: Test Sequence
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: 8c623226-ccd2-4f4a-b4d1-4f6de5e61e1a
+    _portName: Next
+    _targetNodeGUID: 126c17ab-c4d4-4d13-8df8-555d2297ba65
+  - _baseNodeGUID: 126c17ab-c4d4-4d13-8df8-555d2297ba65
+    _portName: Choice 1
+    _targetNodeGUID: 4ca6333b-98d9-441d-bfcf-f5e9990704ba
+  - _baseNodeGUID: 126c17ab-c4d4-4d13-8df8-555d2297ba65
+    _portName: Choice 2
+    _targetNodeGUID: a9457025-fbc0-4f01-80ee-10bc5fb20869
+  - _baseNodeGUID: 4ca6333b-98d9-441d-bfcf-f5e9990704ba
+    _portName: Choice 1
+    _targetNodeGUID: 9e082465-4e80-4524-9985-92a38a04fe6f
+  - _baseNodeGUID: 9e082465-4e80-4524-9985-92a38a04fe6f
+    _portName: Choice 1
+    _targetNodeGUID: 14683795-8119-437d-a5a9-1a21ced06c55
+  DialogueNodeData:
+  - _nodeGUID: 126c17ab-c4d4-4d13-8df8-555d2297ba65
+    _speakerName: John Smith
+    _dialogueText: Hello
+    _choices:
+    - _baseNodeGUID: 126c17ab-c4d4-4d13-8df8-555d2297ba65
+      _portName: Choice 1
+      _targetNodeGUID: 4ca6333b-98d9-441d-bfcf-f5e9990704ba
+    - _baseNodeGUID: 126c17ab-c4d4-4d13-8df8-555d2297ba65
+      _portName: Choice 2
+      _targetNodeGUID: a9457025-fbc0-4f01-80ee-10bc5fb20869
+    _position: {x: 232.8, y: 189.59999}
+  - _nodeGUID: 4ca6333b-98d9-441d-bfcf-f5e9990704ba
+    _speakerName: John Smith
+    _dialogueText: Choice 1 Dialogue
+    _choices:
+    - _baseNodeGUID: 4ca6333b-98d9-441d-bfcf-f5e9990704ba
+      _portName: Choice 1
+      _targetNodeGUID: 9e082465-4e80-4524-9985-92a38a04fe6f
+    _position: {x: 516, y: 152}
+  - _nodeGUID: a9457025-fbc0-4f01-80ee-10bc5fb20869
+    _speakerName: John Smith
+    _dialogueText: Choice 2 Dialogue
+    _choices: []
+    _position: {x: 516, y: 261.6}
+  - _nodeGUID: 9e082465-4e80-4524-9985-92a38a04fe6f
+    _speakerName: John Smith
+    _dialogueText: Choice 1 Dialogue 2
+    _choices:
+    - _baseNodeGUID: 9e082465-4e80-4524-9985-92a38a04fe6f
+      _portName: Choice 1
+      _targetNodeGUID: 14683795-8119-437d-a5a9-1a21ced06c55
+    _position: {x: 800, y: 141.59999}
+  - _nodeGUID: 14683795-8119-437d-a5a9-1a21ced06c55
+    _speakerName: John Smith
+    _dialogueText: Choice 1 Dialogue 3
+    _choices: []
+    _position: {x: 1069.6, y: 141.59999}
