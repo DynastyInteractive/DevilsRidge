@@ -540,6 +540,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue Box
       objectReference: {fileID: 0}
+    - target: {fileID: 6786689164678051614, guid: 344db59c3f685144eaf624210f661201,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6786689164678051615, guid: 344db59c3f685144eaf624210f661201,
         type: 3}
       propertyPath: m_Pivot.x
@@ -776,6 +781,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Interact Prompt
+      objectReference: {fileID: 0}
+    - target: {fileID: 7288448040185368666, guid: a7aaa02dbba9b1442a455f75701e09f0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7aaa02dbba9b1442a455f75701e09f0, type: 3}

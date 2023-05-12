@@ -7,6 +7,10 @@ public class Player : MonoBehaviour
     [SerializeField] CharacterStat _strength;
     [SerializeField] CharacterStat _agility;
 
+    public MinMaxCharacterStat HealthPoints => _healthPoints;
+    public CharacterStat Strength => _strength;
+    public CharacterStat Agility => _agility;
+
     // Start is called before the first frame update
     void Start()
     {
