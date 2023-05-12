@@ -22,9 +22,15 @@ public class EnemySpawner : MonoBehaviour
     {
         foreach(GameObject enemy in enemies)
         {
-            for(int i = 0; i < numbers[System.Array.IndexOf(enemies, enemy)]; i++)
+            for(int i = 0; i < numbers[System.Array.IndexOf(enemies, enemy)];)
             {
-                Instantiate(enemy, new Vector3(Random.Range(transform.position.x - campRadius, transform.position.x + campRadius), 1.01f, Random.Range(transform.position.z - campRadius, transform.position.z + campRadius)), Quaternion.identity);
+                Vector3 randomPos = new Vector3(Random.Range(transform.position.x - campRadius, transform.position.x + campRadius), 1.01f, Random.Range(transform.position.z - campRadius, transform.position.z + campRadius));
+
+                if (Vector3.Distance(randomPos, transform.position) <= campRadius)
+                {
+                    Instantiate(enemy, randomPos, Quaternion.identity);
+                    i++;
+                }
             }
         }
     }
