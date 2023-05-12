@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 4
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: 786b592e-658d-4edd-9434-01e23250c953
+    _portName: Next
+    _targetNodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
+  - _baseNodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
+    _portName: Choice 1
+    _targetNodeGUID: 92230c42-354f-4faa-8605-e656d36f1f2d
+  DialogueNodeData:
+  - _nodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
+    _speakerName: Damious
+    _dialogueText: Look, they must be in that ruins over there
+    _choices:
+    - _baseNodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
+      _portName: Choice 1
+      _targetNodeGUID: 92230c42-354f-4faa-8605-e656d36f1f2d
+    _position: {x: 291, y: 200}
+  - _nodeGUID: 92230c42-354f-4faa-8605-e656d36f1f2d
+    _speakerName: Damious
+    _dialogueText: 'I''ll stay posted outside whislt you clean inside. '
+    _choices: []
+    _position: {x: 730, y: 200}

@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 5
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: e671c38a-1aaa-4014-aab9-cc1c00c10a00
+    _portName: Next
+    _targetNodeGUID: 4e792f3c-cbec-40d4-b8be-ca22c4b139fd
+  - _baseNodeGUID: 4e792f3c-cbec-40d4-b8be-ca22c4b139fd
+    _portName: Choice 1
+    _targetNodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
+  - _baseNodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
+    _portName: Choice 1
+    _targetNodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
+  - _baseNodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
+    _portName: Choice 1
+    _targetNodeGUID: 37fc79b3-853c-4142-a8c4-22adbf780af9
+  DialogueNodeData:
+  - _nodeGUID: 4e792f3c-cbec-40d4-b8be-ca22c4b139fd
+    _speakerName: Dialogue Node
+    _dialogueText: Ahh I see you have cleared out the ruins
+    _choices:
+    - _baseNodeGUID: 4e792f3c-cbec-40d4-b8be-ca22c4b139fd
+      _portName: Choice 1
+      _targetNodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
+    _position: {x: 265, y: 200}
+  - _nodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
+    _speakerName: Dialogue Node
+    _dialogueText: That weapon, I haven't seen one of those in a long, long time...
+    _choices:
+    - _baseNodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
+      _portName: Choice 1
+      _targetNodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
+    _position: {x: 583, y: 200}
+  - _nodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
+    _speakerName: Dialogue Node
+    _dialogueText: GRRRRRR
+    _choices:
+    - _baseNodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
+      _portName: Choice 1
+      _targetNodeGUID: 37fc79b3-853c-4142-a8c4-22adbf780af9
+    _position: {x: 936, y: 200}
+  - _nodeGUID: 37fc79b3-853c-4142-a8c4-22adbf780af9
+    _speakerName: Dialogue Node
+    _dialogueText: AMBUSH! GET READY
+    _choices: []
+    _position: {x: 1223, y: 200}
