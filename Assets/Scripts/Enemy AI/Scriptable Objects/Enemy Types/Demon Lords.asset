@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779d65a7afa9f524fa655e602c06bd6b, type: 3}
   m_Name: Demon Lords
   m_EditorClassIdentifier: 
-  enemyName: 
+  enemyName: Demon Lord
   healthPoints: 40
   movementSpeed: 4
   damage: 15
+  targetRange: 30
+  attackRange: 5

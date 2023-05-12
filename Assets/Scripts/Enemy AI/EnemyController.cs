@@ -77,9 +77,9 @@ public class EnemyController : MonoBehaviour
             {
                 return SOEnemy.State.Attacking;
             }
-            else return SOEnemy.State.Targeting;
+            else if(_enemy.enemyName != "Demon Lord") return SOEnemy.State.Targeting;
         }
-        else if (Random.Range(0, 5) == 0 || CurrentlyMoving)
+        else if (_enemy.enemyName != "Demon Lord" && Random.Range(0, 5) == 0 || CurrentlyMoving)
         {
             return SOEnemy.State.Wandering;
         }
