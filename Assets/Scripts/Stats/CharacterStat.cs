@@ -47,6 +47,8 @@ public class CharacterStat
         BaseValue = baseValue;
     }
 
+    public static implicit operator float(CharacterStat stat) => stat.Value;
+
     public virtual void AddModifier(StatModifier modifier)
     {
         statModifiers.Add(modifier);

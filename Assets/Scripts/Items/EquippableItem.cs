@@ -3,12 +3,12 @@ using UnityEngine;
 
 public enum EquippableType
 {
-    Weapon, 
+    Weapon,
+    MagicWeapon,
     Talisman
 }
 
-
-[CreateAssetMenu(fileName = "Equippable CurrentItem", menuName = "Items/Equippable CurrentItem")]
+[CreateAssetMenu(fileName = "Equippable Item", menuName = "Items/Equippable Item")]
 public class EquippableItem : Item
 {
     [SerializeField] EquippableType _type = EquippableType.Weapon;

@@ -12,25 +12,62 @@ public class InventoryUI : MonoBehaviour
     Inventory inventory;
 
     InventorySlot[] _slots;
-    EquipmentSlot[] _weaponSlots;
-    EquipmentSlot[] _talismanSlots;
+    WeaponSlot[] _weaponSlots;
+    WeaponSlot[] _talismanSlots;
 
-    void Start()
+    void OnEnable()
     {
-        inventory = Inventory.Instance;
-        inventory.OnInventoryChanged += RefreshUI;
-        inventory.OnEquipmentChanged += RefreshEquipmentUI;
+        Invoke(nameof(SubscribeToInventory), .2f);
+
 
         _slots = _itemsParent.GetComponentsInChildren<InventorySlot>();
-        _weaponSlots = _weaponSlotParent.GetComponentsInChildren<EquipmentSlot>();
-        _talismanSlots = _talismanSlotParent.GetComponentsInChildren<EquipmentSlot>();
+        _weaponSlots = _weaponSlotParent.GetComponentsInChildren<WeaponSlot>();
+        _talismanSlots = _talismanSlotParent.GetComponentsInChildren<WeaponSlot>();
+    }
+
+    void SubscribeToInventory()
+    {
+        inventory = Inventory.Instance;
+
+        UpdateUI();
+        inventory.OnInventoryChanged += RefreshUI;
+        inventory.OnWeaponAdded += RefreshWeaponUIAdded;
+        inventory.OnWeaponRemoved += RefreshWeaponUIRemoved;
+        inventory.OnTalismanEquipped += RefreshTalismanUIAdded;
+        inventory.OnTalismanUnequipped += RefreshTalismanUIRemoved;
+    }
+
+    void OnDisable()
+    {
+        inventory.OnInventoryChanged -= RefreshUI;
+        inventory.OnWeaponAdded -= RefreshWeaponUIAdded;
+        inventory.OnWeaponRemoved -= RefreshWeaponUIRemoved;
+        inventory.OnTalismanEquipped -= RefreshTalismanUIAdded;
+        inventory.OnTalismanUnequipped -= RefreshTalismanUIRemoved;
+    }
+
+    void UpdateUI()
+    {
+        foreach (var item in inventory.Items)
+        {
+            bool isContained = false;
+            foreach (var slot in _slots)
+            {
+                if (slot.CurrentItem == item) 
+                { 
+                    isContained = true; 
+                    break;
+                }
+            }
+            if (!isContained) RefreshUI(item, true);
+        }
     }
 
     void RefreshUI(Item itemChanged, bool wasAdded)
     {
         for (int i = 0; i < _slots.Length; i++)
         {
-            if (wasAdded && _slots[i].CurrentItem != itemChanged)
+            if (wasAdded && _slots[i].CurrentItem == null)
             { 
                 _slots[i].AddItem(itemChanged); 
                 return;
@@ -44,34 +81,41 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void RefreshEquipmentUI(EquippableItem itemChanged, bool wasAdded)
+    void RefreshWeaponUIAdded(WeaponItem itemChanged)
     {
         for (int i = 0; i < _weaponSlots.Length; i++)
         {
-            if (wasAdded && _weaponSlots[i].CurrentItem != itemChanged)
+            if (_weaponSlots[i].CurrentItem == null)
             {
                 _weaponSlots[i].AddItem(itemChanged);
                 return;
             }
-
-            if (!wasAdded && _talismanSlots[i].CurrentItem == itemChanged)
-            {
-                inventory.Add(itemChanged);
-                return;
-            }
         }
-        
+    }
+    void RefreshWeaponUIRemoved(WeaponItem itemChanged, int slot)
+    {
+        _slots[slot].ClearSlot();
+    }
+
+    void RefreshTalismanUIAdded(TalismanItem itemChanged)
+    {
         for (int i = 0; i < _talismanSlots.Length; i++)
         {
-            if (wasAdded && _talismanSlots[i].CurrentItem != itemChanged)
+            if (_talismanSlots[i].CurrentItem == null)
             {
                 _talismanSlots[i].AddItem(itemChanged);
                 return;
             }
-
-            if (!wasAdded && _talismanSlots[i].CurrentItem == itemChanged)
+        }
+    }
+    
+    void RefreshTalismanUIRemoved(TalismanItem itemChanged)
+    {
+        for (int i = 0; i < _talismanSlots.Length; i++)
+        {
+            if (_talismanSlots[i].CurrentItem == itemChanged)
             {
-                inventory.Add(itemChanged);
+                _slots[i].ClearSlot();
                 return;
             }
         }

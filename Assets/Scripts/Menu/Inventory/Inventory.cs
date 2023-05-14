@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Inventory : MonoBehaviour
@@ -8,37 +9,80 @@ public class Inventory : MonoBehaviour
     [SerializeField] int _maxEquipmentSize;
 
     List<Item> _items = new List<Item>();
-    List<EquippableItem> _equippedItems = new List<EquippableItem>();
+    WeaponItem[] _weapons = new WeaponItem[2];
+    TalismanItem[] _talisman = new TalismanItem[2];
 
     public List<Item> Items => _items;
-    public List<EquippableItem> EquippedItems => _equippedItems;
+    public WeaponItem[] Weapons => _weapons;
+    public TalismanItem[] Talisman => _talisman;
 
     public static Inventory Instance;
 
     public event Action<Item, bool> OnInventoryChanged;
-    public event Action<EquippableItem, bool> OnEquipmentChanged;
+    public event Action<WeaponItem> OnWeaponAdded;
+    public event Action<WeaponItem, int> OnWeaponRemoved; 
+    public event Action<TalismanItem> OnTalismanEquipped;
+    public event Action<TalismanItem> OnTalismanUnequipped;
+
+    public Item LastItemAdded { get; set; }
 
     private void Awake()
     {
+        Debug.Log("Inventory: " + Time.time);
         Instance = this;
     }
     
-    public void Equip(EquippableItem equippable)
+    public void EquipWeapon(WeaponItem weapon)
     {
-        if (_equippedItems.Count >= _maxEquipmentSize)
+        Debug.Log("Here");
+        if (_weapons[0] != null && _weapons[1] != null)
         {
             Debug.LogWarning("Equipment Full!");
             return;
         }
 
-        _equippedItems.Add(equippable);
-        OnEquipmentChanged?.Invoke(equippable, true);
+        for (int i = 0; i < _weapons.Length; i++)
+        {
+            if (_weapons[i] == null)
+            {
+                _weapons[i] = weapon;
+            }
+        }
+
+        Debug.Log("Here 2");
+        OnWeaponAdded?.Invoke(weapon);
     }
 
-    public void Unequip(EquippableItem equippable)
+    public void UnequipWeapon(WeaponItem weapon)
     {
-        _equippedItems.Remove(equippable);
-        OnEquipmentChanged.Invoke(equippable, false);
+        int index = _weapons.ToList().IndexOf(weapon);
+        _weapons[index] = null;
+        OnWeaponRemoved.Invoke(weapon, index);
+    }
+    
+    public void EquipTalisman(TalismanItem talisman)
+    {
+        if (_talisman[0] != null && _talisman[1] != null)
+        {
+            Debug.LogWarning("Equipment Full!");
+            return;
+        }
+
+        for (int i = 0; i < _talisman.Length; i++)
+        {
+            if (_weapons[i] == null)
+            {
+                _talisman[i] = talisman;
+            }
+        }
+        OnTalismanEquipped?.Invoke(talisman);
+    }
+
+    public void UnequipTalisman(TalismanItem talisman)
+    {
+        int index = _talisman.ToList().IndexOf(talisman);
+        _talisman[index] = null;
+        OnTalismanUnequipped.Invoke(talisman);
     }
 
     public void Add (Item item)
@@ -50,6 +94,7 @@ public class Inventory : MonoBehaviour
         }
 
         _items.Add(item);
+        LastItemAdded = item;
         OnInventoryChanged?.Invoke(item, true);
     }
 

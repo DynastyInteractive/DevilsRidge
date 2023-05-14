@@ -10,7 +10,7 @@ public class PlayerMovement : NetworkBehaviour
     [SerializeField] float _gravityValue = -9.81f;
     [SerializeField] float _maxCoyoteTime = 0.1f;
 
-    PlayerInput Input;
+    public PlayerInput Input { get; private set; }
 
     Vector3 _playerVelocity;
     bool _isGrounded;

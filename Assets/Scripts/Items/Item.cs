@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "CurrentItem", menuName = "Items/CurrentItem")]
+[CreateAssetMenu(fileName = "Item", menuName = "Items/Item")]
 public class Item : ScriptableObject
 {
     [SerializeField] Sprite _icon;

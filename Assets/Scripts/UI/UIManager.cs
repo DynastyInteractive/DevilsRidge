@@ -7,6 +7,9 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] InteractPrompt _interactPrompt;
     [SerializeField] DialogueBox _dialogueBox;
+    [SerializeField] GameObject _bookMenu;
+
+    PlayerInput.UIActions Input;
 
     public DialogueBox DialogueBox => _dialogueBox;
 
@@ -14,16 +17,29 @@ public class UIManager : MonoBehaviour
 
     public static event Action<bool> OnUIWindowShown;
 
-    // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
+        Input = new PlayerInput().UI;
+        Input.Enable();
     }
 
     void Start()
     {
         _interactPrompt.gameObject.SetActive(false);
         _dialogueBox.gameObject.SetActive(false);
+        _bookMenu.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (Input.OpenMenu.WasPressedThisFrame()) OpenMenu();
+    }
+
+    void OpenMenu()
+    {
+        _bookMenu.SetActive(!_bookMenu.activeInHierarchy);
+        OnUIWindowShown?.Invoke(_bookMenu.activeInHierarchy);
     }
 
     public void ShowInteractPrompt(Interactable interactable)

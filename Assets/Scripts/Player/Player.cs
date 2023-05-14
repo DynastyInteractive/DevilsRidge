@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [Header("Weapons")]
+    [SerializeField] Transform _weaponHolder;
+
     [Header("Stats")]
     [SerializeField] MinMaxCharacterStat _healthPoints;
     [SerializeField] CharacterStat _strength;
@@ -11,15 +14,16 @@ public class Player : MonoBehaviour
     public CharacterStat Strength => _strength;
     public CharacterStat Agility => _agility;
 
-    // Start is called before the first frame update
-    void Start()
+    public void EquipWeapon(GameObject weapon)
     {
-        
+        var weaponGO = Instantiate(weapon, _weaponHolder);
+        weaponGO.transform.localPosition = Vector3.zero;
+        weaponGO.transform.localRotation = Quaternion.identity;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TakeDamage(float damage)
     {
-        
+        _healthPoints.SetCurrentValue(_healthPoints.CurrentValue - damage);
     }
+
 }
