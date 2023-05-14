@@ -11,6 +11,8 @@ public class Interactor : MonoBehaviour
 
     PlayerInput Input;
 
+    bool _interacting = false;
+
     void Start()
     {
         Input = new PlayerInput();
@@ -22,6 +24,7 @@ public class Interactor : MonoBehaviour
         if (FindInteractable(out Interactable interactable) && Input.Player.Interact.WasPressedThisFrame())
         {
             interactable.Interact();
+            _interacting = true;
         }
     }
 
@@ -31,7 +34,7 @@ public class Interactor : MonoBehaviour
         if (!Physics.Raycast(_playerCamera.position, _playerCamera.forward, out RaycastHit hit, _maxDistance, _interactionLayers) || !hit.collider.TryGetComponent(out interactable))
         {
             interactable = null;
-            UIManager.Instance.HideInteractPrompt();
+            if (_interacting) { UIManager.Instance.HideInteractPrompt(); _interacting = false; }
             return false;
         }
 
