@@ -64,6 +64,15 @@ public class PlayerCombat : MonoBehaviour
         if (Input.Player.Attack.WasReleasedThisFrame())
         {
             _canAttack = true;
+
+            var _enemy = FindObjectsOfType<EnemyMovement>();
+            foreach(EnemyMovement enemy in _enemy)
+            {
+                if(Vector3.Distance(transform.position, enemy.gameObject.transform.position) < 10)
+                {
+                    enemy.GetComponent<EnemyHealth>().TakeDamage(_damage);
+                }
+            }
         }
     }
 }

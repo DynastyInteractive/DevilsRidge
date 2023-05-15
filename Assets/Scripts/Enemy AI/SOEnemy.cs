@@ -6,12 +6,14 @@ using System.Collections.Generic;using UnityEngine;
 public class SOEnemy : ScriptableObject
 {
     public string enemyName;
-    public int healthPoints;
-    public float movementSpeed;
-    public float damage;
+    public MinMaxCharacterStat _healthPoints;
+    public CharacterStat _strength;
+    public CharacterStat _agility;
 
     public float targetRange;
     public float attackRange;
+
+    public bool isBoss;
 
     public enum State
     {
@@ -20,4 +22,5 @@ public class SOEnemy : ScriptableObject
         Targeting,
         Attacking
     }
+
 }

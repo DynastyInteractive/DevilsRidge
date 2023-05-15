@@ -13,8 +13,16 @@ MonoBehaviour:
   m_Name: Demon Servant
   m_EditorClassIdentifier: 
   enemyName: 
-  healthPoints: 10
-  movementSpeed: 5
-  damage: 2
+  _healthPoints:
+    _min:
+      _baseValue: 0
+    _max:
+      _baseValue: 0
+    _currentValue:
+      _baseValue: 0
+  _strength:
+    _baseValue: 1
+  _agility:
+    _baseValue: 5
   targetRange: 10
   attackRange: 3

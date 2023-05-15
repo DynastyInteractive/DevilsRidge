@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 2151497562892735753}
   - component: {fileID: 2141986346382191864}
   - component: {fileID: 9013844937355838404}
+  - component: {fileID: 393285268549594101}
+  - component: {fileID: 5660647080470073530}
   m_Layer: 0
   m_Name: EnemyBoss
   m_TagString: Untagged
@@ -176,9 +178,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: 53d3839e047208b4392ba6d96302dae4, type: 2}
   _currentState: 0
-  _currentlyMoving: 0
+  _isCurrentlyMoving: 0
   _playerPositions: []
-  _playerIndex: -1
+  _playerObjs: []
+  _closestPlayerIndex: -1
+  _nearestCamp: {fileID: 0}
 --- !u!114 &2151497562892735753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,8 +195,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bbf5802b1e54a45afbb3956ac28d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
 --- !u!114 &2141986346382191864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,8 +216,7 @@ MonoBehaviour:
   _rotationSpeed: 0
   _lookRotation: {x: 0, y: 0, z: 0, w: 0}
   _direction: {x: 0, y: 0, z: 0}
-  _camps: []
-  _nearestCamp: {fileID: 0}
+  isTargeting: 0
 --- !u!114 &9013844937355838404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,3 +229,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a893182cce245c3439b00e7626c9f780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canAttack: 0
+  attackCooldown: 2
+--- !u!95 &393285268549594101
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482729691550679758}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5660647080470073530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482729691550679758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a893182cce245c3439b00e7626c9f780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAttack: 0
+  attackCooldown: 2

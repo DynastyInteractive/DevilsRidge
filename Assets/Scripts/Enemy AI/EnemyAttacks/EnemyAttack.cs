@@ -2,33 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour
+public abstract class EnemyAttack : MonoBehaviour
 {
     EnemyController _enemyController;
 
+    [SerializeField] bool canAttack;
+    [SerializeField] float attackCooldown = 2f;
+
+    public EnemyController EnemyController
+    {
+        get { return EnemyController; }
+    }
+
+    public bool CanAttack
+    {
+        get { return canAttack; }
+        set { canAttack = value; }
+    }
+
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         _enemyController = GetComponent<EnemyController>();
+        canAttack = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void OnEnable()
     {
-        if (_enemyController.State == SOEnemy.State.Attacking) Attack(_enemyController.Enemy.damage);
+        Attack(_enemyController.Enemy._strength);
     }
 
-    void Attack(float damage)
-    {
-        //attack the player
-        Debug.Log("Attacking");
+    public abstract void Attack(float damage);
 
-        foreach(Vector3 playerPos in _enemyController.PlayerPositions)
-        {
-            if(Vector3.Distance(transform.position, playerPos) < _enemyController.Enemy.attackRange)
-            {
-                //deal damage
-            }
-        }
+    public IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(attackCooldown);
+
+        if(Random.Range(0, 5) == 0) canAttack= true;
     }
 }

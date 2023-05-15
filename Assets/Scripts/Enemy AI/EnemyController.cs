@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,12 +10,21 @@ public class EnemyController : MonoBehaviour
 
     [Tooltip("The current State of the enemy")] [SerializeField] SOEnemy.State _currentState;
 
-    [SerializeField] bool _currentlyMoving;
+    [SerializeField] bool _isCurrentlyMoving;
 
     [Space(10)]
     [Header("Player Targetting")]
-    [Tooltip("List of Player GameObjects")] [SerializeField] List<Vector3> _playerPositions;
-    [Tooltip("ID of the player being checked/targetted")] [SerializeField] int _playerIndex = -1;
+    [Tooltip("List of Player Positions")] [SerializeField] List<Vector3> _playerPositions;
+    [Tooltip("List of Player GameObjects")] [SerializeField] List<GameObject> _playerObjs;
+    [Tooltip("ID of the player being checked/targetted")] [SerializeField] int _closestPlayerIndex = -1;
+
+    [SerializeField] GameObject _nearestCamp;
+
+    public GameObject NearestCamp
+    {
+        get { return _nearestCamp; }
+        set { _nearestCamp = value; }
+    }
 
     public SOEnemy Enemy
     {
@@ -26,20 +36,25 @@ public class EnemyController : MonoBehaviour
         get { return _currentState; }
     }
 
-    public bool CurrentlyMoving
+    public bool IsCurrentlyMoving
     {
-        get { return _currentlyMoving; }
-        set { _currentlyMoving = value; }
+        get { return _isCurrentlyMoving; }
+        set { _isCurrentlyMoving = value; }
     }
 
     public List<Vector3> PlayerPositions
     {
         get { return _playerPositions; }
+    } 
+    
+    public List<GameObject> PlayerObjs
+    {
+        get { return _playerObjs; }
     }
 
-    public int PlayerIndex
+    public int ClosestPlayerIndex
     {
-        get { return _playerIndex; }
+        get { return _closestPlayerIndex; }
     }
 
     // Start is called before the first frame update
@@ -52,10 +67,12 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         //gets the result of checking what state the enemy is in, and sets it to the current state variable
-        _currentState = DetermineState();
+        if(_enemy.isBoss && _nearestCamp.GetComponent<BossFightManager>().IsFightActive) _currentState = DetermineState(true);
+        else _currentState = DetermineState(false);
 
         //empties the positions of the players to replace them
         _playerPositions.Clear();
+        _playerObjs.Clear();
 
         //gets all of the players currently in game
         var _players = FindObjectsOfType<PlayerMovement>();
@@ -63,23 +80,31 @@ public class EnemyController : MonoBehaviour
         {
             Vector3 _position = player.transform.position;
             _playerPositions.Add(new Vector3(_position.x, _position.y, _position.z));
+            if (!_playerObjs.Contains(player.gameObject)) _playerObjs.Add(player.gameObject);
         }
 
-        if (_playerIndex != -1) Debug.Log(_playerPositions[_playerIndex]);
+        if (_closestPlayerIndex >= _playerPositions.Count) _closestPlayerIndex = -1;
     }
 
     //returns the current state, depending on its current situation
-    SOEnemy.State DetermineState()
+    SOEnemy.State DetermineState(bool isBossFight)
     {
-        if (CanTarget())
+        if(isBossFight)
         {
-            if (Vector3.Distance(transform.position, _playerPositions[_playerIndex]) < _enemy.attackRange)
+            foreach (GameObject player in _nearestCamp.GetComponent<BossFightManager>().Players) {
+                if (_enemy.isBoss) _playerPositions.Add(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z));
+            }
+        }
+
+        if ((CanTarget() || isBossFight) && Vector3.Distance(transform.position, _nearestCamp.transform.position) < _nearestCamp.GetComponent<EnemySpawner>().CampRadius * 2)
+        {
+            if (Vector3.Distance(transform.position, _playerPositions[_closestPlayerIndex]) < _enemy.attackRange)
             {
                 return SOEnemy.State.Attacking;
             }
-            else if(_enemy.enemyName != "Demon Lord") return SOEnemy.State.Targeting;
+            return SOEnemy.State.Targeting;
         }
-        else if (_enemy.enemyName != "Demon Lord" && Random.Range(0, 5) == 0 || CurrentlyMoving)
+        else if (Random.Range(0, 5) == 0 || IsCurrentlyMoving)
         {
             return SOEnemy.State.Wandering;
         }
@@ -104,10 +129,11 @@ public class EnemyController : MonoBehaviour
             }
         }
 
+        _closestPlayerIndex = closestPlayerIndex;
+
         // Check to see if the closest player can be seen and is within targeting range
         if (closestPlayerIndex != -1 && closestPlayerDistance < _enemy.targetRange)
         {
-            _playerIndex = closestPlayerIndex;
             return true;
         }
         else

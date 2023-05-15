@@ -1,50 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
     EnemyController _enemyController;
-
-    [SerializeField] int currentHealth;
-    [SerializeField] int maxHealth;
-
+    BossFightManager _bossFightManager;
 
     // Start is called before the first frame update
     void Start()
     {
         _enemyController = GetComponent<EnemyController>();
-        currentHealth = _enemyController.Enemy.healthPoints;
-        maxHealth = _enemyController.Enemy.healthPoints;
+        _enemyController.Enemy._healthPoints.SetCurrentValue(_enemyController.Enemy._healthPoints.Max.BaseValue);
+
+        if (_enemyController.Enemy.isBoss)
+        {
+            _bossFightManager = _enemyController.NearestCamp.GetComponent<BossFightManager>();
+            _bossFightManager.SetMaxHealth(_enemyController.Enemy._healthPoints.Max.BaseValue);
+        }
     }
-
-    /*private void Update()
+    public void TakeDamage(float damage)
     {
-        if (_enemy.enemyName == "Enemy 1")
-        {
-            TakeDamage(1);
-        }
-    }*/
+        _enemyController.Enemy._healthPoints.SetCurrentValue(_enemyController.Enemy._healthPoints.CurrentValue - damage);
 
-    public void TakeDamage(int damage)
-    {
-        if(currentHealth - damage < 0)
-        {
-            //death
-        }
-        else
-        {
-            currentHealth -= damage;
-        }
+        if (_enemyController.Enemy._healthPoints.CurrentValue <= _enemyController.Enemy._healthPoints.Min) GameObject.Destroy(gameObject); //death
+
+        _bossFightManager?.SetHealth(_enemyController.Enemy._healthPoints.CurrentValue);
     }
 
     public void Heal(int healthReturn)
     {
-        if (currentHealth < 0) return;
-
-        if(currentHealth + healthReturn > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
+        _enemyController.Enemy._healthPoints.SetCurrentValue(_enemyController.Enemy._healthPoints.CurrentValue + healthReturn);
+        _bossFightManager?.SetHealth(_enemyController.Enemy._healthPoints.CurrentValue);
     }
 }

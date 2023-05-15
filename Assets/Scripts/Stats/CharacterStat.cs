@@ -36,6 +36,8 @@ public class CharacterStat
     protected readonly List<StatModifier> statModifiers;
     public readonly ReadOnlyCollection<StatModifier> StatModifiers;
 
+    public static implicit operator float(CharacterStat stat) => stat.Value;
+
     public CharacterStat()
     {
         statModifiers = new List<StatModifier>();
