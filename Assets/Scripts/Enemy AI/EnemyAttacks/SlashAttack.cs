@@ -2,34 +2,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlashAttack : EnemyAttack
+public class SlashAttack : EnemyAttackType
 {
-    public override void Start() 
-    {
-        base.Start(); 
-    }
+    [SerializeField] EnemyController _enemyController;
 
-    public override void OnEnable()
+
+    public virtual void OnEnable()
     {
-        base.OnEnable();
+        _enemyController = GetComponent<EnemyController>();
+        Attack(_enemyController.Enemy._strength);
+        
+        /*switch ((AttackDistance)Random.Range(0, (int)AttackDistance.Long + 1))
+        {
+            case AttackDistance.Short:
+                //do animation
+                break;
+            case AttackDistance.Mid:
+                //do nothing
+                break;
+            case AttackDistance.Long:
+                //charge and then attack
+                break;
+            default:
+                break;
+        }*/
     }
 
     public override void Attack(float damage)
     {
+        Debug.Log("Slash Attack");
         //attack the player
-        if (!CanAttack) return;
 
-        CanAttack = false;
-
-        for (int i = 0; i < EnemyController.PlayerPositions.Count; i++)
+        for (int i = 0; i < _enemyController.PlayerPositions.Count; i++)
         {
-            if (Vector3.Distance(transform.position, EnemyController.PlayerPositions[i]) < EnemyController.Enemy.attackRange)
+            if (Vector3.Distance(transform.position, _enemyController.PlayerPositions[i]) < _enemyController.Enemy.attackRange)
             {
-                Player playerStats = EnemyController.PlayerObjs[i].GetComponent<Player>();
+                Player playerStats = _enemyController.PlayerObjs[i].GetComponent<Player>();
                 playerStats.TakeDamage(damage);
             }
         }
 
-        StartCoroutine(AttackCooldown());
+        GetCooldown(2);
+    }
+
+    public override void GetCooldown(float attackCooldown)
+    {
+        base.GetCooldown(attackCooldown);
+
+        this.enabled = false;
     }
 }

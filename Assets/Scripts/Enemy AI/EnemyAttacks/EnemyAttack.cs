@@ -2,42 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EnemyAttack : MonoBehaviour
+public class EnemyAttack : MonoBehaviour
 {
+    [SerializeField] List<EnemyAttackType> attacks;
     EnemyController _enemyController;
 
     [SerializeField] bool canAttack;
-    [SerializeField] float attackCooldown = 2f;
-
-    public EnemyController EnemyController
-    {
-        get { return EnemyController; }
-    }
-
-    public bool CanAttack
-    {
-        get { return canAttack; }
-        set { canAttack = value; }
-    }
 
     // Start is called before the first frame update
-    public virtual void Start()
+    void Start()
     {
         _enemyController = GetComponent<EnemyController>();
         canAttack = true;
     }
 
-    public virtual void OnEnable()
+    // Update is called once per frame
+    void Update()
     {
-        Attack(_enemyController.Enemy._strength);
+        if(_enemyController.State == SOEnemy.State.Attacking && canAttack)
+        {
+            canAttack = false;
+            var randAttack = Random.Range(0, attacks.Count);
+            Debug.Log(randAttack);
+            attacks[randAttack].enabled = true;
+            StartCoroutine(AttackCooldown(attacks[Random.Range(0, attacks.Count)].AttackCooldown));
+        }
     }
 
-    public abstract void Attack(float damage);
-
-    public IEnumerator AttackCooldown()
+    public IEnumerator AttackCooldown(float attackCooldown)
     {
         yield return new WaitForSeconds(attackCooldown);
 
-        if(Random.Range(0, 5) == 0) canAttack= true;
+        if (Random.Range(0, 5) == 0) canAttack = true;
     }
 }

@@ -69,7 +69,7 @@ public class EnemyMovement : MonoBehaviour
             }
             if ((Vector3.Distance(transform.position, _walkPoint) < 0.5f) && _enemyController.State == SOEnemy.State.Wandering)
             {
-                Debug.Log("New Position");
+                //Debug.Log("New Position");
                 _enemyController.IsCurrentlyMoving = false;
                 _canGetNewPos = true;
             }

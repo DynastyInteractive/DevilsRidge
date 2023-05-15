@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,7 +68,7 @@ public class BossFightManager : MonoBehaviour
     { 
         // Change from tag check to component check (i.e. if (other.TryGetComponent(out Player player) )
         // Also, Unity has a CompareTag method that's a bit more efficient than using ==
-        if(other.gameObject.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             Debug.Log("Start Boss Fight");
             Debug.Log(other.gameObject.name);

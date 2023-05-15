@@ -14,7 +14,7 @@ public class EnemyHealth : MonoBehaviour
         if (_enemyController.Enemy.isBoss)
         {
             _bossFightManager = _enemyController.NearestCamp.GetComponent<BossFightManager>();
-            _bossFightManager.SetMaxHealth(_enemyController.Enemy._healthPoints.Max.BaseValue);
+            _bossFightManager?.SetMaxHealth(_enemyController.Enemy._healthPoints.Max.BaseValue);
         }
     }
     public void TakeDamage(float damage)
