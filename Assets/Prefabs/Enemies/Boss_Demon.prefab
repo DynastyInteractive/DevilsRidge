@@ -97,6 +97,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Demon
       objectReference: {fileID: 0}
+    - target: {fileID: 4112984690662791721, guid: b63da3573282a424582a2dc11ed986ac,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bafe6907c93eb1445a7be3f9adab5b1b, type: 2}
     - target: {fileID: 4167280743394806330, guid: b63da3573282a424582a2dc11ed986ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -112,5 +117,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6209467114142221016, guid: b63da3573282a424582a2dc11ed986ac,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6209467114142221016, guid: b63da3573282a424582a2dc11ed986ac,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f4d1657e13c5f78448c8734ed702f898, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b63da3573282a424582a2dc11ed986ac, type: 3}
