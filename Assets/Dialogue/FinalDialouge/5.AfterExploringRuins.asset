@@ -17,41 +17,41 @@ MonoBehaviour:
     _portName: Next
     _targetNodeGUID: 4e792f3c-cbec-40d4-b8be-ca22c4b139fd
   - _baseNodeGUID: 4e792f3c-cbec-40d4-b8be-ca22c4b139fd
-    _portName: Choice 1
+    _portName: ...
     _targetNodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
   - _baseNodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
-    _portName: Choice 1
+    _portName: ...
     _targetNodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
   - _baseNodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
-    _portName: Choice 1
+    _portName: '!!'
     _targetNodeGUID: 37fc79b3-853c-4142-a8c4-22adbf780af9
   DialogueNodeData:
   - _nodeGUID: 4e792f3c-cbec-40d4-b8be-ca22c4b139fd
-    _speakerName: Dialogue Node
+    _speakerName: Damious
     _dialogueText: Ahh I see you have cleared out the ruins
     _choices:
     - _baseNodeGUID: 4e792f3c-cbec-40d4-b8be-ca22c4b139fd
-      _portName: Choice 1
+      _portName: ...
       _targetNodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
     _position: {x: 265, y: 200}
   - _nodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
-    _speakerName: Dialogue Node
+    _speakerName: Damious
     _dialogueText: That weapon, I haven't seen one of those in a long, long time...
     _choices:
     - _baseNodeGUID: 1b3f9525-1bdf-4cfd-be11-47cc2bb6f20c
-      _portName: Choice 1
+      _portName: ...
       _targetNodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
     _position: {x: 583, y: 200}
   - _nodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
-    _speakerName: Dialogue Node
+    _speakerName: Demon's
     _dialogueText: GRRRRRR
     _choices:
     - _baseNodeGUID: ca680a10-b4aa-4587-a3fd-1e77e025b185
-      _portName: Choice 1
+      _portName: '!!'
       _targetNodeGUID: 37fc79b3-853c-4142-a8c4-22adbf780af9
     _position: {x: 936, y: 200}
   - _nodeGUID: 37fc79b3-853c-4142-a8c4-22adbf780af9
-    _speakerName: Dialogue Node
+    _speakerName: Damious
     _dialogueText: AMBUSH! GET READY
     _choices: []
     _position: {x: 1223, y: 200}

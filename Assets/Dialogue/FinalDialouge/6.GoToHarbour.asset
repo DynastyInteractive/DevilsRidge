@@ -17,43 +17,43 @@ MonoBehaviour:
     _portName: Next
     _targetNodeGUID: f238dd51-bec5-4b13-82eb-53aec66b5b4a
   - _baseNodeGUID: f238dd51-bec5-4b13-82eb-53aec66b5b4a
-    _portName: Choice 1
+    _portName: HARR
     _targetNodeGUID: 70c20716-c99e-4672-9740-973d88fea7c7
   - _baseNodeGUID: 70c20716-c99e-4672-9740-973d88fea7c7
-    _portName: Choice 1
+    _portName: ...
     _targetNodeGUID: 0fcb4738-7a87-498c-8f0b-560d80c0cb53
   - _baseNodeGUID: 0fcb4738-7a87-498c-8f0b-560d80c0cb53
-    _portName: Choice 1
+    _portName: ...
     _targetNodeGUID: b55ec37e-b6f9-4a44-a384-462f52a2000b
   DialogueNodeData:
   - _nodeGUID: f238dd51-bec5-4b13-82eb-53aec66b5b4a
-    _speakerName: Dialogue Node
+    _speakerName: Damious
     _dialogueText: IS THAT ALL OF THEM?
     _choices:
     - _baseNodeGUID: f238dd51-bec5-4b13-82eb-53aec66b5b4a
-      _portName: Choice 1
+      _portName: HARR
       _targetNodeGUID: 70c20716-c99e-4672-9740-973d88fea7c7
     _position: {x: 299, y: 200}
   - _nodeGUID: 70c20716-c99e-4672-9740-973d88fea7c7
-    _speakerName: Dialogue Node
+    _speakerName: Damious
     _dialogueText: your abilities with that sword, it is truely remarkable, we may
       have hope for the future of our Island.
     _choices:
     - _baseNodeGUID: 70c20716-c99e-4672-9740-973d88fea7c7
-      _portName: Choice 1
+      _portName: ...
       _targetNodeGUID: 0fcb4738-7a87-498c-8f0b-560d80c0cb53
     _position: {x: 609, y: 200}
   - _nodeGUID: 0fcb4738-7a87-498c-8f0b-560d80c0cb53
-    _speakerName: Dialogue Node
+    _speakerName: Damious
     _dialogueText: Before our little skirmish, I was asked to send you to the port
       as they needed assistance with some cargo.
     _choices:
     - _baseNodeGUID: 0fcb4738-7a87-498c-8f0b-560d80c0cb53
-      _portName: Choice 1
+      _portName: ...
       _targetNodeGUID: b55ec37e-b6f9-4a44-a384-462f52a2000b
     _position: {x: 1002, y: 200}
   - _nodeGUID: b55ec37e-b6f9-4a44-a384-462f52a2000b
-    _speakerName: Dialogue Node
+    _speakerName: Damious
     _dialogueText: Best of luck too you.
     _choices: []
     _position: {x: 1438, y: 200}

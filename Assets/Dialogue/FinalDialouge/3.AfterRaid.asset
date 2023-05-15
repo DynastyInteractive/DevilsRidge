@@ -17,10 +17,10 @@ MonoBehaviour:
     _portName: Next
     _targetNodeGUID: b4630b3b-86bc-4e19-baad-3429b377e3e7
   - _baseNodeGUID: b4630b3b-86bc-4e19-baad-3429b377e3e7
-    _portName: Choice 1
+    _portName: HAAAA
     _targetNodeGUID: 7b1c495d-43bb-45b4-b538-9c1e3e6dfd96
   - _baseNodeGUID: 7b1c495d-43bb-45b4-b538-9c1e3e6dfd96
-    _portName: Choice 1
+    _portName: ...
     _targetNodeGUID: 92b7727f-71e1-414a-89ea-eefc4ea18f74
   DialogueNodeData:
   - _nodeGUID: b4630b3b-86bc-4e19-baad-3429b377e3e7
@@ -28,7 +28,7 @@ MonoBehaviour:
     _dialogueText: HEHE HEHA! WE DEFENDED THE RAID!
     _choices:
     - _baseNodeGUID: b4630b3b-86bc-4e19-baad-3429b377e3e7
-      _portName: Choice 1
+      _portName: HAAAA
       _targetNodeGUID: 7b1c495d-43bb-45b4-b538-9c1e3e6dfd96
     _position: {x: 269, y: 200}
   - _nodeGUID: 7b1c495d-43bb-45b4-b538-9c1e3e6dfd96
@@ -36,7 +36,7 @@ MonoBehaviour:
     _dialogueText: LOOK, I saw some run that way, should we go after them?
     _choices:
     - _baseNodeGUID: 7b1c495d-43bb-45b4-b538-9c1e3e6dfd96
-      _portName: Choice 1
+      _portName: ...
       _targetNodeGUID: 92b7727f-71e1-414a-89ea-eefc4ea18f74
     _position: {x: 571, y: 200}
   - _nodeGUID: 92b7727f-71e1-414a-89ea-eefc4ea18f74

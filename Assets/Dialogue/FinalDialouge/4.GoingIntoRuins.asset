@@ -17,19 +17,19 @@ MonoBehaviour:
     _portName: Next
     _targetNodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
   - _baseNodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
-    _portName: Choice 1
+    _portName: What's the plan of action
     _targetNodeGUID: 92230c42-354f-4faa-8605-e656d36f1f2d
   DialogueNodeData:
-  - _nodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
-    _speakerName: Damious
-    _dialogueText: Look, they must be in that ruins over there
-    _choices:
-    - _baseNodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
-      _portName: Choice 1
-      _targetNodeGUID: 92230c42-354f-4faa-8605-e656d36f1f2d
-    _position: {x: 291, y: 200}
   - _nodeGUID: 92230c42-354f-4faa-8605-e656d36f1f2d
     _speakerName: Damious
     _dialogueText: 'I''ll stay posted outside whislt you clean inside. '
     _choices: []
     _position: {x: 730, y: 200}
+  - _nodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
+    _speakerName: Damious
+    _dialogueText: Look, they must be in that ruins over there
+    _choices:
+    - _baseNodeGUID: 1dd30df1-ae01-4237-99c6-8bc0f6a29141
+      _portName: What's the plan of action
+      _targetNodeGUID: 92230c42-354f-4faa-8605-e656d36f1f2d
+    _position: {x: 291, y: 200}
