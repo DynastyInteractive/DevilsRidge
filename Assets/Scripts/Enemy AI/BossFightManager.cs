@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class BossFightManager : MonoBehaviour
 {
+    // Using this, you could have a variable/list in this BossFightManager that holds any spawned boss(es)
+    // that gets added to whenever the enemy spawner fires an event after spawning a boss.
+    // Using that, you could then subsribe to events in the enemy health class for changing the health bar, rather than having references to the manager inside the health class.
     EnemySpawner enemySpawner;
 
     [SerializeField] bool isFightActive; //checks to see if the fight is active
@@ -61,7 +64,9 @@ public class BossFightManager : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
+    { 
+        // Change from tag check to component check (i.e. if (other.TryGetComponent(out Player player) )
+        // Also, Unity has a CompareTag method that's a bit more efficient than using ==
         if(other.gameObject.tag == "Player")
         {
             Debug.Log("Start Boss Fight");
@@ -75,12 +80,14 @@ public class BossFightManager : MonoBehaviour
     
     private void OnTriggerExit(Collider other)
     {
+        // Same here, change to component check
         if(other.gameObject.tag == "Player")
         {
             isInCamp = false;
         }
     }
 
+    // Maybe try subscribing this method to an event from the enemy health class?
     public void SetMaxHealth(float health)
     {
         _slider.maxValue = health;
