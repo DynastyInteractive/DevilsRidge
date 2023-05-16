@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] InteractPrompt _interactPrompt;
     [SerializeField] DialogueBox _dialogueBox;
     [SerializeField] GameObject _bookMenu;
+    [SerializeField] QuestWindow _questWindow;
 
     PlayerInput.UIActions Input;
 
@@ -29,6 +31,7 @@ public class UIManager : MonoBehaviour
         _interactPrompt.gameObject.SetActive(false);
         _dialogueBox.gameObject.SetActive(false);
         _bookMenu.SetActive(false);
+        _questWindow.gameObject.SetActive(false);
     }
 
     void Update()
@@ -63,6 +66,18 @@ public class UIManager : MonoBehaviour
     public void HideDialogueBox()
     {
         _dialogueBox.gameObject.SetActive(false);
+        OnUIWindowShown?.Invoke(false);
+    }
+
+    public void ShowQuestWindow(Quest quest, Action onAcceptCallback)
+    {
+        _questWindow.ShowQuestWindow(quest, onAcceptCallback);
+        OnUIWindowShown?.Invoke(true);
+    }
+
+    public void HideQuestWindow()
+    {
+        _questWindow.gameObject.SetActive(false);
         OnUIWindowShown?.Invoke(false);
     }
 }
