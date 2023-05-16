@@ -687,8 +687,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea77e80e7d1d88e459179f7626096b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAttack: 0
-  attackCooldown: 2
+  _attackCooldown: 0
+  _enemyController: {fileID: 0}
+--- !u!114 &7302078045350171084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720192601267712094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b8eeba6b7264f84d83a6d14b4e46d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCooldown: 0
+  _enemyController: {fileID: 0}
+--- !u!114 &-4211052726853665216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720192601267712094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9eaf4f31c3a4b45ac5e024c15da195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCooldown: 0
+  _enemyController: {fileID: 0}
 --- !u!114 &7413297341066007950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,3 +731,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attacks:
   - {fileID: 4694783869854657829}
+  - {fileID: 7302078045350171084}
+  - {fileID: -4211052726853665216}
+  canAttack: 0

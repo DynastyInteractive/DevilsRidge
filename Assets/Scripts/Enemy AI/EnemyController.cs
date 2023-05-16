@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField] SOEnemy _enemy;
+    [SerializeField] Animator _animator;
 
     [Tooltip("The current State of the enemy")] [SerializeField] SOEnemy.State _currentState;
 
@@ -20,6 +21,10 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] GameObject _nearestCamp;
 
+    public Animator Animator
+    {
+        get { return _animator; }
+    }
     public GameObject NearestCamp
     {
         get { return _nearestCamp; }
@@ -61,6 +66,7 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         _currentState = SOEnemy.State.Idle;
+        _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame

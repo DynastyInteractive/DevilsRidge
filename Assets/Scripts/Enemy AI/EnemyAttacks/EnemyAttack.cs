@@ -14,6 +14,11 @@ public class EnemyAttack : MonoBehaviour
     {
         _enemyController = GetComponent<EnemyController>();
         canAttack = true;
+
+        foreach(EnemyAttackType type in attacks)
+        {
+            type.enabled = false;
+        }
     }
 
     // Update is called once per frame

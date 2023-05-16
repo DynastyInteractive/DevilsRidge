@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlashAttack : EnemyAttackType
+public class LightSwing : EnemyAttackType
 {
     [SerializeField] EnemyController _enemyController;
 
@@ -30,8 +30,9 @@ public class SlashAttack : EnemyAttackType
 
     public override void Attack(float damage)
     {
-        Debug.Log("Slash Attack");
+        Debug.Log("Light Swing");
         //attack the player
+        _enemyController.Animator.SetTrigger("LightSwing");
 
         for (int i = 0; i < _enemyController.PlayerPositions.Count; i++)
         {
