@@ -28,7 +28,7 @@ public class FirstPersonLook : NetworkBehaviour
     {
         if (!IsOwner)
         {
-            _camera.enabled = false;
+            _camera.gameObject.SetActive(false);
         }
 
         Input = new PlayerInput();

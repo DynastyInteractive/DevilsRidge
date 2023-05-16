@@ -1,22 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerCombat : MonoBehaviour
+public class PlayerCombat : NetworkBehaviour
 {
+    [SerializeField] Player _player;
     [SerializeField] float _heavyAttackMinTime = 0.5f;
     [SerializeField] float _heavyAttackMaxTime = 2f;
     [SerializeField] bool _canAttack;
-    [SerializeField] float _damage = 1f;
 
     PlayerInput Input;
 
+    float _damage = 1f;
     float m_AttackHoldTimer;
-
 
     void Start()
     {
+        if (!IsOwner) return;
         _canAttack = true;
         Input = new PlayerInput();
         Input.Enable();
@@ -25,19 +27,23 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner) return;
         Attack();
     }
 
     void Attack()
     {
-        if (!_canAttack) return;
+        if (Input.Player.Attack.WasPressedThisFrame())
+        {
+            _damage = _player.Strength;
+        }
 
         if (Input.Player.Attack.IsPressed())
         {
             m_AttackHoldTimer += Time.deltaTime;
         }
 
-        if (Input.Player.Attack.WasReleasedThisFrame() || m_AttackHoldTimer >= _heavyAttackMaxTime + 0.5f)
+        if ((Input.Player.Attack.WasReleasedThisFrame() || m_AttackHoldTimer >= _heavyAttackMaxTime + 0.5f) && _canAttack)
         {
             if (m_AttackHoldTimer < _heavyAttackMinTime)
             {
@@ -46,12 +52,12 @@ public class PlayerCombat : MonoBehaviour
             else if (m_AttackHoldTimer >= _heavyAttackMaxTime)
             {
                 Debug.Log("Max Heavy Attack");
-                _damage += 19f;
+                _damage *= 2;
             }
             else
             {
                 Debug.Log("Weak Heavy Attack");
-                _damage += m_AttackHoldTimer * 7.5f;
+                _damage *= 1 + (m_AttackHoldTimer * 0.5f);
             }
 
             Debug.Log("The damage hit was " + Mathf.FloorToInt(_damage));
@@ -61,18 +67,6 @@ public class PlayerCombat : MonoBehaviour
             _damage = 1f;
         }
 
-        if (Input.Player.Attack.WasReleasedThisFrame())
-        {
-            _canAttack = true;
-
-            var _enemy = FindObjectsOfType<EnemyMovement>();
-            foreach(EnemyMovement enemy in _enemy)
-            {
-                if(Vector3.Distance(transform.position, enemy.gameObject.transform.position) < 10)
-                {
-                    enemy.GetComponent<EnemyHealth>().TakeDamage(_damage);
-                }
-            }
-        }
+        if (Input.Player.Attack.WasReleasedThisFrame()) _canAttack = true;
     }
 }

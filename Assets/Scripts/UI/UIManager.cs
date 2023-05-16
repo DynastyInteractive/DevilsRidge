@@ -1,12 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
     [SerializeField] InteractPrompt _interactPrompt;
     [SerializeField] DialogueBox _dialogueBox;
+    [SerializeField] GameObject _bookMenu;
+    [SerializeField] QuestWindow _questWindow;
+
+    PlayerInput.UIActions Input;
 
     public DialogueBox DialogueBox => _dialogueBox;
 
@@ -14,16 +19,30 @@ public class UIManager : MonoBehaviour
 
     public static event Action<bool> OnUIWindowShown;
 
-    // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
+        Input = new PlayerInput().UI;
+        Input.Enable();
     }
 
     void Start()
     {
         _interactPrompt.gameObject.SetActive(false);
         _dialogueBox.gameObject.SetActive(false);
+        _bookMenu.SetActive(false);
+        _questWindow.gameObject.SetActive(false);
+    }
+
+    void Update()
+    {
+        if (Input.OpenMenu.WasPressedThisFrame()) OpenMenu();
+    }
+
+    void OpenMenu()
+    {
+        _bookMenu.SetActive(!_bookMenu.activeInHierarchy);
+        OnUIWindowShown?.Invoke(_bookMenu.activeInHierarchy);
     }
 
     public void ShowInteractPrompt(Interactable interactable)
@@ -47,6 +66,18 @@ public class UIManager : MonoBehaviour
     public void HideDialogueBox()
     {
         _dialogueBox.gameObject.SetActive(false);
+        OnUIWindowShown?.Invoke(false);
+    }
+
+    public void ShowQuestWindow(Quest quest, Action onAcceptCallback)
+    {
+        _questWindow.ShowQuestWindow(quest, onAcceptCallback);
+        OnUIWindowShown?.Invoke(true);
+    }
+
+    public void HideQuestWindow()
+    {
+        _questWindow.gameObject.SetActive(false);
         OnUIWindowShown?.Invoke(false);
     }
 }
