@@ -28,14 +28,23 @@ public class FirstPersonLook : NetworkBehaviour
     {
         if (!IsOwner)
         {
-            _camera.enabled = false;
+            _camera.gameObject.SetActive(false);
         }
 
         Input = new PlayerInput();
         Input.Enable();
+    }
 
+    void OnEnable()
+    {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void OnDisable()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void LateUpdate()

@@ -10723,7 +10723,7 @@ MonoBehaviour:
   ConnectionData:
     Address: 127.0.0.1
     Port: 7777
-    ServerListenAddress: 
+    ServerListenAddress: 127.0.0.1
   DebugSimulator:
     PacketDelayMS: 0
     PacketJitterMS: 0
@@ -10745,9 +10745,10 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1537040009}
-    PlayerPrefab: {fileID: 1131575061513532517, guid: abcc98fb423dab54e82046408b6dac2a,
+    PlayerPrefab: {fileID: 1692781858169559942, guid: 6312477b4adcd6b46a32359e9516248f,
       type: 3}
-    NetworkPrefabs: []
+    Prefabs:
+      NetworkPrefabsLists: []
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -10763,6 +10764,7 @@ MonoBehaviour:
     LoadSceneTimeOut: 120
     SpawnTimeout: 1
     EnableNetworkLogs: 1
+    OldPrefabList: []
 --- !u!114 &1537040011
 MonoBehaviour:
   m_ObjectHideFlags: 0

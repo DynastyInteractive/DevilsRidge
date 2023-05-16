@@ -565,5 +565,5 @@ MonoBehaviour:
   _dialogueText: {fileID: 6786689163414332512}
   _buttonPrompt: {fileID: 6786689163752428083}
   _choicesArea: {fileID: 6786689164484314426}
-  _choiceButtonPrefab: {fileID: 7180803923548319913, guid: b0980ebcd8569774b9ea1e30e89f0dea,
+  _choiceButtonPrefab: {fileID: 7180803923548319913, guid: b4ca97a84401ead49b13a2c4e3098c01,
     type: 3}

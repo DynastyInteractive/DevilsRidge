@@ -21,7 +21,7 @@
 // TO USE THIS SCRIPT: 
 // Place it in your Unity project in a directory called "Editor". A new menu will appear
 // on the top bar called "Unity Project Junction". Click it and Create Unity Junction Project.
-// You can now open this "new" project in a separate Unity Editor instance.
+// You can now open this "new" project in a separate Unity Editor Instance.
 
 using UnityEngine;
 using UnityEditor;
@@ -75,7 +75,7 @@ public static class UnityProjectJunctionTool
         CreateJunction(linkProjectSettings, targetProjectSettings);
         CreateJunction(linkPackages, targetPackages);
 
-        EditorUtility.DisplayDialog("Complete", $"Created junction project at {junctionPath}.\n\nYou may now open this new project in a separate Unity Editor instance.", "Ok");
+        EditorUtility.DisplayDialog("Complete", $"Created junction project at {junctionPath}.\n\nYou may now open this new project in a separate Unity Editor Instance.", "Ok");
 
         EditorUtility.RevealInFinder(junctionDirectoryInfo.FullName);
     }
