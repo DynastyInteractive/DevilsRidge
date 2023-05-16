@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
                 if (_enemyController.Enemy.isBoss) spawnArea = campRadius / 2;
                 else spawnArea = campRadius;
 
-                Vector3 randomPos = new Vector3(Random.Range(transform.position.x - spawnArea, transform.position.x + spawnArea), 1.01f, Random.Range(transform.position.z - spawnArea, transform.position.z + spawnArea));
+                Vector3 randomPos = new Vector3(Random.Range(transform.position.x - spawnArea, transform.position.x + spawnArea), transform.position.y, Random.Range(transform.position.z - spawnArea, transform.position.z + spawnArea));
 
                 if (Vector3.Distance(randomPos, transform.position) <= spawnArea)
                 {

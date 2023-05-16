@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class PlayerCombat : NetworkBehaviour
 {
     [SerializeField] Player _player;
+    [SerializeField] Transform _playerCamera;
     [SerializeField] float _heavyAttackMinTime = 0.5f;
     [SerializeField] float _heavyAttackMaxTime = 2f;
     [SerializeField] bool _canAttack;
+    [SerializeField] LayerMask _enemyLayer;
 
     PlayerInput Input;
 
@@ -45,19 +47,25 @@ public class PlayerCombat : NetworkBehaviour
 
         if ((Input.Player.Attack.WasReleasedThisFrame() || m_AttackHoldTimer >= _heavyAttackMaxTime + 0.5f) && _canAttack)
         {
+            if (!Physics.Raycast(_playerCamera.position, _playerCamera.transform.forward, out RaycastHit hit, 4f, _enemyLayer)) return;
+            if (!hit.transform.TryGetComponent(out EnemyHealth enemy)) return;
+
             if (m_AttackHoldTimer < _heavyAttackMinTime)
             {
                 Debug.Log("Light Attack");
+                enemy.TakeDamage(_damage);
             }
             else if (m_AttackHoldTimer >= _heavyAttackMaxTime)
             {
                 Debug.Log("Max Heavy Attack");
                 _damage *= 2;
+                enemy.TakeDamage(_damage);
             }
             else
             {
                 Debug.Log("Weak Heavy Attack");
                 _damage *= 1 + (m_AttackHoldTimer * 0.5f);
+                enemy.TakeDamage(_damage);
             }
 
             Debug.Log("The damage hit was " + Mathf.FloorToInt(_damage));
