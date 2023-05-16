@@ -5,8 +5,14 @@ using UnityEngine;
 public class PlayerSetSpawn : MonoBehaviour
 {
     [SerializeField] Vector3 _spawnCoordinates = Vector3.zero;
+    [SerializeField] Collider _playerCollider;
 
-    // Start is called before the first frame update
+    void Awake()
+    {
+        _playerCollider.enabled = false;
+    }
+
+
     void Start()
     {
         Invoke(nameof(SetPos), 0.2f);
@@ -15,5 +21,6 @@ public class PlayerSetSpawn : MonoBehaviour
     void SetPos()
     {
         transform.position = _spawnCoordinates;
+        _playerCollider.enabled = true;
     }
 }
