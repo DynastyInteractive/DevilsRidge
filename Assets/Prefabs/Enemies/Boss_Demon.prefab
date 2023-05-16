@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss_Demon_Axe
       objectReference: {fileID: 0}
+    - target: {fileID: 6000403757876830650, guid: 7d19d83ca8c39b3448aab6f14e35e11e,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d93f72e5d6b7e694abd6ccbb09aa469e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d19d83ca8c39b3448aab6f14e35e11e, type: 3}
 --- !u!1001 &5566475494992383247
@@ -405,7 +410,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: bafe6907c93eb1445a7be3f9adab5b1b, type: 2}
+      objectReference: {fileID: 2100000, guid: 94ba4eb8542d07c40aac08efb8fd4ed1, type: 2}
     - target: {fileID: 4167280743394806330, guid: b63da3573282a424582a2dc11ed986ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -490,7 +495,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f4d1657e13c5f78448c8734ed702f898, type: 2}
+      objectReference: {fileID: 2100000, guid: 062f54143e59832468e99e4447b195c7, type: 2}
     - target: {fileID: 6250409095508506177, guid: b63da3573282a424582a2dc11ed986ac,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
