@@ -22,6 +22,7 @@ public class RelayManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log(isHost);
         if (isHost) { CreateRelayAsync(); }
         else { JoinRelayAsync(JoinCode); }
     }
