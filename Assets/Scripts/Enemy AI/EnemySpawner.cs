@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -8,6 +9,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] GameObject[] enemies;
     [SerializeField] int[] numbers;
     [SerializeField] float spawnArea;
+
+    List<GameObject> _enemies;
 
     public float CampRadius
     {
@@ -26,6 +29,11 @@ public class EnemySpawner : MonoBehaviour
         SpawnEnemy();
     }
 
+    private void OnDestroy()
+    {
+        DespawnEnemies();
+    }
+
     void SpawnEnemy()
     {
         foreach(GameObject enemy in enemies)
@@ -42,11 +50,20 @@ public class EnemySpawner : MonoBehaviour
                 if (Vector3.Distance(randomPos, transform.position) <= spawnArea)
                 {
                     GameObject enemyObj = Instantiate(enemy, randomPos, Quaternion.identity);
+                    _enemies.Add(enemyObj);
                     EnemyController _enemyCont = enemyObj.GetComponent<EnemyController>();
                     _enemyCont.NearestCamp = gameObject;
                     i++;
                 }
             }
+        }
+    }
+
+    void DespawnEnemies()
+    {
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
         }
     }
 

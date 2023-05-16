@@ -31,8 +31,20 @@ public class EnemyMovement : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!IsHost) return;
+        NetworkManager.Singleton.OnServerStarted += SetUp;
 
+        if (NetworkManager.IsHost) SetUp();
+    }
+
+    void SetUp()
+    {
+        if (!NetworkManager.IsHost)
+        {
+            Debug.Log("Not Host");
+            return;
+        }
+
+        Debug.Log("Is host, set up");
         _enemyController = GetComponent<EnemyController>();
         _nav = GetComponent<NavMeshAgent>();
 
@@ -48,7 +60,7 @@ public class EnemyMovement : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IsHost) return;
+        if (!NetworkManager.IsHost) return;
 
         //if(_enemyController.Enemy.isBoss) Debug.Log(_enemyController.Enemy._agility);
         if (_enemyController.State == SOEnemy.State.Idle)
@@ -96,7 +108,7 @@ public class EnemyMovement : NetworkBehaviour
     //quickChange determines whether or not the enemy has to wait before getting a new position
     public void NewPosition(bool returnToStart)
     {
-        if (!IsHost) return;
+        if (!NetworkManager.IsHost) return;
 
         bool quickChange;
 
@@ -130,7 +142,7 @@ public class EnemyMovement : NetworkBehaviour
 
     IEnumerator Move(bool _quickChange)
     {
-        if (!IsHost) yield return null;
+        if (!NetworkManager.IsHost) yield return null;
 
         if (!_quickChange)  yield return new WaitForSeconds(Random.Range(2.5f, 4f));
         _enemyController.IsCurrentlyMoving = true;
@@ -146,7 +158,7 @@ public class EnemyMovement : NetworkBehaviour
 
     public void LookAt(Vector3 dir)
     {
-        if (!IsHost) return;
+        if (!NetworkManager.IsHost) return;
 
         //gets the vector pointing from the enemy's position to the target
         _direction = (dir - transform.position).normalized;

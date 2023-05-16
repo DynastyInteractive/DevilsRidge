@@ -22,7 +22,6 @@ public class MainMenu : MonoBehaviour
         });
         _joinButton.onClick.AddListener(() => 
         { 
-            RelayManager.isHost = false;
             RelayManager.JoinCode = _joinCode.text;
             SceneManager.LoadScene(_mainScene);
         });

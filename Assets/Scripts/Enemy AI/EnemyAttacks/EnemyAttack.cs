@@ -36,10 +36,10 @@ public class EnemyAttack : MonoBehaviour
 
         foreach (EnemyAttackType type in attacks)
         {
-            if (_enemyController.Animator.GetCurrentAnimatorStateInfo(0).IsName(type.AttackName))
-            {
-                _enemyMovement.enabled = false;
-            }
+            //if (_enemyController.Animator.GetCurrentAnimatorStateInfo(0).IsName(type.AttackName))
+            //{
+            //    _enemyMovement.enabled = false;
+            //}
         }
 
         if(_enemyController.State == SOEnemy.State.Attacking)

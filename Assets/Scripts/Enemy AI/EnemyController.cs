@@ -77,7 +77,11 @@ public class EnemyController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!IsHost) return;
+        if (!NetworkManager.IsHost)
+        {
+            Debug.Log("Not Host");
+            return;
+        }
 
         //gets the result of checking what state the enemy is in, and sets it to the current state variable
         if(_enemy.isBoss && _nearestCamp.GetComponent<BossFightManager>().IsFightActive) _currentState = DetermineState(true);
@@ -102,7 +106,11 @@ public class EnemyController : NetworkBehaviour
     //returns the current state, depending on its current situation
     SOEnemy.State DetermineState(bool isBossFight)
     {
-        if (!IsHost) return SOEnemy.State.Idle;
+        if (!NetworkManager.IsHost)
+        {
+            Debug.Log("Not Host - DetermineState");
+            return SOEnemy.State.Idle;
+        }
 
         if (isBossFight)
         {
@@ -129,7 +137,11 @@ public class EnemyController : NetworkBehaviour
 
     public bool CanTarget()
     {
-        if (!IsHost) return false;
+        if (!NetworkManager.IsHost)
+        {
+            Debug.Log("Not Host - CanTarget");
+            return false;
+        }
 
         float closestPlayerDistance = Mathf.Infinity;
         int closestPlayerIndex = -1;
