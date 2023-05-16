@@ -1,0 +1,103 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 2.Controlls
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: b54ba4d0-1894-4ae3-8d41-d7e04e734467
+    _portName: Next
+    _targetNodeGUID: fc6f6aec-766f-4aea-ab12-002aa4da3c16
+  - _baseNodeGUID: 965181ee-28c5-4a87-bcdb-e2508c2f445c
+    _portName: ...
+    _targetNodeGUID: 322572d7-ffc7-4bec-a68c-5e19278017c9
+  - _baseNodeGUID: cf966deb-00d7-448d-b3d0-224102642a65
+    _portName: ...
+    _targetNodeGUID: 965181ee-28c5-4a87-bcdb-e2508c2f445c
+  - _baseNodeGUID: 322572d7-ffc7-4bec-a68c-5e19278017c9
+    _portName: ...
+    _targetNodeGUID: 8106199d-2440-445f-a1cc-1cb99b40fb71
+  - _baseNodeGUID: eb76e088-e4a6-4543-a4ee-29ca5b754987
+    _portName: '!'
+    _targetNodeGUID: 6bf9cf7a-a9c7-4e3b-b0b2-67d770e616fa
+  - _baseNodeGUID: 8106199d-2440-445f-a1cc-1cb99b40fb71
+    _portName: ...
+    _targetNodeGUID: eb76e088-e4a6-4543-a4ee-29ca5b754987
+  - _baseNodeGUID: 6bf9cf7a-a9c7-4e3b-b0b2-67d770e616fa
+    _portName: That can't be good
+    _targetNodeGUID: b45f82b5-49c8-4e50-8dc0-2f41599cb00c
+  - _baseNodeGUID: fc6f6aec-766f-4aea-ab12-002aa4da3c16
+    _portName: Okay watch and learn
+    _targetNodeGUID: cf966deb-00d7-448d-b3d0-224102642a65
+  DialogueNodeData:
+  - _nodeGUID: 965181ee-28c5-4a87-bcdb-e2508c2f445c
+    _speakerName: Henry
+    _dialogueText: Hold Left click to heavy attack
+    _choices:
+    - _baseNodeGUID: 965181ee-28c5-4a87-bcdb-e2508c2f445c
+      _portName: ...
+      _targetNodeGUID: 322572d7-ffc7-4bec-a68c-5e19278017c9
+    _position: {x: 881, y: 200}
+  - _nodeGUID: cf966deb-00d7-448d-b3d0-224102642a65
+    _speakerName: Henry
+    _dialogueText: 'Press Left click to light attack '
+    _choices:
+    - _baseNodeGUID: cf966deb-00d7-448d-b3d0-224102642a65
+      _portName: ...
+      _targetNodeGUID: 965181ee-28c5-4a87-bcdb-e2508c2f445c
+    _position: {x: 605, y: 200}
+  - _nodeGUID: 322572d7-ffc7-4bec-a68c-5e19278017c9
+    _speakerName: Henry
+    _dialogueText: Perfect now let us pratice your evading skills. Press Right click
+      to evade attacks.
+    _choices:
+    - _baseNodeGUID: 322572d7-ffc7-4bec-a68c-5e19278017c9
+      _portName: ...
+      _targetNodeGUID: 8106199d-2440-445f-a1cc-1cb99b40fb71
+    _position: {x: 1166, y: 200}
+  - _nodeGUID: eb76e088-e4a6-4543-a4ee-29ca5b754987
+    _speakerName: Henry
+    _dialogueText: Bloody beautiful, were in good hands if there ever was a...
+    _choices:
+    - _baseNodeGUID: eb76e088-e4a6-4543-a4ee-29ca5b754987
+      _portName: '!'
+      _targetNodeGUID: 6bf9cf7a-a9c7-4e3b-b0b2-67d770e616fa
+    _position: {x: 1772, y: 200}
+  - _nodeGUID: 8106199d-2440-445f-a1cc-1cb99b40fb71
+    _speakerName: Henry
+    _dialogueText: 'Lastly use CRTL to crouch. '
+    _choices:
+    - _baseNodeGUID: 8106199d-2440-445f-a1cc-1cb99b40fb71
+      _portName: ...
+      _targetNodeGUID: eb76e088-e4a6-4543-a4ee-29ca5b754987
+    _position: {x: 1515, y: 200}
+  - _nodeGUID: 6bf9cf7a-a9c7-4e3b-b0b2-67d770e616fa
+    _speakerName: 'Villager '
+    _dialogueText: SOUND THE ALARM. A RAID IS HAPPENING!
+    _choices:
+    - _baseNodeGUID: 6bf9cf7a-a9c7-4e3b-b0b2-67d770e616fa
+      _portName: That can't be good
+      _targetNodeGUID: b45f82b5-49c8-4e50-8dc0-2f41599cb00c
+    _position: {x: 2116, y: 200}
+  - _nodeGUID: b45f82b5-49c8-4e50-8dc0-2f41599cb00c
+    _speakerName: Henry
+    _dialogueText: Ready yourself, TO BATTLE
+    _choices: []
+    _position: {x: 2483, y: 200}
+  - _nodeGUID: fc6f6aec-766f-4aea-ab12-002aa4da3c16
+    _speakerName: Henry
+    _dialogueText: Right chum, remember how to handle a sword? If your still feeling
+      a bit dazed then let me remind you.
+    _choices:
+    - _baseNodeGUID: fc6f6aec-766f-4aea-ab12-002aa4da3c16
+      _portName: Okay watch and learn
+      _targetNodeGUID: cf966deb-00d7-448d-b3d0-224102642a65
+    _position: {x: 271, y: 200}
