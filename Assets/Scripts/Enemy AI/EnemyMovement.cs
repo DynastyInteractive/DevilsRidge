@@ -15,7 +15,6 @@ public class EnemyMovement : MonoBehaviour
     [Tooltip("Range for a new position")] [SerializeField] int _wanderRadius = 10;
     [Tooltip("Distance that the enemy can wander from the starting position")] [SerializeField] int _maxWanderRadius = 20;
     [Tooltip("Next position for the enemy")] [SerializeField] Vector3 _walkPoint;
-    [Tooltip("A check to see if the enemy can get a new position")] [SerializeField] bool _canGetNewPos;
 
     [Space(10)]
     [Header("Rotation")]
@@ -38,7 +37,6 @@ public class EnemyMovement : MonoBehaviour
         _nav.speed = _enemyController.Enemy._agility.BaseValue;
         _startingPos = transform.position;
         _walkPoint = new Vector3(transform.position.x, transform.position.y - 0.4f, transform.position.z);
-        _canGetNewPos = true;
 
         _spawner = _enemyController.NearestCamp.GetComponent<EnemySpawner>();
 
@@ -48,42 +46,46 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _nav.isStopped= false;
-
+        //if(_enemyController.Enemy.isBoss) Debug.Log(_enemyController.Enemy._agility);
         if(_enemyController.State == SOEnemy.State.Idle)
         {
-            //_walkPoint = transform.position;
+            _nav.speed = 0;
         }
         else if(_enemyController.State == SOEnemy.State.Wandering)
         {
+            _nav.speed = _enemyController.Enemy._agility.BaseValue;
             if (isTargeting && (_enemyController.Enemy.isBoss || Vector3.Distance(transform.position, _enemyController.NearestCamp.transform.position) > _enemyController.NearestCamp.GetComponent<EnemySpawner>().CampRadius * 2))
             {
                 isTargeting = false;
                 NewPosition(true);
             }
 
-            if (_canGetNewPos)
+            if (_enemyController.CanGetNewPosition)
             {
-                _canGetNewPos = false;
+                _enemyController.CanGetNewPosition = false;
                 NewPosition(false);
-            }
-            if ((Vector3.Distance(transform.position, _walkPoint) < 0.5f) && _enemyController.State == SOEnemy.State.Wandering)
-            {
-                //Debug.Log("New Position");
-                _enemyController.IsCurrentlyMoving = false;
-                _canGetNewPos = true;
             }
         }
         else if(_enemyController.State == SOEnemy.State.Targeting)
         {
+            _nav.speed = _enemyController.Enemy._agility.BaseValue;
             isTargeting = true;
             _walkPoint = _enemyController.PlayerPositions[_enemyController.ClosestPlayerIndex];
             StartCoroutine(Move(true));
         }
         else
         {
-            _nav.isStopped = true;
+            _nav.speed = 0;
         }
+        
+        if ((Vector3.Distance(transform.position, _walkPoint) < 0.5f))
+        {
+            //Debug.Log("New Position");
+            _enemyController.IsCurrentlyMoving = false;
+            _enemyController.CanGetNewPosition = true;
+        }
+
+        _enemyController.Animator?.SetFloat("Speed", _nav.speed);
     }
 
     //Sets the new position when wandering
@@ -91,7 +93,6 @@ public class EnemyMovement : MonoBehaviour
     public void NewPosition(bool returnToStart)
     {
         bool quickChange;
-        _enemyController.IsCurrentlyMoving = true;
 
         if (!returnToStart)
         {
@@ -124,21 +125,27 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator Move(bool _quickChange)
     {
         if (!_quickChange)  yield return new WaitForSeconds(Random.Range(2.5f, 4f));
+        _enemyController.IsCurrentlyMoving = true;
         
         if (_direction != Vector3.zero)
         {
-            //gets the vector pointing from the enemy's position to the target
-            _direction = (_walkPoint - transform.position).normalized;
-
-            //gets the rotation the enemy needs to be in to look at the target
-            _lookRotation = Quaternion.LookRotation(_direction);
-
-            //rotates the enemy over time according to speed until it is in the corrent orientation
-            transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * _rotationSpeed);
+            LookAt(_walkPoint);
         }
 
         //Sets the target point
         _nav.SetDestination(_walkPoint);
+    }
+
+    public void LookAt(Vector3 dir)
+    {
+        //gets the vector pointing from the enemy's position to the target
+        _direction = (dir - transform.position).normalized;
+
+        //gets the rotation the enemy needs to be in to look at the target
+        _lookRotation = Quaternion.LookRotation(_direction);
+
+        //rotates the enemy over time according to speed until it is in the corrent orientation
+        transform.localRotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * _rotationSpeed);
     }
 
     private void OnDrawGizmos()

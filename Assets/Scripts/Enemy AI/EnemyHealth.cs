@@ -21,14 +21,26 @@ public class EnemyHealth : MonoBehaviour
     {
         _enemyController.Enemy._healthPoints.SetCurrentValue(_enemyController.Enemy._healthPoints.CurrentValue - damage);
 
-        if (_enemyController.Enemy._healthPoints.CurrentValue <= _enemyController.Enemy._healthPoints.Min) GameObject.Destroy(gameObject); //death
+        if (_enemyController.Enemy._healthPoints.CurrentValue <= _enemyController.Enemy._healthPoints.Min)
+        {
+            //death
+            GetComponent<LootBag>().InstantiateLoot(transform.position);
+            _bossFightManager?.EndBossFight(true, this);
+            GameObject.Destroy(gameObject);
+        }
 
         _bossFightManager?.SetHealth(_enemyController.Enemy._healthPoints.CurrentValue);
     }
 
-    public void Heal(int healthReturn)
+    public void Heal(float healthReturn)
     {
         _enemyController.Enemy._healthPoints.SetCurrentValue(_enemyController.Enemy._healthPoints.CurrentValue + healthReturn);
         _bossFightManager?.SetHealth(_enemyController.Enemy._healthPoints.CurrentValue);
+    }
+
+    public void ResetHealth()
+    {
+        _enemyController.Enemy._healthPoints.SetCurrentValue(_enemyController.Enemy._healthPoints.Max.BaseValue);
+        _bossFightManager?.SetMaxHealth(_enemyController.Enemy._healthPoints.Max.BaseValue);
     }
 }

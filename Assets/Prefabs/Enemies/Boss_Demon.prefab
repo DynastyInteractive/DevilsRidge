@@ -600,6 +600,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-4211052726853665216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720192601267712094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b9eaf4f31c3a4b45ac5e024c15da195, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCooldown: 0
+  _attackName: 
+  _enemyController: {fileID: 0}
+  _localAttackCooldown:
+    _min:
+      _baseValue: 6
+    _max:
+      _baseValue: 8
+    _currentValue:
+      _baseValue: 0
+  _localAttackName: Stomp
 --- !u!195 &-1769073381536832894
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -622,6 +645,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2159372360634221233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4720192601267712094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ac886ddb8ab0424b97cd3ffccd87439, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _droppedItemPrefab: {fileID: 8625683770075911786, guid: cacbde64b210c744c9ac3f9d10b099f9,
+    type: 3}
+  _lootList:
+  - {fileID: 11400000, guid: 837bfaa6fe44dfb43a844a58ffda74bb, type: 2}
+  - {fileID: 11400000, guid: e44973ae93e175544b8f234700f557c5, type: 2}
+  - {fileID: 11400000, guid: ba034861ecc7b3147a60036fd82c0221, type: 2}
+  - {fileID: 11400000, guid: 0395c1aaf670ef84d9c009ec2794257f, type: 2}
+  - {fileID: 11400000, guid: 379f81e8977f27c43ab6c46224744bd3, type: 2}
+  _uniqueDropChance: 100
+  _uniqueLootList:
+  - {fileID: 11400000, guid: 984b1bbcd0e5e164aa35e7c410a14433, type: 2}
 --- !u!114 &2176147220062788887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -647,8 +693,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: 53d3839e047208b4392ba6d96302dae4, type: 2}
+  _animator: {fileID: 0}
   _currentState: 0
   _isCurrentlyMoving: 0
+  _canGetNewPosition: 0
   _playerPositions: []
   _playerObjs: []
   _closestPlayerIndex: -1
@@ -670,7 +718,6 @@ MonoBehaviour:
   _wanderRadius: 10
   _maxWanderRadius: 20
   _walkPoint: {x: 0, y: 0, z: 0}
-  _canGetNewPos: 0
   _rotationSpeed: 0
   _lookRotation: {x: 0, y: 0, z: 0, w: 0}
   _direction: {x: 0, y: 0, z: 0}
@@ -682,13 +729,22 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4720192601267712094}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ea77e80e7d1d88e459179f7626096b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _attackCooldown: 0
+  _attackName: 
   _enemyController: {fileID: 0}
+  _localAttackCooldown:
+    _min:
+      _baseValue: 4
+    _max:
+      _baseValue: 5
+    _currentValue:
+      _baseValue: 0
+  _localAttackName: LightSwing
 --- !u!114 &7302078045350171084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,21 +758,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackCooldown: 0
+  _attackName: 
   _enemyController: {fileID: 0}
---- !u!114 &-4211052726853665216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4720192601267712094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b9eaf4f31c3a4b45ac5e024c15da195, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _attackCooldown: 0
-  _enemyController: {fileID: 0}
+  _localAttackCooldown:
+    _min:
+      _baseValue: 8
+    _max:
+      _baseValue: 10
+    _currentValue:
+      _baseValue: 0
+  _localAttackName: HeavySwing
 --- !u!114 &7413297341066007950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,3 +785,6 @@ MonoBehaviour:
   - {fileID: 7302078045350171084}
   - {fileID: -4211052726853665216}
   canAttack: 0
+  isCoolingDown: 0
+  _randAttackNum: 0
+  _rotationSpeed: 5

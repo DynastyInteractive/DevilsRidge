@@ -14,6 +14,11 @@ public class EnemySpawner : MonoBehaviour
         get { return campRadius; }
     }
 
+    public GameObject[] Enemies
+    {
+        get { return enemies; }
+    }
+
     private void Start()
     {
         SphereCollider col = GetComponent<SphereCollider>();

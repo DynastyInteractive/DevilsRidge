@@ -10,6 +10,7 @@ public class BossFightManager : MonoBehaviour
     // that gets added to whenever the enemy spawner fires an event after spawning a boss.
     // Using that, you could then subsribe to events in the enemy health class for changing the health bar, rather than having references to the manager inside the health class.
     EnemySpawner enemySpawner;
+    EnemyController enemyController;
 
     [SerializeField] bool isFightActive; //checks to see if the fight is active
     [SerializeField] bool isInCamp; //checks to see if any players are inside the camp area
@@ -33,6 +34,7 @@ public class BossFightManager : MonoBehaviour
     void Start()
     {
         enemySpawner = GetComponent<EnemySpawner>();
+        enemyController = GetComponent<EnemyController>();
         isFightActive = false;
         _bossFightUI.SetActive(false);
     }
@@ -58,10 +60,20 @@ public class BossFightManager : MonoBehaviour
         }
         else
         {
-            isFightActive = false;
-            _bossFightUI.SetActive(false);
-            //reset
+            //EnemyHealth enemy = enemySpawner.Enemies[0].GetComponent<EnemyHealth>();
+            //if(enemy.gameObject.GetComponent<EnemyController>().Enemy.isBoss) 
+                
+            EndBossFight(false, null);
         }
+    }
+
+    public void EndBossFight(bool isDead, EnemyHealth enemyBoss)
+    {
+        if (!isDead && enemyBoss != null) enemyBoss.ResetHealth();
+
+        isFightActive = false;
+        _bossFightUI.SetActive(false);
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,7 +83,6 @@ public class BossFightManager : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             Debug.Log("Start Boss Fight");
-            Debug.Log(other.gameObject.name);
             isFightActive = true;
             isInCamp = true;
             //start boss fight

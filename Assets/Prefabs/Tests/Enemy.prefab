@@ -14,11 +14,11 @@ GameObject:
   - component: {fileID: 7482729691550679759}
   - component: {fileID: 7489612527151130108}
   - component: {fileID: 7482729691550679747}
-  - component: {fileID: 7482729691550679744}
   - component: {fileID: 7040896130564419849}
   - component: {fileID: 2151497562892735753}
   - component: {fileID: 2141986346382191864}
-  - component: {fileID: 9013844937355838404}
+  - component: {fileID: 8366356197426033522}
+  - component: {fileID: 8690644404504554219}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -147,21 +147,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e44973ae93e175544b8f234700f557c5, type: 2}
   - {fileID: 11400000, guid: 837bfaa6fe44dfb43a844a58ffda74bb, type: 2}
   - {fileID: 11400000, guid: 0395c1aaf670ef84d9c009ec2794257f, type: 2}
-  _uniqueDropChance: 1
-  _uniqueLootList:
-  - {fileID: 11400000, guid: 984b1bbcd0e5e164aa35e7c410a14433, type: 2}
---- !u!114 &7482729691550679744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7482729691550679758}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96b0bed2785a7b64aac5165813ee0f4c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _uniqueDropChance: 0
+  _uniqueLootList: []
 --- !u!114 &7040896130564419849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,10 +162,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 11400000, guid: 477a29f5d302be34d88296a76f005d0e, type: 2}
+  _animator: {fileID: 0}
   _currentState: 0
-  _currentlyMoving: 0
+  _isCurrentlyMoving: 0
+  _canGetNewPosition: 0
   _playerPositions: []
-  _playerIndex: -1
+  _playerObjs: []
+  _closestPlayerIndex: -1
+  _nearestCamp: {fileID: 0}
 --- !u!114 &2151497562892735753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,8 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bbf5802b1e54a45afbb3956ac28d0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 0
-  maxHealth: 0
 --- !u!114 &2141986346382191864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,13 +199,11 @@ MonoBehaviour:
   _wanderRadius: 5
   _maxWanderRadius: 10
   _walkPoint: {x: 0, y: 0, z: 0}
-  _canGetNewPos: 0
   _rotationSpeed: 0
   _lookRotation: {x: 0, y: 0, z: 0, w: 0}
   _direction: {x: 0, y: 0, z: 0}
-  _camps: []
-  _nearestCamp: {fileID: 0}
---- !u!114 &9013844937355838404
+  isTargeting: 0
+--- !u!114 &8366356197426033522
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -225,6 +212,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 7482729691550679758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a893182cce245c3439b00e7626c9f780, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bed28f6e1cd5f343a4572ef4ac654b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attacks:
+  - {fileID: 8690644404504554219}
+  canAttack: 0
+  isCoolingDown: 0
+  _randAttackNum: -1
+  _rotationSpeed: 0
+--- !u!114 &8690644404504554219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7482729691550679758}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea77e80e7d1d88e459179f7626096b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _attackCooldown: 0
+  _attackName: 
+  _enemyController: {fileID: 0}
+  _localAttackCooldown:
+    _min:
+      _baseValue: 4
+    _max:
+      _baseValue: 6
+    _currentValue:
+      _baseValue: 0
+  _localAttackName: LightSwing

@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     [Tooltip("The current State of the enemy")] [SerializeField] SOEnemy.State _currentState;
 
     [SerializeField] bool _isCurrentlyMoving;
+    [Tooltip("A check to see if the enemy can get a new position")] [SerializeField] bool _canGetNewPosition;
 
     [Space(10)]
     [Header("Player Targetting")]
@@ -21,6 +22,11 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] GameObject _nearestCamp;
 
+    public bool CanGetNewPosition
+    {
+        get { return _canGetNewPosition; }
+        set { _canGetNewPosition = value;}
+    }
     public Animator Animator
     {
         get { return _animator; }
@@ -67,6 +73,7 @@ public class EnemyController : MonoBehaviour
     {
         _currentState = SOEnemy.State.Idle;
         _animator = GetComponent<Animator>();
+        _canGetNewPosition = true;
     }
 
     // Update is called once per frame
@@ -110,7 +117,7 @@ public class EnemyController : MonoBehaviour
             }
             return SOEnemy.State.Targeting;
         }
-        else if (Random.Range(0, 5) == 0 || IsCurrentlyMoving)
+        else if (IsCurrentlyMoving || (Random.Range(0, 5) == 0 && _canGetNewPosition))
         {
             return SOEnemy.State.Wandering;
         }

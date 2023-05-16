@@ -6,8 +6,10 @@ public class LightSwing : EnemyAttackType
 {
     [SerializeField] EnemyController _enemyController;
 
+    [SerializeField] MinMaxCharacterStat _localAttackCooldown;
+    [SerializeField] string _localAttackName;
 
-    public virtual void OnEnable()
+    public void OnEnable()
     {
         _enemyController = GetComponent<EnemyController>();
         Attack(_enemyController.Enemy._strength);
@@ -28,11 +30,16 @@ public class LightSwing : EnemyAttackType
         }*/
     }
 
+    public override void SetVariables()
+    {
+
+    }
+
     public override void Attack(float damage)
     {
         Debug.Log("Light Swing");
         //attack the player
-        _enemyController.Animator.SetTrigger("LightSwing");
+        _enemyController.Animator?.SetTrigger("LightSwing");
 
         for (int i = 0; i < _enemyController.PlayerPositions.Count; i++)
         {
@@ -43,13 +50,12 @@ public class LightSwing : EnemyAttackType
             }
         }
 
-        GetCooldown(2);
+        _localAttackCooldown.SetCurrentValue(Random.Range(_localAttackCooldown.Min.BaseValue, _localAttackCooldown.Max.BaseValue));
+        GetCooldown(_localAttackCooldown.CurrentValue, _localAttackName);
     }
 
-    public override void GetCooldown(float attackCooldown)
+    public override void GetCooldown(float attackCooldown, string attackName)
     {
-        base.GetCooldown(attackCooldown);
-
-        this.enabled = false;
+        base.GetCooldown(attackCooldown, attackName);
     }
 }

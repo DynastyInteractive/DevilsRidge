@@ -6,10 +6,14 @@ public class Stomp : EnemyAttackType
 {
     [SerializeField] EnemyController _enemyController;
 
+    [SerializeField] MinMaxCharacterStat _localAttackCooldown;
+    [SerializeField] string _localAttackName;
 
-    public virtual void OnEnable()
+
+    public void OnEnable()
     {
         _enemyController = GetComponent<EnemyController>();
+        SetVariables();
         Attack(_enemyController.Enemy._strength);
         
         /*switch ((AttackDistance)Random.Range(0, (int)AttackDistance.Long + 1))
@@ -28,11 +32,16 @@ public class Stomp : EnemyAttackType
         }*/
     }
 
+    public override void SetVariables()
+    {
+        
+    }
+
     public override void Attack(float damage)
     {
         Debug.Log("Stomp");
         //attack the player
-        _enemyController.Animator.SetTrigger("Stomp");
+        _enemyController.Animator?.SetTrigger("Stomp");
 
         for (int i = 0; i < _enemyController.PlayerPositions.Count; i++)
         {
@@ -43,13 +52,12 @@ public class Stomp : EnemyAttackType
             }
         }
 
-        GetCooldown(5);
+        _localAttackCooldown.SetCurrentValue(Random.Range(_localAttackCooldown.Min.BaseValue, _localAttackCooldown.Max.BaseValue));
+        GetCooldown(_localAttackCooldown.CurrentValue, _localAttackName);
     }
 
-    public override void GetCooldown(float attackCooldown)
+    public override void GetCooldown(float attackCooldown, string attackName)
     {
-        base.GetCooldown(attackCooldown);
-
-        this.enabled = false;
+        base.GetCooldown(attackCooldown, attackName);
     }
 }
