@@ -24,6 +24,7 @@ public class DialogueSequencer : MonoBehaviour
 
     void Update()
     {
+        // if 
         if (Input.Dialogue.Next.WasPressedThisFrame() && _currentNode.Choices.Count == 0)
         {
             UIManager.Instance.HideDialogueBox();
@@ -34,6 +35,7 @@ public class DialogueSequencer : MonoBehaviour
 
     void Reset()
     {
+        Debug.Log(_dialogueSequence.DialogueNodeData[0].DialogueText);
         _currentNode = _dialogueSequence.DialogueNodeData[0];
     }
 
@@ -43,7 +45,7 @@ public class DialogueSequencer : MonoBehaviour
 
         Debug.Log(gameObject.name);
         Debug.Log(index);
-        var nextNode = GetNodeFromGUID(_currentNode.Choices[index].TargetNodeGUID);
+        var nextNode = GetNodeFromGUID(node.Choices[index].TargetNodeGUID);
         Debug.Log(nextNode.DialogueText);
         UIManager.Instance.DialogueBox.SetDialogue(nextNode);
         _currentNode = nextNode;

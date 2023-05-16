@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : NetworkBehaviour
 {
     [SerializeField] SOEnemy _enemy;
     [SerializeField] Animator _animator;
@@ -79,6 +77,8 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsHost) return;
+
         //gets the result of checking what state the enemy is in, and sets it to the current state variable
         if(_enemy.isBoss && _nearestCamp.GetComponent<BossFightManager>().IsFightActive) _currentState = DetermineState(true);
         else _currentState = DetermineState(false);
@@ -102,7 +102,9 @@ public class EnemyController : MonoBehaviour
     //returns the current state, depending on its current situation
     SOEnemy.State DetermineState(bool isBossFight)
     {
-        if(isBossFight)
+        if (!IsHost) return SOEnemy.State.Idle;
+
+        if (isBossFight)
         {
             foreach (GameObject player in _nearestCamp.GetComponent<BossFightManager>().Players) {
                 if (_enemy.isBoss) _playerPositions.Add(new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z));
@@ -127,6 +129,8 @@ public class EnemyController : MonoBehaviour
 
     public bool CanTarget()
     {
+        if (!IsHost) return false;
+
         float closestPlayerDistance = Mathf.Infinity;
         int closestPlayerIndex = -1;
 

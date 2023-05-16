@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 4. After The Raid
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: 9e520f2f-dcfc-4a81-8961-839e95431ae4
+    _portName: Next
+    _targetNodeGUID: d45a8131-018d-442e-a65c-9959ed081e31
+  - _baseNodeGUID: d45a8131-018d-442e-a65c-9959ed081e31
+    _portName: HAHAHE
+    _targetNodeGUID: d139e602-e1a1-4a85-b2db-391958bf7a53
+  - _baseNodeGUID: d139e602-e1a1-4a85-b2db-391958bf7a53
+    _portName: ...
+    _targetNodeGUID: bf1248cf-6d27-4400-8352-c4a0bfbeed42
+  DialogueNodeData:
+  - _nodeGUID: d45a8131-018d-442e-a65c-9959ed081e31
+    _speakerName: Damious
+    _dialogueText: HEHE HEHA! WE DEFENDED THE VILLAGE
+    _choices:
+    - _baseNodeGUID: d45a8131-018d-442e-a65c-9959ed081e31
+      _portName: HAHAHE
+      _targetNodeGUID: d139e602-e1a1-4a85-b2db-391958bf7a53
+    _position: {x: 286.4, y: 200}
+  - _nodeGUID: d139e602-e1a1-4a85-b2db-391958bf7a53
+    _speakerName: Henry
+    _dialogueText: Look I saw some retreat that way!
+    _choices:
+    - _baseNodeGUID: d139e602-e1a1-4a85-b2db-391958bf7a53
+      _portName: ...
+      _targetNodeGUID: bf1248cf-6d27-4400-8352-c4a0bfbeed42
+    _position: {x: 604, y: 200}
+  - _nodeGUID: bf1248cf-6d27-4400-8352-c4a0bfbeed42
+    _speakerName: Damious
+    _dialogueText: COME ON LET US TAKE THE FIGHT TO THEM!
+    _choices: []
+    _position: {x: 879.2, y: 200}

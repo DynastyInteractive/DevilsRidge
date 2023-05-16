@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 6. After Clearing Ruins
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: d75920eb-c946-4718-9e08-2fbe242c18fb
+    _portName: Next
+    _targetNodeGUID: 76321949-d918-441d-b38b-990058a16ae9
+  - _baseNodeGUID: 76321949-d918-441d-b38b-990058a16ae9
+    _portName: ...
+    _targetNodeGUID: 698b67f9-beba-405d-8285-f56cb22fc261
+  DialogueNodeData:
+  - _nodeGUID: 76321949-d918-441d-b38b-990058a16ae9
+    _speakerName: Damious
+    _dialogueText: Amazing job, now that all of that is over I was told to send you
+      off to the port, I herd they need help
+    _choices:
+    - _baseNodeGUID: 76321949-d918-441d-b38b-990058a16ae9
+      _portName: ...
+      _targetNodeGUID: 698b67f9-beba-405d-8285-f56cb22fc261
+    _position: {x: 272, y: 200}
+  - _nodeGUID: 698b67f9-beba-405d-8285-f56cb22fc261
+    _speakerName: Damious
+    _dialogueText: Best of luck to you
+    _choices: []
+    _position: {x: 599.2, y: 200}

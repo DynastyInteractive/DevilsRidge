@@ -11,22 +11,19 @@ public class RelayManager : MonoBehaviour
 {
     public static RelayManager Instance { get; private set; }
 
-    public string JoinCode { get; private set; }
+    public static bool isHost;
+
+    public static string JoinCode { get; set; }
 
     void Awake()
     {
         Instance = this;
     }
 
-    async void Start()
+    void Start()
     {
-        await UnityServices.InitializeAsync();
-
-        AuthenticationService.Instance.SignedIn += () =>
-        {
-            Debug.Log($"Signed in as: {AuthenticationService.Instance.PlayerId}");
-        };
-        await AuthenticationService.Instance.SignInAnonymouslyAsync();
+        if (isHost) { CreateRelayAsync(); }
+        else { JoinRelayAsync(JoinCode); }
     }
 
     public async void CreateRelayAsync()

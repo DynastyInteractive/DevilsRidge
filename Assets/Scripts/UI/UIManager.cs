@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] DialogueBox _dialogueBox;
     [SerializeField] GameObject _bookMenu;
     [SerializeField] QuestWindow _questWindow;
+    [SerializeField] GameObject _pauseMenu;
 
     PlayerInput.UIActions Input;
 
@@ -37,6 +38,13 @@ public class UIManager : MonoBehaviour
     void Update()
     {
         if (Input.OpenMenu.WasPressedThisFrame()) OpenMenu();
+        if (Input.Pause.WasPressedThisFrame()) OpenPause();
+    }
+
+    private void OpenPause()
+    {
+        _pauseMenu.SetActive(!_pauseMenu.activeInHierarchy);
+        OnUIWindowShown?.Invoke(_pauseMenu.activeInHierarchy);
     }
 
     void OpenMenu()

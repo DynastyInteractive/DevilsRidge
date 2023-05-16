@@ -1,9 +1,9 @@
 using System.Collections;
-using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyMovement : MonoBehaviour
+public class EnemyMovement : NetworkBehaviour
 {
     EnemyController _enemyController;
     [SerializeField] NavMeshAgent _nav;
@@ -31,6 +31,8 @@ public class EnemyMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!IsHost) return;
+
         _enemyController = GetComponent<EnemyController>();
         _nav = GetComponent<NavMeshAgent>();
 
@@ -46,8 +48,10 @@ public class EnemyMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!IsHost) return;
+
         //if(_enemyController.Enemy.isBoss) Debug.Log(_enemyController.Enemy._agility);
-        if(_enemyController.State == SOEnemy.State.Idle)
+        if (_enemyController.State == SOEnemy.State.Idle)
         {
             _nav.speed = 0;
         }
@@ -92,6 +96,8 @@ public class EnemyMovement : MonoBehaviour
     //quickChange determines whether or not the enemy has to wait before getting a new position
     public void NewPosition(bool returnToStart)
     {
+        if (!IsHost) return;
+
         bool quickChange;
 
         if (!returnToStart)
@@ -124,6 +130,8 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator Move(bool _quickChange)
     {
+        if (!IsHost) yield return null;
+
         if (!_quickChange)  yield return new WaitForSeconds(Random.Range(2.5f, 4f));
         _enemyController.IsCurrentlyMoving = true;
         
@@ -138,6 +146,8 @@ public class EnemyMovement : MonoBehaviour
 
     public void LookAt(Vector3 dir)
     {
+        if (!IsHost) return;
+
         //gets the vector pointing from the enemy's position to the target
         _direction = (dir - transform.position).normalized;
 

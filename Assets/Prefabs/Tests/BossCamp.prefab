@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84745333e004d33419a7190cf44bed3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  campRadius: 0
+  campRadius: 20
   enemies:
-  - {fileID: 7482729691550679758, guid: 87b39aaba186a17469cbd9c4d92a5446, type: 3}
+  - {fileID: 4720192601267712094, guid: fb631e4bfa95b934094e54191f26fb62, type: 3}
   numbers: 01000000
   spawnArea: 0
 --- !u!135 &3642473307475976487
@@ -59,7 +59,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4627624741503917777}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

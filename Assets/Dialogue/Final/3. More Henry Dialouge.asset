@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 3
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: 44f35b07-0eae-4697-a7d6-b16b7b560599
+    _portName: Next
+    _targetNodeGUID: ce055e95-e404-4c87-a330-a5377651ad01
+  - _baseNodeGUID: ce055e95-e404-4c87-a330-a5377651ad01
+    _portName: ...
+    _targetNodeGUID: 07b9065c-2675-4fab-8dc7-846e021e81a7
+  - _baseNodeGUID: 07b9065c-2675-4fab-8dc7-846e021e81a7
+    _portName: ...
+    _targetNodeGUID: 1d6196e1-7fd1-455e-b734-cc56d95f9973
+  - _baseNodeGUID: 1d6196e1-7fd1-455e-b734-cc56d95f9973
+    _portName: ?!
+    _targetNodeGUID: e5c81417-0150-4b64-b06f-e1758397473d
+  DialogueNodeData:
+  - _nodeGUID: ce055e95-e404-4c87-a330-a5377651ad01
+    _speakerName: Henry
+    _dialogueText: One last thing, to use your knees and crouch press CRTL to crouch
+    _choices:
+    - _baseNodeGUID: ce055e95-e404-4c87-a330-a5377651ad01
+      _portName: ...
+      _targetNodeGUID: 07b9065c-2675-4fab-8dc7-846e021e81a7
+    _position: {x: 268, y: 200}
+  - _nodeGUID: 07b9065c-2675-4fab-8dc7-846e021e81a7
+    _speakerName: Henry
+    _dialogueText: Perfect! we will be in good hands if there ever was a...
+    _choices:
+    - _baseNodeGUID: 07b9065c-2675-4fab-8dc7-846e021e81a7
+      _portName: ...
+      _targetNodeGUID: 1d6196e1-7fd1-455e-b734-cc56d95f9973
+    _position: {x: 618.4, y: 200}
+  - _nodeGUID: 1d6196e1-7fd1-455e-b734-cc56d95f9973
+    _speakerName: Villager
+    _dialogueText: SOUND THE RAID ALARM
+    _choices:
+    - _baseNodeGUID: 1d6196e1-7fd1-455e-b734-cc56d95f9973
+      _portName: ?!
+      _targetNodeGUID: e5c81417-0150-4b64-b06f-e1758397473d
+    _position: {x: 948, y: 200}
+  - _nodeGUID: e5c81417-0150-4b64-b06f-e1758397473d
+    _speakerName: 'Henry '
+    _dialogueText: READY POSITIONS, WE ARE BEING ATTACKED!!
+    _choices: []
+    _position: {x: 1199.2, y: 200}

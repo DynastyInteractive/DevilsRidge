@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 2.Henry Controlls
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: 4a6c3101-2645-419e-b84b-2e1fffeb6b19
+    _portName: Next
+    _targetNodeGUID: c8934cd6-1821-4810-8af8-02e9818e6658
+  - _baseNodeGUID: c8934cd6-1821-4810-8af8-02e9818e6658
+    _portName: ...
+    _targetNodeGUID: bc1cff52-5f41-47e5-ba3e-1d7b1962041d
+  - _baseNodeGUID: bc1cff52-5f41-47e5-ba3e-1d7b1962041d
+    _portName: ...
+    _targetNodeGUID: d5128a09-b34e-4ba8-bb9c-0be073790ed9
+  - _baseNodeGUID: d5128a09-b34e-4ba8-bb9c-0be073790ed9
+    _portName: ...
+    _targetNodeGUID: a16eb993-3465-4e21-8382-267c3c806fe6
+  DialogueNodeData:
+  - _nodeGUID: c8934cd6-1821-4810-8af8-02e9818e6658
+    _speakerName: Henry
+    _dialogueText: Alright chum, remember how to handle a sword? If you're still
+      waking up then let me remind you.
+    _choices:
+    - _baseNodeGUID: c8934cd6-1821-4810-8af8-02e9818e6658
+      _portName: ...
+      _targetNodeGUID: bc1cff52-5f41-47e5-ba3e-1d7b1962041d
+    _position: {x: 260, y: 200}
+  - _nodeGUID: bc1cff52-5f41-47e5-ba3e-1d7b1962041d
+    _speakerName: Henry
+    _dialogueText: Press Left click to use a light swing
+    _choices:
+    - _baseNodeGUID: bc1cff52-5f41-47e5-ba3e-1d7b1962041d
+      _portName: ...
+      _targetNodeGUID: d5128a09-b34e-4ba8-bb9c-0be073790ed9
+    _position: {x: 576.8, y: 200}
+  - _nodeGUID: d5128a09-b34e-4ba8-bb9c-0be073790ed9
+    _speakerName: Henry
+    _dialogueText: Hold Left click to do a massive heavy attack
+    _choices:
+    - _baseNodeGUID: d5128a09-b34e-4ba8-bb9c-0be073790ed9
+      _portName: ...
+      _targetNodeGUID: a16eb993-3465-4e21-8382-267c3c806fe6
+    _position: {x: 864, y: 200}
+  - _nodeGUID: a16eb993-3465-4e21-8382-267c3c806fe6
+    _speakerName: Henry
+    _dialogueText: Also take into account evading enemies attacks, press Right click
+      to do so
+    _choices: []
+    _position: {x: 1196.8, y: 200}

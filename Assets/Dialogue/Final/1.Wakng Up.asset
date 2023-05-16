@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 1.Wakng Up
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: f7267609-7255-4c07-851d-d364aa7fb9c2
+    _portName: Next
+    _targetNodeGUID: ee3dfaf2-9b8c-4552-88c2-d5df78d6af44
+  - _baseNodeGUID: ee3dfaf2-9b8c-4552-88c2-d5df78d6af44
+    _portName: ...
+    _targetNodeGUID: 938dd206-0040-4250-a31b-9fb051ee8ed8
+  - _baseNodeGUID: 938dd206-0040-4250-a31b-9fb051ee8ed8
+    _portName: HUH?
+    _targetNodeGUID: be0648f0-41e5-406f-87bd-3979fac6f4de
+  - _baseNodeGUID: be0648f0-41e5-406f-87bd-3979fac6f4de
+    _portName: ...
+    _targetNodeGUID: 0471ef1c-c936-4fba-b0ef-9b1e7a224594
+  DialogueNodeData:
+  - _nodeGUID: ee3dfaf2-9b8c-4552-88c2-d5df78d6af44
+    _speakerName: Damious
+    _dialogueText: OI WAKE UP
+    _choices:
+    - _baseNodeGUID: ee3dfaf2-9b8c-4552-88c2-d5df78d6af44
+      _portName: ...
+      _targetNodeGUID: 938dd206-0040-4250-a31b-9fb051ee8ed8
+    _position: {x: 285.6, y: 200}
+  - _nodeGUID: 938dd206-0040-4250-a31b-9fb051ee8ed8
+    _speakerName: Damious
+    _dialogueText: HEY TRAINING STARTS SOON
+    _choices:
+    - _baseNodeGUID: 938dd206-0040-4250-a31b-9fb051ee8ed8
+      _portName: HUH?
+      _targetNodeGUID: be0648f0-41e5-406f-87bd-3979fac6f4de
+    _position: {x: 575.2, y: 200}
+  - _nodeGUID: be0648f0-41e5-406f-87bd-3979fac6f4de
+    _speakerName: Damious
+    _dialogueText: Henry is right over there, he has a few things he wants to show
+      you.
+    _choices:
+    - _baseNodeGUID: be0648f0-41e5-406f-87bd-3979fac6f4de
+      _portName: ...
+      _targetNodeGUID: 0471ef1c-c936-4fba-b0ef-9b1e7a224594
+    _position: {x: 834.4, y: 200}
+  - _nodeGUID: 0471ef1c-c936-4fba-b0ef-9b1e7a224594
+    _speakerName: Damious
+    _dialogueText: COME ON NOW!
+    _choices: []
+    _position: {x: 1158.4, y: 200}
