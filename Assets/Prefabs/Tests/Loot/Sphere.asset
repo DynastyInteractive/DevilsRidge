@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1949bd02af726c44a98007ed3734c63, type: 3}
+  m_Name: Sphere
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 1141432428102046659, guid: 5fefb9d70338d554e86e9046a2e6567e,
+    type: 3}
+  rarity: {fileID: 2100000, guid: 24ed3eba6dc6ac94690d691d778f47b4, type: 2}
+  lootName: Sphere
+  dropChance: 100

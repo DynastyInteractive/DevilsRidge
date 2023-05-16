@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1949bd02af726c44a98007ed3734c63, type: 3}
+  m_Name: Capsule
+  m_EditorClassIdentifier: 
+  lootPrefab: {fileID: 3998238629294727030, guid: e9d62b8fc0ebd044eb30d1750f69329a,
+    type: 3}
+  rarity: {fileID: 2100000, guid: ef422859dbaaec445bbc803724b28dea, type: 2}
+  lootName: Capsule
+  dropChance: 15
