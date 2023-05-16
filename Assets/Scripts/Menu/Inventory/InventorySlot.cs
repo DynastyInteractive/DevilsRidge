@@ -22,6 +22,18 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     {
         _item = newItem;
 
+        Debug.Log(_draggableItem != null);
+        _draggableItem = (_draggableItem != null) ? _draggableItem : Instantiate(_draggableItemPrefab, transform);
+        _draggableItem.Item = _item;
+        _draggableItem.Icon = _item.Icon;
+        _removeButton.interactable = true;
+    }
+    
+    public virtual void AddItem(WeaponItem newItem)
+    {
+        _item = newItem;
+
+        Debug.Log(_draggableItem != null);
         _draggableItem = (_draggableItem != null) ? _draggableItem : Instantiate(_draggableItemPrefab, transform);
         _draggableItem.Item = _item;
         _draggableItem.Icon = _item.Icon;
@@ -38,19 +50,22 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public virtual void ClearSlot()
     {
         DetachSlot();
+        Debug.Log(transform.childCount);
         Destroy(transform.GetChild(0).gameObject);
     }
 
     public virtual void OnDrop(PointerEventData eventData)
     {
-        if (!eventData.pointerDrag.TryGetComponent(out DraggableItem draggableItem)) return;
-
-        if (transform.childCount == 0)
+        if (eventData.pointerDrag.TryGetComponent(out DraggableItem draggableItem))
         {
-            if (!Inventory.Instance.Items.Contains(_item)) Inventory.Instance.Add(_item);
-            draggableItem.ParentAfterDrag = transform;
-            _item = draggableItem.Item;
-            _removeButton.interactable = true;
+            if (transform.childCount == 0)
+            {
+                if (!Inventory.Instance.Items.Contains(_item)) Inventory.Instance.Add(_item, true);
+                draggableItem.ParentAfterDrag = transform;
+                _item = draggableItem.Item;
+                _draggableItem = draggableItem;
+                _removeButton.interactable = true;
+            }
         }
     }
 

@@ -30,7 +30,7 @@ public class CharacterStat
         }
     }
 
-    protected bool _isDirty;
+    protected bool _isDirty = true;
     protected float _value;
 
     protected readonly List<StatModifier> statModifiers;
@@ -89,6 +89,7 @@ public class CharacterStat
     {
         float finalValue = BaseValue;
         float sumPercentAdd = 0;
+        Debug.Log("Final Value 1:" + finalValue);
 
         for (int i = 0; i < statModifiers.Count; i++)
         {
@@ -114,6 +115,8 @@ public class CharacterStat
             }
         }
 
+
+        Debug.Log("Final Value 2:" + finalValue);
         return (float)Math.Round(finalValue, 4);
     }
 }

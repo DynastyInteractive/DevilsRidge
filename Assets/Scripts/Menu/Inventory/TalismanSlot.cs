@@ -18,9 +18,10 @@ public class TalismanSlot : InventorySlot
 
         if (equippable.Type != _acceptedType) return;
 
-        if (!Inventory.Instance.Weapons.ToList().Contains(equippable)) Inventory.Instance.Add(_item);
+        if (!Inventory.Instance.Weapons.ToList().Contains(equippable)) Inventory.Instance.Add(_item, true);
         draggableItem.ParentAfterDrag = transform;
         _item = draggableItem.Item;
+        _draggableItem = draggableItem;
         _removeButton.interactable = true;
     }
 }

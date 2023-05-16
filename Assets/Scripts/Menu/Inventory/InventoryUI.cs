@@ -81,8 +81,10 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    void RefreshWeaponUIAdded(WeaponItem itemChanged)
+    void RefreshWeaponUIAdded(WeaponItem itemChanged, bool wasDropped)
     {
+        if (wasDropped) return;
+
         for (int i = 0; i < _weaponSlots.Length; i++)
         {
             if (_weaponSlots[i].CurrentItem == null)
@@ -94,7 +96,8 @@ public class InventoryUI : MonoBehaviour
     }
     void RefreshWeaponUIRemoved(WeaponItem itemChanged, int slot)
     {
-        _slots[slot].ClearSlot();
+        Debug.Log(_weaponSlots[slot].gameObject.name);
+        _weaponSlots[slot].ClearSlot();
     }
 
     void RefreshTalismanUIAdded(TalismanItem itemChanged)

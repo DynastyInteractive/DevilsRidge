@@ -18,7 +18,7 @@ public class WeaponSlot : InventorySlot
 
         if (weapon.Type != _acceptedType) return;
 
-        Inventory.Instance.EquipWeapon(weapon);
+        Inventory.Instance.EquipWeapon(weapon, true);
         draggableItem.ParentAfterDrag = transform;
         _item = draggableItem.Item;
         _removeButton.interactable = true;

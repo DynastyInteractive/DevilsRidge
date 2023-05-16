@@ -5,11 +5,11 @@ using UnityEditor;
 
 public class InteractableItem : Interactable
 {
-    [SerializeField] Item _item;
+    [SerializeField] WeaponItem _item;
 
     public override void Interact()
     {
-        Inventory.Instance.Add(_item);
+        Inventory.Instance.Add(_item, false);
         Destroy(gameObject);
     }
 }

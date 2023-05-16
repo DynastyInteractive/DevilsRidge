@@ -19,12 +19,13 @@ public class Inventory : MonoBehaviour
     public static Inventory Instance;
 
     public event Action<Item, bool> OnInventoryChanged;
-    public event Action<WeaponItem> OnWeaponAdded;
+    public event Action<WeaponItem, bool> OnWeaponAdded;
     public event Action<WeaponItem, int> OnWeaponRemoved; 
     public event Action<TalismanItem> OnTalismanEquipped;
     public event Action<TalismanItem> OnTalismanUnequipped;
 
     public Item LastItemAdded { get; set; }
+
 
     private void Awake()
     {
@@ -32,9 +33,8 @@ public class Inventory : MonoBehaviour
         Instance = this;
     }
     
-    public void EquipWeapon(WeaponItem weapon)
+    public void EquipWeapon(WeaponItem weapon, bool wasDropped)
     {
-        Debug.Log("Here");
         if (_weapons[0] != null && _weapons[1] != null)
         {
             Debug.LogWarning("Equipment Full!");
@@ -46,21 +46,32 @@ public class Inventory : MonoBehaviour
             if (_weapons[i] == null)
             {
                 _weapons[i] = weapon;
+                break;
             }
         }
 
-        Debug.Log("Here 2");
-        OnWeaponAdded?.Invoke(weapon);
+        OnWeaponAdded?.Invoke(weapon, wasDropped);
     }
 
     public void UnequipWeapon(WeaponItem weapon)
     {
-        int index = _weapons.ToList().IndexOf(weapon);
-        _weapons[index] = null;
-        OnWeaponRemoved.Invoke(weapon, index);
+        int index = -1;
+        for (int i = 0; i < _weapons.Length; i++)
+        {
+            Debug.Log(_weapons[i].ItemName);
+            Debug.Log(weapon.ItemName);
+            if (_weapons[i].ItemName == weapon.ItemName)
+            {
+                _weapons[i] = null;
+                index = i;
+                OnWeaponRemoved.Invoke(weapon, index);
+                break;
+            }
+        }
+        Debug.Log(index);
     }
     
-    public void EquipTalisman(TalismanItem talisman)
+    public void EquipTalisman(TalismanItem talisman, bool wasDropped)
     {
         if (_talisman[0] != null && _talisman[1] != null)
         {
@@ -73,9 +84,10 @@ public class Inventory : MonoBehaviour
             if (_weapons[i] == null)
             {
                 _talisman[i] = talisman;
+                break;
             }
         }
-        OnTalismanEquipped?.Invoke(talisman);
+        if (!wasDropped) OnTalismanEquipped?.Invoke(talisman);
     }
 
     public void UnequipTalisman(TalismanItem talisman)
@@ -85,7 +97,7 @@ public class Inventory : MonoBehaviour
         OnTalismanUnequipped.Invoke(talisman);
     }
 
-    public void Add (Item item)
+    public void Add(Item item, bool wasDropped)
     {
         if (_items.Count >= _maxInventorySize)
         {
@@ -95,7 +107,7 @@ public class Inventory : MonoBehaviour
 
         _items.Add(item);
         LastItemAdded = item;
-        OnInventoryChanged?.Invoke(item, true);
+        if (!wasDropped) OnInventoryChanged?.Invoke(item, true);
     }
 
     public void Remove(Item item)

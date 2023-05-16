@@ -9,17 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e58955b6358babf4297a979a6ca7d915, type: 3}
-  m_Name: Talisman
+  m_Script: {fileID: 11500000, guid: 9c97b7af16a01f549b98ef1b482ecff6, type: 3}
+  m_Name: Test Item 1
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _itemName: 
-  _type: 2
+  _icon: {fileID: 21300000, guid: 2b94f53f0e150794e9d25ecf14120c92, type: 3}
+  _itemName: Test
+  _type: 1
   _maxHealthBonus: 0
   _strengthBonus: 0
   _agilityBonus: 0
   _maxHealthPercentBonus: 0
   _strengthPercentBonus: 0
   _agiltyPercentBonus: 0
-  _swingVisual: {fileID: 0}
-  _bladeVisual: {fileID: 0}

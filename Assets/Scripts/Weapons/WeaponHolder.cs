@@ -4,6 +4,7 @@ using UnityEngine;
 public class WeaponHolder : NetworkBehaviour
 {
     [SerializeField] Player _player;
+    [SerializeField] string _fpsOverlayLayer;
 
     PlayerInput.PlayerActions Input;
 
@@ -21,6 +22,13 @@ public class WeaponHolder : NetworkBehaviour
         if (!IsOwner) return;
 
         Invoke(nameof(SubscribeToInventory), .2f);
+
+        foreach (Transform weapon in transform)
+        {
+            weapon.gameObject.SetActive(false);
+        }
+
+        SelectWeapon(0);
     }
 
     void SubscribeToInventory()
@@ -56,10 +64,9 @@ public class WeaponHolder : NetworkBehaviour
 
     void SelectWeapon(int selectedWeapon)
     {
-        Debug.Log(selectedWeapon);
+        //Debug.Log(selectedWeapon);
         if (selectedWeapon < 0 || selectedWeapon > transform.childCount || transform.GetChild(selectedWeapon).gameObject.activeSelf || transform.GetChild(selectedWeapon) == null) return;
 
-        Debug.Log(selectedWeapon);
         int i = 0;
         foreach (Transform weapon in transform)
         {
@@ -78,17 +85,20 @@ public class WeaponHolder : NetworkBehaviour
         }
     }
 
-    public void EquipWeapon(WeaponItem weapon)
+    public void EquipWeapon(WeaponItem weapon, bool wasDropped)
     {
         var weaponGO = Instantiate(weapon.WeaponPrefab, transform);
+        if (weaponGO.TryGetComponent(out Weapon weaponComponent)) weaponComponent.WeaponData = weapon;
+        if (IsOwner) weaponGO.layer = LayerMask.NameToLayer(_fpsOverlayLayer);
         weaponGO.transform.localPosition = Vector3.zero;
         weaponGO.transform.localRotation = Quaternion.identity;
-        
+        SelectWeapon(transform.childCount - 1);        
     }
 
     public void UnequipWeapon(WeaponItem weaponItem, int weaponSlot)
     {
-        weaponItem.Unequip(_player);
+        Debug.Log("Unequip");
+        if (transform.GetChild(weaponSlot + 1).TryGetComponent(out Weapon weaponComponent)) weaponComponent.Unequip(_player);
         Destroy(transform.GetChild(weaponSlot+1).gameObject);
     }
 }
