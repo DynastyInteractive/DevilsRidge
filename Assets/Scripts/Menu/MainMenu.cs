@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
         _joinButton.onClick.AddListener(() => 
         { 
             RelayManager.JoinCode = _joinCode.text;
-            SceneManager.LoadScene(_mainScene);
+            RelayManager.Instance.JoinRelayAsync(_joinCode.text);
         });
         _quitButton.onClick.AddListener(() =>
         {

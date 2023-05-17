@@ -18,12 +18,6 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(NetworkManager.Singleton.ConnectedClientsList.Count);
-        Debug.Log(_healthPoints.Max.Value);
-        Debug.Log(_strength.Value);
-        Debug.Log(_agility.Value);
-        Debug.Log(_critChancePercentage.Value);
-        Debug.Log(_critDamagePercentage.Value);
         StatPanel.Instance.SetStats(_healthPoints.Max, _strength, _agility, _critChancePercentage, _critDamagePercentage);
     }
 
