@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -20,8 +21,7 @@ public class EnemySpawner : MonoBehaviour
     }
     private void Start()
     {
-        SphereCollider col = GetComponent<SphereCollider>();
-        if (col != null) col.radius = campRadius;
+        if (TryGetComponent<SphereCollider>(out var col)) col.radius = campRadius;
         SpawnEnemy();
     }
 

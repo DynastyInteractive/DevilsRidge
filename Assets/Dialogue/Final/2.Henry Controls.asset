@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
-  m_Name: 2.Henry Controlls
+  m_Name: 2.Henry Controls
   m_EditorClassIdentifier: 
   NodeLinks:
   - _baseNodeGUID: 4a6c3101-2645-419e-b84b-2e1fffeb6b19
@@ -53,7 +53,7 @@ MonoBehaviour:
     _position: {x: 864, y: 200}
   - _nodeGUID: a16eb993-3465-4e21-8382-267c3c806fe6
     _speakerName: Henry
-    _dialogueText: Also take into account evading enemies attacks, press Right click
+    _dialogueText: Also take into account blocking enemy attacks, hold Right click
       to do so
     _choices: []
     _position: {x: 1196.8, y: 200}

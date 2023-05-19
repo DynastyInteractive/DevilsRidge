@@ -15,10 +15,21 @@ MonoBehaviour:
   NodeLinks:
   - _baseNodeGUID: 63adf8c6-9e77-4dd2-aa0d-8d8a5b18999c
     _portName: Next
+    _targetNodeGUID: ddd91a16-27f7-4d0a-90de-98111f0fa042
+  - _baseNodeGUID: ddd91a16-27f7-4d0a-90de-98111f0fa042
+    _portName: Choice 1
     _targetNodeGUID: 09075733-db5b-485d-82a7-72abd920dfd0
   DialogueNodeData:
   - _nodeGUID: 09075733-db5b-485d-82a7-72abd920dfd0
     _speakerName: Damious
     _dialogueText: Look there over in the ruins, GET THEM!!
     _choices: []
-    _position: {x: 263.2, y: 200}
+    _position: {x: 595.2, y: 200}
+  - _nodeGUID: ddd91a16-27f7-4d0a-90de-98111f0fa042
+    _speakerName: Dialogue Node
+    _dialogueText: Nice work with these guys, but I don't think it's over yet...
+    _choices:
+    - _baseNodeGUID: ddd91a16-27f7-4d0a-90de-98111f0fa042
+      _portName: Choice 1
+      _targetNodeGUID: 09075733-db5b-485d-82a7-72abd920dfd0
+    _position: {x: 265.6, y: 200}

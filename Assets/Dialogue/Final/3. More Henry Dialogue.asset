@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d58d68f40e0954f80e9efc7c996e04, type: 3}
+  m_Name: 3. More Henry Dialogue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - _baseNodeGUID: c4f68fec-f407-42b9-8867-969e29244dfc
+    _portName: Next
+    _targetNodeGUID: 2dc767d8-39c8-4aa4-afa1-a96202f667c6
+  - _baseNodeGUID: 2dc767d8-39c8-4aa4-afa1-a96202f667c6
+    _portName: ?!
+    _targetNodeGUID: ec9db809-386f-4ab9-8e0d-a91974eaf4c0
+  - _baseNodeGUID: ec9db809-386f-4ab9-8e0d-a91974eaf4c0
+    _portName: '!'
+    _targetNodeGUID: f1f326c7-5b12-4e9b-b288-92e8cc3735fa
+  DialogueNodeData:
+  - _nodeGUID: 2dc767d8-39c8-4aa4-afa1-a96202f667c6
+    _speakerName: Henry
+    _dialogueText: Perfect! We'll be in good hands if there's ever a-
+    _choices:
+    - _baseNodeGUID: 2dc767d8-39c8-4aa4-afa1-a96202f667c6
+      _portName: ?!
+      _targetNodeGUID: ec9db809-386f-4ab9-8e0d-a91974eaf4c0
+    _position: {x: 282.4, y: 200}
+  - _nodeGUID: ec9db809-386f-4ab9-8e0d-a91974eaf4c0
+    _speakerName: Henry
+    _dialogueText: SOUND THE ALARM!
+    _choices:
+    - _baseNodeGUID: ec9db809-386f-4ab9-8e0d-a91974eaf4c0
+      _portName: '!'
+      _targetNodeGUID: f1f326c7-5b12-4e9b-b288-92e8cc3735fa
+    _position: {x: 590.4, y: 200}
+  - _nodeGUID: f1f326c7-5b12-4e9b-b288-92e8cc3735fa
+    _speakerName: Henry
+    _dialogueText: READY POSITIONS! WE'RE UNDER ATTACK
+    _choices: []
+    _position: {x: 808, y: 200}

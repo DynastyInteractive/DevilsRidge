@@ -18,19 +18,30 @@ MonoBehaviour:
     _targetNodeGUID: 76321949-d918-441d-b38b-990058a16ae9
   - _baseNodeGUID: 76321949-d918-441d-b38b-990058a16ae9
     _portName: ...
+    _targetNodeGUID: cd8d4ea9-4804-417d-b86e-6b895ab01253
+  - _baseNodeGUID: cd8d4ea9-4804-417d-b86e-6b895ab01253
+    _portName: Choice 1
     _targetNodeGUID: 698b67f9-beba-405d-8285-f56cb22fc261
   DialogueNodeData:
   - _nodeGUID: 76321949-d918-441d-b38b-990058a16ae9
     _speakerName: Damious
-    _dialogueText: Amazing job, now that all of that is over I was told to send you
-      off to the port, I herd they need help
+    _dialogueText: Amazing job!
     _choices:
     - _baseNodeGUID: 76321949-d918-441d-b38b-990058a16ae9
       _portName: ...
-      _targetNodeGUID: 698b67f9-beba-405d-8285-f56cb22fc261
-    _position: {x: 272, y: 200}
+      _targetNodeGUID: cd8d4ea9-4804-417d-b86e-6b895ab01253
+    _position: {x: 247.2, y: 200}
   - _nodeGUID: 698b67f9-beba-405d-8285-f56cb22fc261
     _speakerName: Damious
-    _dialogueText: Best of luck to you
+    _dialogueText: Best of luck to you!
     _choices: []
-    _position: {x: 599.2, y: 200}
+    _position: {x: 784, y: 200}
+  - _nodeGUID: cd8d4ea9-4804-417d-b86e-6b895ab01253
+    _speakerName: Damious
+    _dialogueText: Now that all of that is over, I was told to send you off to the
+      port, I heard they need help too.
+    _choices:
+    - _baseNodeGUID: cd8d4ea9-4804-417d-b86e-6b895ab01253
+      _portName: Choice 1
+      _targetNodeGUID: 698b67f9-beba-405d-8285-f56cb22fc261
+    _position: {x: 472, y: 200}

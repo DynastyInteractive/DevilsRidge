@@ -4992,7 +4992,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1471629160}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2155461437150540173, guid: 4d6396278acebb54789258c7c370d78e,
         type: 3}
@@ -5007,32 +5007,32 @@ PrefabInstance:
     - target: {fileID: 5398065537071918600, guid: 4d6396278acebb54789258c7c370d78e,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 48.28626
+      value: 48.28627
       objectReference: {fileID: 0}
     - target: {fileID: 5398065537071918600, guid: 4d6396278acebb54789258c7c370d78e,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 48.28626
+      value: 48.286266
       objectReference: {fileID: 0}
     - target: {fileID: 5398065537071918600, guid: 4d6396278acebb54789258c7c370d78e,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 48.28626
+      value: 48.28627
       objectReference: {fileID: 0}
     - target: {fileID: 5398065537071918600, guid: 4d6396278acebb54789258c7c370d78e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -229.75037
+      value: -155.85037
       objectReference: {fileID: 0}
     - target: {fileID: 5398065537071918600, guid: 4d6396278acebb54789258c7c370d78e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.18
+      value: 3.92
       objectReference: {fileID: 0}
     - target: {fileID: 5398065537071918600, guid: 4d6396278acebb54789258c7c370d78e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 65.3
+      value: 165
       objectReference: {fileID: 0}
     - target: {fileID: 5398065537071918600, guid: 4d6396278acebb54789258c7c370d78e,
         type: 3}
@@ -5071,12 +5071,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d6396278acebb54789258c7c370d78e, type: 3}
---- !u!4 &741166115 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5398065537071918600, guid: 4d6396278acebb54789258c7c370d78e,
-    type: 3}
-  m_PrefabInstance: {fileID: 741166114}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &741166116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2155461437150540173, guid: 4d6396278acebb54789258c7c370d78e,
@@ -10482,67 +10476,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: abc0631dda956a640b920108caadb2f5, type: 3}
---- !u!1 &1471629158
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1471629160}
-  - component: {fileID: 1471629159}
-  - component: {fileID: 1471629161}
-  m_Layer: 0
-  m_Name: VillageLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &1471629159
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471629158}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 338.2, y: 26.8, z: 215.41}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!4 &1471629160
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471629158}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.9, y: 12.1, z: 99.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 741166115}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1471629161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1471629158}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48cf7f4ea9d553b47b7769ca50d6280c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _sceneToManage:
-    m_SceneName: Village
 --- !u!1001 &1501792680
 PrefabInstance:
   m_ObjectHideFlags: 0
